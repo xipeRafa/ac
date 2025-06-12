@@ -4,17 +4,17 @@ import { useForm } from '../../helpers';
 //lugar,calle,colonia,dia,hora,informes,fechaDeInicio
 
 
-export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith }) => {
+export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultModeEdith }) => {
 
-    const[operatorState, setOperatorState]=useState({
-        name:'', phone:'', idOperator:''
+    const[unitState, setUnitState]=useState({
+        name:'', phone:'', idUnit:''
     })
 
-console.log(operatorState)
+console.log(unitState)
 
 
-    const { name, phone, idOperator,
-            onInputChange: onPostInputChange, onResetForm } = useForm(operatorState);
+    const { name, phone, idUnit,
+            onInputChange: onPostInputChange, onResetForm } = useForm(unitState);
 
   
 // console.log('dia:', fechaDeInicio.slice(-2), 'mes:', fechaDeInicio.slice(5,7), 'Año:', fechaDeInicio.slice(0,4))
@@ -59,25 +59,25 @@ console.log(operatorState)
 
 
     useEffect(() => { 
-        if(editMode !== undefined) {
-            const { name, phone, idOperator } = editMode
-            setOperatorState({name, phone, idOperator})
+        if(editModeUnits !== undefined) {
+            const { name, phone, idUnit } = editModeUnits
+            setUnitState({name, phone, idUnit})
         }
-    }, [editMode]) 
+    }, [editModeUnits]) 
 
 
 
 
 
-    const onSubmitUsers = (event: any) => {
+    const onSubmitUsers = () => {
         event.preventDefault();
 
-        if(editMode){
-            newDataEdit(name, phone, idOperator, editMode.uid)
-            setOperatorState({name:'', phone:'', idOperator:'' })
+        if(editModeUnits){
+            newDataEdit(name, phone, idUnit, editModeUnits.uid)
+            setUnitState({name:'', phone:'', idUnit:'' })
             onResetForm()
         }else{
-            postUser({name, phone, idOperator })
+            postUser({name, phone, idUnit })
         }
 
         onResetForm()
@@ -87,7 +87,7 @@ console.log(operatorState)
     
     const handleCancelEdit =()=>{
         defaultModeEdith()
-        setOperatorState({name:'', phone:'', idOperator:''})
+        setUnitState({name:'', phone:'', idUnit:''})
         onResetForm()
     }
 
@@ -98,17 +98,17 @@ console.log(operatorState)
     <div className="container login-container fix">
     <div className="row">
         <div className="col-md-6 login-form-1 fixed">
-            <h3>{editMode ? 'Editar Operador' : 'Nuevo Operador'}</h3>
+            <h3>{editModeUnits ? 'Editar Unidad' : 'Nueva Unidad'}</h3>
 
             <form onSubmit={onSubmitUsers}>
 
 
                 <div className="form-group mb-3">
-                    {editMode && <label>Nombre</label>}
+                    {editModeUnits && <label>Descripción</label>}
                     <input
                         required
                         className="form-control"
-                        placeholder="Nombre"
+                        placeholder="Descripción"
                         name="name"
                         value={name}
                         onChange={onPostInputChange}
@@ -116,11 +116,11 @@ console.log(operatorState)
                 </div>
 
                 <div className="form-group mb-3">
-                    {editMode && <label>Telefono</label>}
+                    {editModeUnits && <label>Numero Economico</label>}
                     <input
                         required
                         className="form-control"
-                        placeholder="# Telefono"
+                        placeholder="Numero Economico"
                         name="phone"
                         value={phone}
                         onChange={onPostInputChange}
@@ -128,18 +128,18 @@ console.log(operatorState)
                 </div>
 
                  <div className="form-group mb-3">
-                    {editMode && <label>Identificador</label>}
+                    {editModeUnits && <label>Identificador</label>}
                     <input
                         required
                         className="form-control"
                         placeholder="ID"
-                        name="idOperator"
-                        value={idOperator}
+                        name="idUnit"
+                        value={idUnit}
                         onChange={onPostInputChange}
                     />
                 </div>
 
-             {/*   {!editMode &&     
+             {/*   {!editModeUnits &&     
                 <div className="form-group mb-2">
                     <label>Fecha de Inicio</label>
                     <input
@@ -171,9 +171,9 @@ console.log(operatorState)
 
                 <div className="d-grid gap-2">
                     <input type="submit" className="btnSubmitPost" 
-                        value={ editMode ? 'Guardar Cambios ↑': "Nuevo Operador"} />
+                        value={ editModeUnits ? 'Guardar Cambios ↑': "Nueva Unidad"} />
 
-                    {editMode && 
+                    {editModeUnits && 
                         <input type="button" onClick={handleCancelEdit} className="editButton mt-4" value='Cancelar Edicion ✘' />
                     }
                 </div>

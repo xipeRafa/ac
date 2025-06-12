@@ -1,11 +1,11 @@
 
 import { useEffect } from 'react'
-import { PostForm } from './PostForm';
-import { useOperators } from '../../hooks'
+import { PostFormUnits } from './PostFormUnits';
+import { useUnits } from '../../hooks'
 
 
 
-export const Operators = () => {
+export const Units = () => {
 
     const usersListCSS = {
         display: "block",
@@ -23,20 +23,19 @@ export const Operators = () => {
     }
 
 
-    const { dataUsersGet, operators, deleteUser, postUser, switchUser, setInfoToForm,
-            editMode, newDataEdit, defaultModeEdith, uploadUserImg, usersFinder, 
-            paginationSelect, paginationNext } = useOperators()
+    const { dataUsersGet, units, deleteUser, postUser, switchUser, setInfoToForm,
+            editModeUnits, newDataEdit, defaultModeEdith, uploadUserImg, 
+            paginationSelect, paginationNext } = useUnits()
 
 
 
 
     useEffect(() => {
         dataUsersGet()
-
     }, [])
 
 
-    const handleDelete = (el: Object) => {
+    const handleDelete = (el) => {
         deleteUser(el)
     }
 
@@ -44,8 +43,8 @@ export const Operators = () => {
     //     switchUser(el)
     // }
 
-    const handleEdith = (el: String) => {
-        //console.log(el)
+    const handleEdith = (el) => {
+        console.log(el)
         setInfoToForm(el)
     }
 
@@ -62,15 +61,18 @@ export const Operators = () => {
     return (
         <div className='mt-4'>
 
-            <PostForm postUser={postUser} editMode={editMode} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
+            <PostFormUnits postUser={postUser} editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
 
-            {operators?.usuarios?.map((el, i) => (
+            {units?.usuarios?.map((el, i) => (
                 <div key={i + '!@#'} style={usersListCSS}>
 
-                    <h2>{el.name}</h2>
+                    <h2><span style={usersListCSS2}>Descripcion: </span> {el.name}</h2>
 
-                    <p><span style={usersListCSS2}>ID: </span>      {el.idOperator}</p>
-                    <p><span style={usersListCSS2}>Telefono:</span> {el.phone}</p>
+                    <p><span style={usersListCSS2}>Numero Economico: </span>      {el.idUnit}</p>
+                    <p><span style={usersListCSS2}>ID: </span> {el.phone}</p>
+                    <p>Historial de Trabajo: </p>
+                    <p>Status: </p>
+
 
                     {/*<img src={el.img} width='100px' />*/}
 

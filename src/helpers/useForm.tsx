@@ -13,7 +13,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     const [formState, setFormState] = useState(initialForm);
 
 
-// console.log(formState)
+console.log(formState)
 
 
     const [formValidation, setFormValidation] = useState({});

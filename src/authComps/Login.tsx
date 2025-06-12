@@ -40,7 +40,7 @@ export const Login = ({ startLogin, status }) => {
 
 
     useEffect(() => {
-         if(localStorage.UsersArray == undefined){
+         if(localStorage.operatorsArray == undefined){
                  localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
                  localStorage.userName=''
                  localStorage.status = 'not-authenticated'

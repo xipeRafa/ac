@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Login, SignUp} from '../authComps';
-import { Operators } from '../components';
+import { Operators, Units } from '../components';
 import { useAuth } from '../hooks/useAuth';
 
 import Swal from 'sweetalert2';
@@ -55,8 +55,9 @@ const AppRouter = () => {
                 <Route path="/productos"  element={<Productos  />} />*/}
 
                 <Route path="/ac/operators"  element={<Operators  />} />
+                <Route path="/ac/units"  element={<Units />} />
 
-                
+
                 <Route path="/*" element={<Navigate to="/ac/auth/login" />} /> 
             </Routes>
         </div>
