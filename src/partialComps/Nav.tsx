@@ -30,6 +30,8 @@ export const Nav = ({ startLogout, status, user }) => {
 
 
           <div className={isActive ? "menu " : "menu display"} onClick={InWidth}>
+                <span>{localStorage.userName}</span>
+
                 
                 <Link style={{color:"white"}} to="/ac/operators"      className='mx-5'>Operadores    </Link>
                 <Link style={{color:"white"}} to="/ac/units"      className='mx-5'>Unidades    </Link>
