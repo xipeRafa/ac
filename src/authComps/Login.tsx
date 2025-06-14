@@ -69,6 +69,7 @@ export const Login = ({ startLogin, status }) => {
                     <form onSubmit={loginSubmit}>
                         <div className="form-group mb-2 form-floating">
                             <input
+                                required
                                 type="text"
                                 className="form-control"
                                 placeholder="Correo"
@@ -80,6 +81,7 @@ export const Login = ({ startLogin, status }) => {
                         </div>
                         <div className="form-group mb-2 form-floating">
                             <input
+                                required
                                 type="password"
                                 className="form-control"
                                 placeholder="Contraseña"

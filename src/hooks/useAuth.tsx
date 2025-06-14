@@ -1,11 +1,11 @@
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+
 
 import { onChecking, onLogin, onLogout } from '../store/slices/authSlice'
 import { errorConsoleCatch } from '../helpers'
 import { clearAlertMessage, somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
 
-import { Navigate, Route, Routes } from 'react-router-dom';
 
 
 
@@ -14,8 +14,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 export const useAuth = () => {
 
 
-
-    let location = useLocation();
+    const navigate = useNavigate();
 
     const { status, user } = useSelector(state => state.authSlice);
     const { sweetAlertMessage } = useSelector(state => state.alertSlice);
@@ -40,10 +39,7 @@ export const useAuth = () => {
     const hello=(NOMBRE)=>{
             localStorage.userName=NOMBRE
             localStorage.status = 'authenticated'
-            location.pathname = '/ac/operators'
-            setTimeout(()=>{
-                location.pathname = '/ac/operators'
-            },1000)
+            navigate('/ac')
     }
 
 
@@ -141,7 +137,7 @@ export const useAuth = () => {
         localStorage.status = 'not-authenticated'
         localStorage.userName = ''
         dispatch(onLogout());
-        pathname = '/*'
+        navigate('/ac/auth/login/')
     }
 
 

@@ -34,7 +34,7 @@ export const SignUp = ({ startRegister, status }) => {
 
     }, [])
 
-    
+
 
 
     const { registerEmail, registerName, registerPassword, registerPassword2, onInputChange: onRegisterInputChange } = useForm(registerFormFields);
@@ -46,12 +46,12 @@ export const SignUp = ({ startRegister, status }) => {
         event.preventDefault();
 
         if( registerEmail==='' || registerName==='' || registerPassword==='' || registerPassword2==='' ){
-            Swal.fire('Campo vacio', 'llenar todo por favor', 'error');
+            Swal.fire('Campo Vacio', 'llenar todo por favor', 'error');
             return
         }
 
         if (registerPassword !== registerPassword2) {
-            Swal.fire('Error en registro', 'Contraseñas no son iguales', 'error');
+            Swal.fire('Error en registro', 'Contraseñas NO son Iguales', 'error');
             return;
         }  
 
