@@ -1,11 +1,17 @@
 
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import { PostFormUnits } from './PostFormUnits';
 import { useUnits } from '../../hooks'
 
 
 
 export const Units = () => {
+
+
+    const navigate = useNavigate();
+
 
     const usersListCSS = {
         display: "block",
@@ -32,6 +38,13 @@ export const Units = () => {
 
     useEffect(() => {
         dataUsersGet()
+
+        if(localStorage.status === 'not-authenticated'){
+                setTimeout(()=>{
+                        navigate('/ac/auth/login')
+                },500)
+        }
+
     }, [])
 
 
@@ -60,6 +73,7 @@ export const Units = () => {
 
     return (
         <div className='mt-4'>
+{ localStorage?.status == 'authenticated' && <> 
 
             <PostFormUnits postUser={postUser} editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
 
@@ -86,7 +100,7 @@ export const Units = () => {
 
                 </div>
             ))}
-
+</>}
         </div>
     )
 }

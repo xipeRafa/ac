@@ -54,11 +54,11 @@ const AppRouter = () => {
             {/*    <Route path="/categorias" element={<Categorias />} />
                 <Route path="/productos"  element={<Productos  />} />*/}
 
-                <Route path="/ac/operators"  element={<Operators  />} />
+                <Route path="/ac"  element={<Operators  />} />
                 <Route path="/ac/units"  element={<Units />} />
 
 
-                <Route path="/*" element={<Navigate to="/ac/auth/login" />} /> 
+                <Route path="/*" element={<Navigate to="/ac" />} /> 
             </Routes>
         </div>
     )

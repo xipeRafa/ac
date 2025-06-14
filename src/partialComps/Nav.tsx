@@ -18,7 +18,8 @@ export const Nav = ({ startLogout, status, user }) => {
   return (
     
     <div className="navbar2">
-{ localStorage?.status == 'authenticated' && <>
+
+{ localStorage?.status == 'authenticated' && <> 
           <div onClick={() => setIsActive(!isActive)} className="hamburger">
                 <div className="menu-barras">
                     <div className="uno" />
@@ -33,7 +34,7 @@ export const Nav = ({ startLogout, status, user }) => {
                 <span>{localStorage.userName}</span>
 
                 
-                <Link style={{color:"white"}} to="/ac/operators"      className='mx-5'>Operadores    </Link>
+                <Link style={{color:"white"}} to="/ac/"      className='mx-5'>Operadores    </Link>
                 <Link style={{color:"white"}} to="/ac/units"      className='mx-5'>Unidades    </Link>
                 
 
@@ -44,7 +45,7 @@ export const Nav = ({ startLogout, status, user }) => {
           </div>
 
 
-          </>} 
+</>} 
 
     </div>
  

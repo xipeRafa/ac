@@ -111,7 +111,7 @@ input[type=button]{
         border-top:1px solid white;
         position: fixed;
         left: -1100px;
-        height: 100vh;
+        height: 100dvh;
         /*justify-content: start;*/
     }
 }

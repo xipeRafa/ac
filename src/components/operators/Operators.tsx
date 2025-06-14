@@ -1,11 +1,21 @@
 
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import { PostForm } from './PostForm';
 import { useOperators } from '../../hooks'
 
 
 
+
+
+
 export const Operators = () => {
+
+
+
+
+    const navigate = useNavigate();
 
     const usersListCSS = {
         display: "block",
@@ -31,7 +41,14 @@ export const Operators = () => {
 
 
     useEffect(() => {
+
         dataUsersGet()
+
+        if(localStorage.status === 'not-authenticated'){
+                setTimeout(()=>{
+                        navigate('/ac/auth/login')
+                },500)
+        }
 
     }, [])
 
@@ -61,7 +78,7 @@ export const Operators = () => {
 
     return (
         <div className='mt-4'>
-
+{ localStorage?.status == 'authenticated' && <> 
             <PostForm postUser={postUser} editMode={editMode} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
 
             {operators?.usuarios?.map((el, i) => (
@@ -84,7 +101,7 @@ export const Operators = () => {
 
                 </div>
             ))}
-
+</>}
         </div>
     )
 }

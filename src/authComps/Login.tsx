@@ -1,6 +1,7 @@
 
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 import { useForm } from '../helpers';
 import { useEffect } from 'react'
@@ -22,7 +23,7 @@ export const Login = ({ startLogin, status }) => {
 
     const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields);
 
-
+     
 
     
     const loginSubmit = (event: any) => {
@@ -40,11 +41,13 @@ export const Login = ({ startLogin, status }) => {
 
 
     useEffect(() => {
-         if(localStorage.operatorsArray == undefined){
-                 localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
-                 localStorage.userName=''
-                 localStorage.status = 'not-authenticated'
-            } 
+
+            if(localStorage.operatorsArray == undefined){
+                    localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
+                    localStorage.userName=''
+                    localStorage.status = 'not-authenticated'
+            }
+
     }, [])
 
 
