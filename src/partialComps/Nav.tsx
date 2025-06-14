@@ -20,6 +20,7 @@ export const Nav = ({ startLogout, status, user }) => {
     <div className="navbar2">
 
 { localStorage?.status == 'authenticated' && <> 
+
           <div onClick={() => setIsActive(!isActive)} className="hamburger">
                 <div className="menu-barras">
                     <div className="uno" />
@@ -43,7 +44,6 @@ export const Nav = ({ startLogout, status, user }) => {
                 </Link>
 
           </div>
-
 
 </>} 
 

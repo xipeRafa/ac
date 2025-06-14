@@ -23,7 +23,7 @@ export const Login = ({ startLogin, status }) => {
 
     const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields);
 
-     
+    const navigate = useNavigate();
 
     
     const loginSubmit = (event: any) => {
@@ -46,6 +46,10 @@ export const Login = ({ startLogin, status }) => {
                     localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
                     localStorage.userName=''
                     localStorage.status = 'not-authenticated'
+            }
+
+            if(localStorage.status === 'authenticated'){
+                navigate('/ac/')
             }
 
     }, [])

@@ -1,8 +1,8 @@
-
-
+import { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+
 
 import {useForm} from '../helpers';
 
@@ -15,13 +15,31 @@ const registerFormFields = {
 
 
 
+
+
+
 export const SignUp = ({ startRegister, status }) => {
 
+    useEffect(() => {
+
+            if(localStorage.operatorsArray == undefined){
+                    localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
+                    localStorage.userName=''
+                    localStorage.status = 'not-authenticated'
+            }
+
+            if(localStorage.status === 'authenticated'){
+                navigate('/ac/')
+            }
+
+    }, [])
+
+    
 
 
     const { registerEmail, registerName, registerPassword, registerPassword2, onInputChange: onRegisterInputChange } = useForm(registerFormFields);
 
-
+    const navigate = useNavigate();
 
 
     const registerSubmit = (event: { preventDefault: () => void; }) => {

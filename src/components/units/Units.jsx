@@ -40,9 +40,7 @@ export const Units = () => {
         dataUsersGet()
 
         if(localStorage.status === 'not-authenticated'){
-                setTimeout(()=>{
-                        navigate('/ac/auth/login')
-                },500)
+                navigate('/ac/auth/login')
         }
 
     }, [])
