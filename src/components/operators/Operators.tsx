@@ -44,6 +44,12 @@ export const Operators = () => {
 
         dataUsersGet()
 
+        if(localStorage.status == undefined){
+                    localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
+                    localStorage.userName=''
+                    localStorage.status = 'not-authenticated'
+        }
+
         if(localStorage.status === 'not-authenticated'){
                 navigate('/ac/auth/login')
         }
