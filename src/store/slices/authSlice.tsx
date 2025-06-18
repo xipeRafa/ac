@@ -16,7 +16,6 @@ export const authSlice = createSlice({
             localStorage.authSlice = 'slice'
         },
         onLogin: (state, { payload }) => {
-            console.log('payload', payload)
             state.status = 'authenticated';
             state.user = payload;
             localStorage.authSlice = 'onLogin'
