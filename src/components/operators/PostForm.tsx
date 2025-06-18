@@ -137,7 +137,7 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
 
                 <div className='d-flex flex-column flex-sm-row'>
-                    
+
                         <input 
                             type="submit"
                             className={editMode ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4" } 

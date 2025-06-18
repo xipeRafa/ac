@@ -39,7 +39,7 @@ export const useUnits = () => {
         
         if(localStorage.unitsArray === undefined){
               localStorage.unitsArray = JSON.stringify(workshops)
-              dispatch(UnitDataPush(workshops)) 
+              dispatch(unitsDataPush(workshops)) 
         }  
             
         //localStorage.unitsArray = JSON.stringify(workshops)
