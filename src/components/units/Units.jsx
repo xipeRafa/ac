@@ -39,8 +39,11 @@ export const Units = () => {
 
     useEffect(() => {
 
-        if(localStorage.status === 'not-authenticated'){
-                navigate('/ac/auth/login')
+        if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
+                localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
+                localStorage.userName=''
+                localStorage.status = 'not-authenticated'
+                navigate('/ac/auth/login/')
                 return
         }
 

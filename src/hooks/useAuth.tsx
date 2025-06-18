@@ -39,7 +39,7 @@ export const useAuth = () => {
     const hello=(NOMBRE)=>{
             localStorage.userName=NOMBRE
             localStorage.status = 'authenticated'
-            navigate('/ac')
+            navigate('/ac/')
     }
 
 
@@ -127,11 +127,12 @@ export const useAuth = () => {
 
 
     const startLogout = () => {
+        // localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
         //localStorage.clear();
         localStorage.status = 'not-authenticated'
         localStorage.userName = ''
-        dispatch(onLogout());
-        navigate('/ac/auth/login/')
+        //dispatch(onLogout());
+        //navigate('/ac/auth/login/')
     }
 
 

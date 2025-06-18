@@ -36,14 +36,11 @@ export const Operators = () => {
 
     useEffect(() => {
 
-        if(localStorage.status === undefined){
+        if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
                 localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
                 localStorage.userName=''
                 localStorage.status = 'not-authenticated'
-        }
-
-        if(localStorage.status === 'not-authenticated'){
-                navigate('/ac/auth/login')
+                navigate('/ac/auth/login/')
                 return
         }
 
@@ -113,7 +110,7 @@ export const Operators = () => {
 
 
 
-        <h2 class="container-fluid text-center bg-white p-3">OPERADORES</h2>
+        <h2 className="container-fluid text-center bg-white p-3">OPERADORES</h2>
 
         <section className='sectionControls'>
                 <button className={!editMode ? 'btn-w secondary' : 'btn-w danger'} onClick={()=>handleShow()}>

@@ -47,7 +47,7 @@ export const Nav = ({ startLogout, status, user }) => {
                 <Link to="/ac/units/">Unidades    </Link>
                 
 
-                <Link  to="ac/auth/login" onClick={startLogout} style={{textDecoration:'none'}}>
+                <Link  to="/ac/auth/login/" onClick={startLogout} style={{textDecoration:'none'}}>
                     salir ➪
                 </Link>
 

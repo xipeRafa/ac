@@ -48,17 +48,17 @@ const AppRouter = () => {
         <div>
             <Nav startLogout={startLogout} user={user.nombre} status={status} />
             <Routes>
-                <Route path="/ac/auth/login"    element={<Login  startLogin={startLogin}       status={status} />} />
-                <Route path="/ac/auth/register" element={<SignUp startRegister={startRegister} status={status} />} />
+                <Route path="/ac/auth/login/"    element={<Login  startLogin={startLogin}       status={status} />} />
+                <Route path="/ac/auth/register/" element={<SignUp startRegister={startRegister} status={status} />} />
 
             {/*    <Route path="/categorias" element={<Categorias />} />
                 <Route path="/productos"  element={<Productos  />} />*/}
 
-                <Route path="/ac"  element={<Operators />} />
-                <Route path="/ac/units"  element={<Units />} />
+                <Route path="/ac/"  element={<Operators />} />
+                <Route path="/ac/units/"  element={<Units />} />
 
 
-                <Route path="/*" element={<Navigate to="/ac" />} /> 
+                <Route path="/*" element={<Navigate to="/ac/" />} /> 
             </Routes>
         </div>
     )

@@ -42,8 +42,11 @@ export const Login = ({ startLogin, status }) => {
 
     useEffect(() => { 
 
-            if(localStorage.status === 'authenticated' || localStorage.status === undefined){
+            if(localStorage.status === 'authenticated'){
                     navigate('/ac/')
+            }else{
+               navigate('/ac/auth/login/') 
+               console.log('else login ====>>')
             }
 
     }, [])
@@ -90,7 +93,7 @@ export const Login = ({ startLogin, status }) => {
 
                     </form>
 
-                    <Link to="/ac/auth/register">ir a Registro</Link>
+                    <Link to="/ac/auth/register/">ir a Registro</Link>
 
                 </div>
             </div>

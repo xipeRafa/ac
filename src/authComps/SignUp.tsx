@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 
@@ -20,10 +20,22 @@ const registerFormFields = {
 
 export const SignUp = ({ startRegister, status }) => {
 
+    const navigate = useNavigate();
+
+    const location = useLocation()
+
     useEffect(() => { 
 
-            if(localStorage.status === 'authenticated' || localStorage.status === undefined){
+            if(localStorage.status === 'authenticated'){
                     navigate('/ac/')
+                    console.log('siiiii')
+            }else{
+
+
+               navigate('/ac/auth/register/') 
+               console.log('else ====>> 2')
+
+               
             }
 
     }, [])
@@ -33,8 +45,7 @@ export const SignUp = ({ startRegister, status }) => {
 
     const { registerEmail, registerName, registerPassword, registerPassword2, onInputChange: onRegisterInputChange } = useForm(registerFormFields);
 
-    const navigate = useNavigate();
-
+    
 
     const registerSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -118,7 +129,7 @@ export const SignUp = ({ startRegister, status }) => {
 
                     </form>
 
-                    <Link to="/ac/auth/login">Entrar </Link>
+                    <Link to="/ac/auth/login/">Entrar </Link>
 
                 </div>
             </div>}
