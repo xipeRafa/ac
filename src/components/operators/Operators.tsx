@@ -1,32 +1,26 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import { PostForm } from './PostForm';
 import { useOperators } from '../../hooks'
 
-
-
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 
 
 export const Operators = () => {
 
+ const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
     const navigate = useNavigate();
 
-    const usersListCSS = {
-        display: "block",
-        border: "4px solid salmon",
-        paddingTop: "10px",
-        paddingLeft: "20px",
-        width: "90%",
-        marginLeft: "5%",
-        marginBottom: "10px",
-        backgroundColor: "white"
-    }
+    
 
     const usersListCSS2 = {
         fontWeight:'200'
@@ -42,17 +36,18 @@ export const Operators = () => {
 
     useEffect(() => {
 
-        dataUsersGet()
-
-        if(localStorage.status == undefined){
-                    localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
-                    localStorage.userName=''
-                    localStorage.status = 'not-authenticated'
+        if(localStorage.status === undefined){
+                localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
+                localStorage.userName=''
+                localStorage.status = 'not-authenticated'
         }
 
         if(localStorage.status === 'not-authenticated'){
                 navigate('/ac/auth/login')
+                return
         }
+
+        dataUsersGet()
 
     }, [])
 
@@ -68,6 +63,7 @@ export const Operators = () => {
     const handleEdith = (el: String) => {
         //console.log(el)
         setInfoToForm(el)
+        handleShow()
     }
 
 
@@ -83,10 +79,57 @@ export const Operators = () => {
     return (
         <div className='mt-4'>
 { localStorage?.status == 'authenticated' && <> 
-            <PostForm postUser={postUser} editMode={editMode} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
+
+
+
+
+        <Modal show={show} onHide={handleClose} fullscreen={true} >
+
+
+                <Modal.Header className='modal2' closeButton>
+                        <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR'}</Modal.Title>
+                </Modal.Header>
+
+
+                <Modal.Body className='modal2'>
+                        <PostForm 
+                            postUser={postUser} 
+                            editMode={editMode} 
+                            newDataEdit={newDataEdit} 
+                            defaultModeEdith={defaultModeEdith}
+                            handleClose={handleClose}
+                        />
+                </Modal.Body>
+
+
+                <Modal.Footer className='modal2'>
+                        
+                </Modal.Footer>
+
+
+        </Modal>
+
+
+
+
+
+        <h2 class="container-fluid text-center bg-white p-3">OPERADORES</h2>
+
+        <section className='sectionControls'>
+                <button className={!editMode ? 'btn-w secondary' : 'btn-w danger'} onClick={()=>handleShow()}>
+                        {editMode ? 'EDICION PENDIENTE ✎' :'Nuevo Operador'}        
+                </button>
+                <button className='btn-w secondary-out'>Buscar 🔍︎</button>
+        </section>
+
+
+
+
+
+
 
             {operators?.usuarios?.map((el, i) => (
-                <div key={i + '!@#'} style={usersListCSS}>
+                <div key={i + '!@#'} className="usersListCSS">
 
                     <h2>{el.name}</h2>
 
@@ -95,10 +138,23 @@ export const Operators = () => {
 
                     {/*<img src={el.img} width='100px' />*/}
 
-                    
+                    <hr />
 
-                    <button className='m-1' onClick={() => handleDelete(el)}>Eliminar</button>
-                    <button className='m-1' onClick={() => handleEdith(el)}>Editar</button>
+                    <button className='btn-w' onClick={() => handleDelete(el)}>Eliminar</button>
+                    <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
+
+                    {/*<button className='btn-w primary'>Primary</button>
+                    <button className='btn-w primary-out'>Primary-out</button>
+
+                    <button className='btn-w secondary'>Secondary</button>
+                    <button className='btn-w secondary-out'>Secondary-out</button>
+
+                    <button className='btn-w success'>Success</button>
+                    <button className='btn-w success-out'>Success-out</button>
+
+                     <button className='btn-w danger'>Danger</button>
+                    <button className='btn-w danger-out'>Danger-out</button>*/}
+
 
                     {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}
                     {/*<input type="file" id="file-upload" onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}

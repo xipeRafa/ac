@@ -44,9 +44,7 @@ export const useAuth = () => {
 
 
 
-    const startLogin = async ({ correo, password }) => {
-
-        //dispatch(onChecking())
+    const startLogin = ({ correo, password }) => {
 
             let isThere = JSON.parse(localStorage.usersRegistered).some(el => el.correo === correo)
 
@@ -75,13 +73,9 @@ export const useAuth = () => {
 
 
 
-    const startRegister = async ({nombre, correo, password}) => {
+    const startRegister = ({nombre, correo, password}) => {
 
-
-            //dispatch(onChecking()); 
-
-
-            if(localStorage.usersRegistered == undefined){
+            if(localStorage.usersRegistered === undefined){
                     localStorage.usersRegistered = JSON.stringify([])
             }
 

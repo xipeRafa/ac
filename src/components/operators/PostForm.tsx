@@ -1,61 +1,20 @@
 import {useEffect, useState} from 'react'
 import { useForm } from '../../helpers';
 
-//lugar,calle,colonia,dia,hora,informes,fechaDeInicio
 
 
-export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith }) => {
+
+
+export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, handleClose }) => {
 
     const[operatorState, setOperatorState]=useState({
         name:'', phone:'', idOperator:''
     })
 
-console.log(operatorState)
 
 
     const { name, phone, idOperator,
             onInputChange: onPostInputChange, onResetForm } = useForm(operatorState);
-
-  
-// console.log('dia:', fechaDeInicio.slice(-2), 'mes:', fechaDeInicio.slice(5,7), 'Año:', fechaDeInicio.slice(0,4))
-
-
-
-
-
-
-// function obtenerMes(n) {
-
-//   const meses = {
-//     '01': "Enero",
-//     '02': "Febrero",
-//     '03': "Marzo",
-//     '04': "Abril",
-//     '05': "Mayo",
-//     '06': "Junio",
-//     '07': "Julio",
-//     '08': "Agosto",
-//     '09': "Septiembre",
-//     '10': "Octubre",
-//     '11': "Noviembre",
-//     '12': "Diciembre",
-//     'default':'Falto Fecha'
-
-//     //  "2025-06-13"  ====> 13 de Junio del 2025
-
-//   };
-
-//   return meses[n] || meses['default']
-// }
-
-//     let mesTexto = obtenerMes(date?.slice(5,7))
-
-
-
-//     let dateStart = Math.trunc(date?.slice(-2)) + ' de ' + mesTexto + ' del ' + date?.slice(0,4)
-
-
-
 
 
     useEffect(() => { 
@@ -81,6 +40,7 @@ console.log(operatorState)
         }
 
         onResetForm()
+        handleClose()
     }
 
 
@@ -89,23 +49,26 @@ console.log(operatorState)
         defaultModeEdith()
         setOperatorState({name:'', phone:'', idOperator:''})
         onResetForm()
+        handleClose()
     }
 
   
 
 
+
   return (
     <div className="container login-container fix">
     <div className="row">
-        <div className="col-md-6 login-form-1 fixed">
-            <h3>{editMode ? 'Editar Operador' : 'Nuevo Operador'}</h3>
+        <div className="col-md-12 login-form-1 fixed">
+            
 
             <form onSubmit={onSubmitUsers}>
 
 
-                <div className="form-group mb-3">
+                <div className="form-group mb-3 mt-4">
                     {editMode && <label>Nombre</label>}
                     <input
+                        type='text'
                         required
                         className="form-control"
                         placeholder="Nombre"
@@ -116,8 +79,22 @@ console.log(operatorState)
                 </div>
 
                 <div className="form-group mb-3">
+                    {editMode && <label>Identificador</label>}
+                    <input
+                        type='text'
+                        required
+                        className="form-control"
+                        placeholder="ID"
+                        name="idOperator"
+                        value={idOperator}
+                        onChange={onPostInputChange}
+                    />
+                </div>
+
+                <div className="form-group mb-3">
                     {editMode && <label>Telefono</label>}
                     <input
+                        type='text'
                         required
                         className="form-control"
                         placeholder="# Telefono"
@@ -127,17 +104,7 @@ console.log(operatorState)
                     />
                 </div>
 
-                 <div className="form-group mb-3">
-                    {editMode && <label>Identificador</label>}
-                    <input
-                        required
-                        className="form-control"
-                        placeholder="ID"
-                        name="idOperator"
-                        value={idOperator}
-                        onChange={onPostInputChange}
-                    />
-                </div>
+                 
 
              {/*   {!editMode &&     
                 <div className="form-group mb-2">
@@ -169,15 +136,20 @@ console.log(operatorState)
 
 
 
-                <div className="d-grid gap-2">
-                    <input type="submit" className="btnSubmitPost" 
-                        value={ editMode ? 'Guardar Cambios ↑': "Nuevo Operador"} />
+                <div className='d-flex flex-column flex-sm-row'>
+                    
+                        <input 
+                            type="submit"
+                            className={editMode ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4" } 
+                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador"} />
 
-                    {editMode && 
-                        <input type="button" onClick={handleCancelEdit} className="editButton mt-4" value='Cancelar Edicion ✘' />
-                    }
+                        {editMode && 
+                            <button onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
+                                    Cancelar Edicion <b style={{color:'red'}}>✘</b> 
+                            </button>
+                        }
+
                 </div>
-
 
             </form>
             <br />

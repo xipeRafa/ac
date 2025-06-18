@@ -35,18 +35,16 @@ export const useUnits = () => {
 
   const dataUsersGet = async (from=0, limit=8) => {
 
-
-
-
-  let workshops = []
-             if(localStorage.unitsArray == undefined){
-                 localStorage.unitsArray = JSON.stringify(workshops)
-                 dispatch(UnitDataPush(workshops)) 
-            }  
-            
-               //localStorage.unitsArray = JSON.stringify(workshops)
+        let workshops = []
         
-            dispatch(unitsDataPush({usuarios:JSON.parse(localStorage.unitsArray)}))
+        if(localStorage.unitsArray === undefined){
+              localStorage.unitsArray = JSON.stringify(workshops)
+              dispatch(UnitDataPush(workshops)) 
+        }  
+            
+        //localStorage.unitsArray = JSON.stringify(workshops)
+        
+        dispatch(unitsDataPush({usuarios:JSON.parse(localStorage.unitsArray)}))
 
   }
 
@@ -60,10 +58,9 @@ export const useUnits = () => {
 /* -=-=-=-=-=-=-=-=-=--=- POST =-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- post =-=-=-=-=-=-=-=-=-=-=- */
 /* -=-=-=-=-=-=-=-=-=--=- POST =-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- post =-=-=-=-=-=-=-=-=-=-=- */
 
-// online solo arriba
-// offline abajo + arriba 
 
-  const postUser = async ({ name, phone, idUnit, dateStart }) => {
+
+  const postUser = ({ name, phone, idUnit, dateStart }) => {
 
           let curretUsers = JSON.parse(localStorage.unitsArray)
           
@@ -75,16 +72,17 @@ export const useUnits = () => {
 
 
 
-  const setInfoToForm = (el:Object) => {
-
-       dispatch(editUnitsView(el))
-   }
 
 
+  const setInfoToForm = (el) => {
+        dispatch(editUnitsView(el))
+  }
 
 
 
-  const newDataEdit = async (name, phone, idUnit, uid) => { 
+
+
+  const newDataEdit = (name, phone, idUnit, uid) => { 
 
           let curretUsers = JSON.parse(localStorage.unitsArray)
 
@@ -107,7 +105,7 @@ export const useUnits = () => {
 
 
 
-  const deleteUser = async (usuario: Object) => {
+  const deleteUser = (usuario) => {
 
           let curretUsers = JSON.parse(localStorage.unitsArray)
           let del = curretUsers.filter((el) => el.uid !== usuario.uid)
@@ -130,19 +128,12 @@ export const useUnits = () => {
   return {
     dataUsersGet,
     deleteUser,
-    // switchUser,
     postUser,
 
     //edit
     setInfoToForm,
     newDataEdit,
     defaultModeEdith,
-    // uploadUserImg,
-    //finder
-    //usersFinder,
-    // paginationSelect,
-    // paginationNext,
-
 
     //states
     editModeUnits,

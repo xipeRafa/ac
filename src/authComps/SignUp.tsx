@@ -20,16 +20,10 @@ const registerFormFields = {
 
 export const SignUp = ({ startRegister, status }) => {
 
-    useEffect(() => {
+    useEffect(() => { 
 
-            if(localStorage.operatorsArray == undefined){
-                    localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
-                    localStorage.userName=''
-                    localStorage.status = 'not-authenticated'
-            }
-
-            if(localStorage.status === 'authenticated'){
-                navigate('/ac/')
+            if(localStorage.status === 'authenticated' || localStorage.status === undefined){
+                    navigate('/ac/')
             }
 
     }, [])
@@ -71,7 +65,7 @@ export const SignUp = ({ startRegister, status }) => {
                     <h3>Registro</h3>
 
                     <form onSubmit={registerSubmit}>
-                        <div className="form-group mb-2 form-floating">
+                        <div className="form-group mb-3 form-floating">
                             <input
                                 type="text"
                                 className="form-control"
@@ -82,7 +76,7 @@ export const SignUp = ({ startRegister, status }) => {
                             />
                             <label>Nombre</label>
                         </div>
-                        <div className="form-group mb-2 form-floating">
+                        <div className="form-group mb-3 form-floating">
                             <input
                                 type="email"
                                 className="form-control"
@@ -93,7 +87,7 @@ export const SignUp = ({ startRegister, status }) => {
                             />
                             <label>Correo</label>
                         </div>
-                        <div className="form-group mb-2 form-floating">
+                        <div className="form-group mb-3 form-floating">
                             <input
                                 type="password"
                                 className="form-control"
@@ -105,7 +99,7 @@ export const SignUp = ({ startRegister, status }) => {
                             <label>Contraseña</label>
                         </div>
 
-                        <div className="form-group mb-2 form-floating">
+                        <div className="form-group mb-4 form-floating">
                             <input
                                 type="password"
                                 className="form-control"
@@ -117,12 +111,11 @@ export const SignUp = ({ startRegister, status }) => {
                             <label>Repita la contraseña</label>
                         </div>
 
-                        <div className="d-grid gap-2">
                             <input
                                 type="submit"
-                                className="btn btn-outline-dark btn-lg mb-3"
+                                className="btn btn-dark btn-lg mb-3 w-100"
                                 value="Crear Cuenta" />
-                        </div>
+
                     </form>
 
                     <Link to="/ac/auth/login">Entrar </Link>

@@ -33,20 +33,19 @@ export const useOperators = () => {
 
 
 
-  const dataUsersGet = async (from=0, limit=8) => {
+  const dataUsersGet = () => {
 
+      let workshops = []
 
-
-
-  let workshops = []
-             if(localStorage.operatorsArray == undefined){
-                 localStorage.operatorsArray = JSON.stringify(workshops)
-                 dispatch(operatorDataPush(workshops)) 
-            }  
+      if(localStorage.operatorsArray === undefined){
+            localStorage.operatorsArray = JSON.stringify(workshops)
+            dispatch(operatorDataPush(workshops)) 
+            return
+      }  
             
-               //localStorage.operatorsArray = JSON.stringify(workshops)
+      //localStorage.operatorsArray = JSON.stringify(workshops)
         
-            dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
+      dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
 
   }
 
@@ -63,7 +62,7 @@ export const useOperators = () => {
 // online solo arriba
 // offline abajo + arriba 
 
-  const postUser = async ({ name, phone, idOperator, dateStart }) => {
+  const postUser = ({ name, phone, idOperator, dateStart }) => {
 
           let curretUsers = JSON.parse(localStorage.operatorsArray)
           
@@ -83,7 +82,7 @@ export const useOperators = () => {
 
 
 
-  const newDataEdit = async (name, phone, idOperator, uid) => { 
+  const newDataEdit = (name, phone, idOperator, uid) => { 
 
           let curretUsers = JSON.parse(localStorage.operatorsArray)
 
@@ -106,7 +105,7 @@ export const useOperators = () => {
 
 
 
-  const deleteUser = async (usuario: Object) => {
+  const deleteUser = (usuario: Object) => {
 
           let curretUsers = JSON.parse(localStorage.operatorsArray)
           let del = curretUsers.filter((el) => el.uid !== usuario.uid)
@@ -129,19 +128,12 @@ export const useOperators = () => {
   return {
     dataUsersGet,
     deleteUser,
-    // switchUser,
     postUser,
 
     //edit
     setInfoToForm,
     newDataEdit,
     defaultModeEdith,
-    // uploadUserImg,
-    //finder
-    //usersFinder,
-    // paginationSelect,
-    // paginationNext,
-
 
     //states
     editMode,

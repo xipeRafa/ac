@@ -13,15 +13,18 @@ export const authSlice = createSlice({
         onChecking: (state) => {
             state.status = 'checking';
             state.user = {};
+            localStorage.authSlice = 'slice'
         },
         onLogin: (state, { payload }) => {
             console.log('payload', payload)
             state.status = 'authenticated';
             state.user = payload;
+            localStorage.authSlice = 'onLogin'
         },
         onLogout: (state) => {
             state.status = 'not-authenticated';
             state.user = {};
+            localStorage.authSlice = 'onLogout'
         }
     }
 });

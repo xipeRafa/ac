@@ -13,15 +13,16 @@ export const Units = () => {
     const navigate = useNavigate();
 
 
+    
     const usersListCSS = {
         display: "block",
         border: "4px solid salmon",
-        paddingTop: "10px",
-        paddingLeft: "20px",
+        padding: "10px 30px 16px 20px",
         width: "90%",
         marginLeft: "5%",
-        marginBottom: "10px",
-        backgroundColor: "white"
+        marginBottom: "20px",
+        backgroundColor: "white",
+        boxShadow: 'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px',
     }
 
     const usersListCSS2 = {
@@ -37,11 +38,13 @@ export const Units = () => {
 
 
     useEffect(() => {
-        dataUsersGet()
 
         if(localStorage.status === 'not-authenticated'){
                 navigate('/ac/auth/login')
+                return
         }
+
+        dataUsersGet()
 
     }, [])
 
@@ -75,6 +78,8 @@ export const Units = () => {
 
             <PostFormUnits postUser={postUser} editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
 
+            <h2 class="container-fluid text-center bg-white p-3">UNIDADES</h2>
+
             {units?.usuarios?.map((el, i) => (
                 <div key={i + '!@#'} style={usersListCSS}>
 
@@ -88,10 +93,10 @@ export const Units = () => {
 
                     {/*<img src={el.img} width='100px' />*/}
 
-                    
+                    <hr />
 
-                    <button className='m-1' onClick={() => handleDelete(el)}>Eliminar</button>
-                    <button className='m-1' onClick={() => handleEdith(el)}>Editar</button>
+                    <button className='btn-w' onClick={() => handleDelete(el)}>Eliminar</button>
+                    <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
 
                     {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}
                     {/*<input type="file" id="file-upload" onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}

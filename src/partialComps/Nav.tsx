@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from "react";
-
-
+import colors from '../assets/pico-color-palette.json'
+import './nav.css'
 
 export const Nav = ({ startLogout, status, user }) => {
 
@@ -15,6 +15,12 @@ export const Nav = ({ startLogout, status, user }) => {
         }
     };
 
+
+
+    //  red pink fuchsia purple violet indigo blue azure cyan jade 
+    //  green lime yellow amber pumpkin orange sand grey zinc slate
+    // https://picocss.com/docs/colors
+
   return (
     
     <div className="navbar2">
@@ -23,23 +29,25 @@ export const Nav = ({ startLogout, status, user }) => {
 
           <div onClick={() => setIsActive(!isActive)} className="hamburger">
                 <div className="menu-barras">
-                    <div className="uno" />
+                   <div className="uno" />
                     <div className="dos" />
                     <div className="tres" />
+                    {/*☰*/}
                 </div>
                 <span className='menuX'>{isActive ? "MENU" : "✘"}</span>
           </div>
 
 
-          <div className={isActive ? "menu " : "menu display"} onClick={InWidth}>
+          <div className={isActive ? "menu" : "menu display"} onClick={InWidth} style={{color:"white"}}>
+
                 <span>{localStorage.userName}</span>
 
                 
-                <Link style={{color:"white"}} to="/ac/"      className='mx-5'>Operadores    </Link>
-                <Link style={{color:"white"}} to="/ac/units"      className='mx-5'>Unidades    </Link>
+                <Link to="/ac/"      >Operadores  </Link>
+                <Link to="/ac/units/">Unidades    </Link>
                 
 
-                <Link className="btn btn-outline-danger" style={{border:'none'}} to="ac/auth/login" onClick={ startLogout }>
+                <Link  to="ac/auth/login" onClick={startLogout} style={{textDecoration:'none'}}>
                     salir ➪
                 </Link>
 

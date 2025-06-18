@@ -40,16 +40,10 @@ export const Login = ({ startLogin, status }) => {
 
 
 
-    useEffect(() => {
+    useEffect(() => { 
 
-            if(localStorage.operatorsArray == undefined){
-                    localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
-                    localStorage.userName=''
-                    localStorage.status = 'not-authenticated'
-            }
-
-            if(localStorage.status === 'authenticated'){
-                navigate('/ac/')
+            if(localStorage.status === 'authenticated' || localStorage.status === undefined){
+                    navigate('/ac/')
             }
 
     }, [])
@@ -67,7 +61,7 @@ export const Login = ({ startLogin, status }) => {
                     <h3>Entrar</h3>
 
                     <form onSubmit={loginSubmit}>
-                        <div className="form-group mb-2 form-floating">
+                        <div className="form-group mb-3 form-floating">
                             <input
                                 required
                                 type="text"
@@ -79,7 +73,7 @@ export const Login = ({ startLogin, status }) => {
                             />
                             <label>Correo</label>
                         </div>
-                        <div className="form-group mb-2 form-floating">
+                        <div className="form-group mb-4 form-floating">
                             <input
                                 required
                                 type="password"
@@ -91,12 +85,12 @@ export const Login = ({ startLogin, status }) => {
                             />
                             <label>Contraseña</label>
                         </div>
-                        <div className="d-grid gap-2">
-                            <input type="submit" className="btn btn-outline-dark btn-lg mb-3" value="Entrar ➪" />
-                        </div>
+
+                        <input type="submit" className="btn btn-dark btn-lg mb-3 w-100" value="Entrar ➪" />
+
                     </form>
 
-                    <Link to="/ac/auth/register">Registro</Link>
+                    <Link to="/ac/auth/register">ir a Registro</Link>
 
                 </div>
             </div>
