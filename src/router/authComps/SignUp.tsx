@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
-import {useForm} from '../helpers';
+import {useForm} from '../../helpers';
 
 const registerFormFields = {
     registerName: '',

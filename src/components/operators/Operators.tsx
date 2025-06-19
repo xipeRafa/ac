@@ -140,7 +140,7 @@ export const Operators = () => {
 
 
             {operators?.usuarios?.map((el, i) => (
-                <div key={i + '!@#'} className="usersListCSS">
+                <div key={i + '!@#'} className="usersList">
 
                     <h2>{el.name}</h2>
 
