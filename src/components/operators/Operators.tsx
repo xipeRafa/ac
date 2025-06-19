@@ -6,7 +6,7 @@ import { PostForm } from './PostForm';
 import { useOperators } from '../../hooks'
 
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+
 
 
 
@@ -37,10 +37,15 @@ export const Operators = () => {
     useEffect(() => {
 
         if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
-                localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
+
                 localStorage.userName=''
                 localStorage.status = 'not-authenticated'
                 navigate('/ac/auth/login/')
+
+                if(localStorage.usersRegistered === undefined){
+                        localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
+                }    
+                
                 return
         }
 
@@ -80,12 +85,21 @@ export const Operators = () => {
 
 
 
-        <Modal show={show} onHide={handleClose} fullscreen={true} >
+        <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
+                {editMode 
+                    ?
+                        <Modal.Header className='modal2' >
+                            <Modal.Title>EDITAR OPERADOR</Modal.Title>
+                        </Modal.Header>
 
-                <Modal.Header className='modal2' closeButton>
-                        <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR'}</Modal.Title>
-                </Modal.Header>
+                    :
+                        <Modal.Header className='modal2' >
+                            <Modal.Title>NUEVO OPERADOR</Modal.Title> 
+                            <b className='btn-closeX' onClick={handleClose}>✘</b>
+                        </Modal.Header>
+                }
+                
 
 
                 <Modal.Body className='modal2'>
@@ -112,12 +126,12 @@ export const Operators = () => {
 
         <h2 className="container-fluid text-center bg-white p-3">OPERADORES</h2>
 
-        <section className='sectionControls'>
-                <button className={!editMode ? 'btn-w secondary' : 'btn-w danger'} onClick={()=>handleShow()}>
-                        {editMode ? 'EDICION PENDIENTE ✎' :'Nuevo Operador'}        
-                </button>
-                <button className='btn-w secondary-out'>Buscar 🔍︎</button>
-        </section>
+            <section className='sectionControls'>
+                    <button className='btn-w secondary' onClick={()=>handleShow()}>
+                            Nuevo OPERADOR
+                    </button>
+                    <button className='btn-w secondary-out'>Buscar 🔍︎</button>
+            </section>
 
 
 
@@ -140,7 +154,7 @@ export const Operators = () => {
                     <button className='btn-w' onClick={() => handleDelete(el)}>Eliminar</button>
                     <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
 
-                    {/*<button className='btn-w primary'>Primary</button>
+                    <button className='btn-w primary'>Primary</button>
                     <button className='btn-w primary-out'>Primary-out</button>
 
                     <button className='btn-w secondary'>Secondary</button>
@@ -150,7 +164,7 @@ export const Operators = () => {
                     <button className='btn-w success-out'>Success-out</button>
 
                      <button className='btn-w danger'>Danger</button>
-                    <button className='btn-w danger-out'>Danger-out</button>*/}
+                    <button className='btn-w danger-out'>Danger-out</button>
 
 
                     {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}

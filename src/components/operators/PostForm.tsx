@@ -140,12 +140,12 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
                         <input 
                             type="submit"
-                            className={editMode ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4" } 
+                            className={editMode ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4 w-50" } 
                             value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador"} />
 
                         {editMode && 
                             <button onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
-                                    Cancelar Edicion <b style={{color:'red'}}>✘</b> 
+                                    Cancelar Edición <b style={{color:'red'}}>✘</b> 
                             </button>
                         }
 

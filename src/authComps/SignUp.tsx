@@ -26,16 +26,21 @@ export const SignUp = ({ startRegister, status }) => {
 
     useEffect(() => { 
 
+            if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
+
+                localStorage.userName=''
+                localStorage.status = 'not-authenticated'
+
+                if(localStorage.usersRegistered === undefined){
+                        localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
+                }    
+                
+                return
+            }
+
             if(localStorage.status === 'authenticated'){
                     navigate('/ac/')
                     console.log('siiiii')
-            }else{
-
-
-               navigate('/ac/auth/register/') 
-               console.log('else ====>> 2')
-
-               
             }
 
     }, [])

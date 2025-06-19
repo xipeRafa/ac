@@ -1,13 +1,19 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import { PostFormUnits } from './PostFormUnits';
 import { useUnits } from '../../hooks'
 
+import Modal from 'react-bootstrap/Modal';
 
 
 export const Units = () => {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     const navigate = useNavigate();
@@ -40,10 +46,15 @@ export const Units = () => {
     useEffect(() => {
 
         if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
-                localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
+
                 localStorage.userName=''
                 localStorage.status = 'not-authenticated'
                 navigate('/ac/auth/login/')
+
+                if(localStorage.usersRegistered === undefined){
+                        localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
+                }    
+                
                 return
         }
 
@@ -63,6 +74,7 @@ export const Units = () => {
     const handleEdith = (el) => {
         console.log(el)
         setInfoToForm(el)
+        handleShow()
     }
 
 
@@ -79,12 +91,51 @@ export const Units = () => {
         <div className='mt-4'>
 { localStorage?.status == 'authenticated' && <> 
 
-            <PostFormUnits postUser={postUser} editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
 
-            <h2 class="container-fluid text-center bg-white p-3">UNIDADES</h2>
+        <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
+
+
+                {editModeUnits 
+                    ?
+                        <Modal.Header className='modal2' >
+                            <Modal.Title>EDITAR UNIDAD</Modal.Title>
+                        </Modal.Header>
+
+                    :
+                        <Modal.Header className='modal2'>
+                            <Modal.Title>NUEVA UNIDAD</Modal.Title>
+                            <b className='btn-closeX' onClick={handleClose}>✘</b>
+                        </Modal.Header>
+                }
+
+
+                <Modal.Body className='modal2'>
+
+            <PostFormUnits handleClose={handleClose} postUser={postUser} editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
+
+             </Modal.Body>
+
+
+                <Modal.Footer className='modal2'>
+                        
+                </Modal.Footer>
+
+
+        </Modal>
+
+
+
+            <h2 className="container-fluid text-center bg-white p-3">UNIDADES</h2>
+
+            <section className='sectionControls'>
+                <button className='btn-w secondary' onClick={()=>handleShow()}>
+                        Nueva Unidad
+                </button>
+                <button className='btn-w secondary-out'>Buscar 🔍︎</button>
+            </section>
 
             {units?.usuarios?.map((el, i) => (
-                <div key={i + '!@#'} style={usersListCSS}>
+                <div key={i + '!@#'} className='usersListCSS' >
 
                     <h2><span style={usersListCSS2}>Descripcion: </span> {el.name}</h2>
 

@@ -4,7 +4,7 @@ import { useForm } from '../../helpers';
 
 
 
-export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultModeEdith }) => {
+export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultModeEdith, handleClose }) => {
 
     const[unitState, setUnitState]=useState({
         name:'', phone:'', idUnit:''
@@ -41,6 +41,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
         }
 
         onResetForm()
+        handleClose()
     }
 
 
@@ -49,6 +50,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
         defaultModeEdith()
         setUnitState({name:'', phone:'', idUnit:''})
         onResetForm()
+        handleClose()
     }
 
   
@@ -57,8 +59,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
   return (
     <div className="container login-container fix">
     <div className="row">
-        <div className="col-md-6 login-form-1 fixed">
-            <h3>{editModeUnits ? 'EDITAR UNIDAD' : 'NUEVA UNIDAD'}</h3>
+        <div className="col-md-12 login-form-1 fixed">
 
             <form onSubmit={onSubmitUsers}>
 
@@ -103,11 +104,20 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
                 </div>
 
 
-                    <input type="submit" className="btn-w w-100" value={ editModeUnits ? 'Guardar Cambios ↑': "Nueva Unidad"} />
+                    <div className='d-flex flex-column flex-sm-row'>
 
-                    {editModeUnits && 
-                         <button onClick={handleCancelEdit} className="btn-w w-100 mt-3"> Cancelar Edicion <b style={{color:'red'}}>✘</b> </button>
-                    }
+                        <input 
+                            type="submit"
+                            className={editModeUnits ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4 primary" } 
+                            value={ editModeUnits ? 'Guardar Cambios ↑': "Guardar Unidad"} />
+
+                        {editModeUnits && 
+                            <button onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
+                                    Cancelar Edición <b style={{color:'red'}}>✘</b> 
+                            </button>
+                        }
+
+                </div>
 
 
 
