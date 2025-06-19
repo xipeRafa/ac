@@ -19,7 +19,7 @@ const loginFormFields:loginFormFields = {
 }
 
 
-export const Login = ({ startLogin, status }) => {
+export const Login = ({ startLogin }) => {
 
 
     const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields);
@@ -67,7 +67,7 @@ export const Login = ({ startLogin, status }) => {
 
     return (
         <div className="container login-container p-4" style={{border:'2px solid white'}}>
-            {status !== 'not-authenticated' && ''}
+
             <div className="row">
                 <div className="col-md-6 login-form-1">
 
@@ -107,6 +107,7 @@ export const Login = ({ startLogin, status }) => {
 
                 </div>
             </div>
+
         </div>
     )
 }

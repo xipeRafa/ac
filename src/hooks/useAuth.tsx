@@ -131,7 +131,7 @@ export const useAuth = () => {
         //localStorage.clear();
         localStorage.status = 'not-authenticated'
         localStorage.userName = ''
-        //dispatch(onLogout());
+        dispatch(onLogout())
         //navigate('/ac/auth/login/')
     }
 

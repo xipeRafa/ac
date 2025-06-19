@@ -18,11 +18,14 @@ const registerFormFields = {
 
 
 
-export const SignUp = ({ startRegister, status }) => {
+export const SignUp = ({ startRegister }) => {
+
 
     const navigate = useNavigate();
 
+
     const location = useLocation()
+
 
     useEffect(() => { 
 
@@ -75,7 +78,7 @@ export const SignUp = ({ startRegister, status }) => {
     return (
         
         <div className="container login-container p-4" style={{border:'2px solid white'}}>
-            { status !== 'not-authenticated' &&
+
             <div className="row">
                 <div className="col-md-6 login-form-2">
                     <h3>Registro</h3>
@@ -137,7 +140,7 @@ export const SignUp = ({ startRegister, status }) => {
                     <Link to="/ac/auth/login/">Entrar </Link>
 
                 </div>
-            </div>}
+            </div>
         </div>
     )
 }

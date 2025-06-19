@@ -16,7 +16,7 @@ import { Operators, Units } from '../components';
 const AppRouter = () => {
 
 
-    const { status, checkLogin, startLogin, startRegister, startLogout, user, sweetAlertMessage, defaultAlert } = useAuth();
+    const { checkLogin, startLogin, startRegister, startLogout, user, sweetAlertMessage, defaultAlert } = useAuth();
 
 
 
@@ -48,8 +48,8 @@ const AppRouter = () => {
 
             <Routes>
 
-                <Route path="/ac/auth/login/"    element={<Login  startLogin={startLogin}       status={status} />} />
-                <Route path="/ac/auth/register/" element={<SignUp startRegister={startRegister} status={status} />} />
+                <Route path="/ac/auth/login/"    element={<Login  startLogin={startLogin}        />} />
+                <Route path="/ac/auth/register/" element={<SignUp startRegister={startRegister}  />} />
 
                 <Route path="/ac/"  element={<Operators />} />
                 <Route path="/ac/units/"  element={<Units />} />
