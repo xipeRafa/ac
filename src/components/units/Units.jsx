@@ -1,11 +1,7 @@
 
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-
-import { PostFormUnits } from './PostFormUnits';
 import { useUnits } from '../../hooks'
 
-import Modal from 'react-bootstrap/Modal';
+import { PostFormUnits } from './PostFormUnits';
 
 
 
@@ -14,18 +10,9 @@ export const Units = () => {
 
 
 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-
-    const navigate = useNavigate();
-
-
-
     const { dataUsersGet, units, deleteUser, postUser, setInfoToForm,
-            editModeUnits, newDataEdit, defaultModeEdith } = useUnits()
+            editModeUnits, newDataEdit, defaultModeEdith, navigateTo, useEffect, 
+                useState, Modal, show, handleClose, handleShow, useForm } = useUnits()
 
 
 
@@ -36,7 +23,7 @@ export const Units = () => {
 
                 localStorage.userName=''
                 localStorage.status = 'not-authenticated'
-                navigate('/ac/auth/login/')
+                navigateTo('/ac/auth/login/')
 
                 if(localStorage.usersRegistered === undefined){
                         localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
@@ -94,7 +81,8 @@ export const Units = () => {
 
                 <Modal.Body className='modal2'>
 
-            <PostFormUnits handleClose={handleClose} postUser={postUser} editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} />
+            <PostFormUnits handleClose={handleClose} postUser={postUser} useEffect={useEffect} useState={useState}
+                editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} useForm={useForm} />
 
              </Modal.Body>
 

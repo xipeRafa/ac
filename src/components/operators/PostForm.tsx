@@ -1,11 +1,7 @@
-import {useEffect, useState} from 'react'
-import { useForm } from '../../helpers';
 
 
 
-
-
-export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, handleClose }) => {
+export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, handleClose, useForm, useState, useEffect }) => {
 
 
 

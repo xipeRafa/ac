@@ -1,15 +1,17 @@
 
 import { useDispatch, useSelector } from 'react-redux'
-
+import { useEffect, useState } from 'react'
 import { errorConsoleCatch, toggleExplorer, 
           editExplorer, finderExplorer, postExplorer,
-          paginationExplorer, nextExplorer, deleteExplorer} from '../helpers'
+          paginationExplorer, nextExplorer, deleteExplorer, useForm} from '../helpers'
 
 import {unitsDataPush, editUnitsView, defaultEditMode, unitsDeleteView, switchUnitsView} from  '../store/slices/unitsSlice'
 
 import { somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
 
-
+import { useNavigate } from 'react-router-dom';
+ 
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -20,6 +22,7 @@ export const useUnits = () => {
 
   const dispatch = useDispatch()
   
+  const navigateTo = useNavigate()
 
   //"warning", "error", "success","info"
   // function SweetAlertError(error){
@@ -114,7 +117,10 @@ export const useUnits = () => {
 
 
 
-  
+   const [show, setShow] = useState(false)
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
 
 
 
@@ -134,6 +140,20 @@ export const useUnits = () => {
     //states
     editModeUnits,
     units,
+
+    //react
+    navigateTo,
+    useEffect, 
+    useState,
+
+     //modal
+    Modal,
+    show,
+    handleClose,
+    handleShow,
+
+    //helpers
+    useForm
 
   }
 }

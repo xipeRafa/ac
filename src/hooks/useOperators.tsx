@@ -1,15 +1,17 @@
 
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react'
 
 import { errorConsoleCatch, toggleExplorer, 
           editExplorer, finderExplorer, postExplorer,
-          paginationExplorer, nextExplorer, deleteExplorer} from '../helpers'
+          paginationExplorer, nextExplorer, deleteExplorer, useForm } from '../helpers'
 
 import {operatorDataPush, editOperatorView, defaultEditMode, operatorDeleteView, switchOperatorView} from  '../store/slices/operatorsSlice'
 
 import { somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
 
-
+import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -20,12 +22,15 @@ export const useOperators = () => {
   const { operators, editMode } = useSelector(state => state.operatorsSlice)
 
   const dispatch = useDispatch()
-  
+
+  const navigateTo = useNavigate()
 
   //"warning", "error", "success","info"
   // function SweetAlertError(error){
   //     dispatch(somethingWentWrong(['Something Went Wrong', error?.response?.data?.errors[0]?.msg || 'working', 'error']))
   // }
+
+
 
 
 
@@ -114,6 +119,11 @@ export const useOperators = () => {
 
 
 
+ const [show, setShow] = useState(false)
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
+
 
   
 
@@ -135,6 +145,20 @@ export const useOperators = () => {
     //states
     editMode,
     operators,
+
+    //react
+    navigateTo,
+
+    //helper
+    useForm,
+    useEffect, 
+    useState,
+
+    //modal
+    Modal,
+    show,
+    handleClose,
+    handleShow,
 
   }
 }

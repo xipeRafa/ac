@@ -1,11 +1,11 @@
 
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+
 
 import { PostForm } from './PostForm';
+
 import { useOperators } from '../../hooks'
 
-import Modal from 'react-bootstrap/Modal';
+
 
 
 
@@ -13,21 +13,10 @@ import Modal from 'react-bootstrap/Modal';
 export const Operators = () => {
 
 
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-
-    const navigate = useNavigate();
-
-
-
     const { operators, dataUsersGet, deleteUser, postUser, setInfoToForm,
-            editMode, newDataEdit, defaultModeEdith } = useOperators()
-
-
+            editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, 
+            useEffect, useState, Modal, show, handleClose, handleShow } = useOperators()
+    
 
 
     useEffect(() => {
@@ -36,7 +25,7 @@ export const Operators = () => {
 
                 localStorage.userName=''
                 localStorage.status = 'not-authenticated'
-                navigate('/ac/auth/login/')
+                navigateTo('/ac/auth/login/')
 
                 if(localStorage.usersRegistered === undefined){
                         localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
@@ -61,12 +50,6 @@ export const Operators = () => {
     const handleEdith = (el: String) => {
         setInfoToForm(el)
         handleShow()
-    }
-
-
-    const handlePaginationSelect=(ps)=>{
-        let step = Number(ps)
-        paginationSelect(step)
     }
 
 
@@ -103,6 +86,9 @@ export const Operators = () => {
                             newDataEdit={newDataEdit} 
                             defaultModeEdith={defaultModeEdith}
                             handleClose={handleClose}
+                            useForm={useForm}
+                            useEffect={useEffect}
+                            useState={useState}
                         />
                 </Modal.Body>
 

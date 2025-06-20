@@ -1,30 +1,32 @@
 
 import { Provider } from 'react-redux';
+import { store } from './store/store';
 import { BrowserRouter } from 'react-router-dom';
 
-import { store } from './store/store';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Nav } from './router/partialComps';
 import AppRouter from './router/AppRouter';
 import { Footer } from './router/partialComps';
 
+
+
+
 export const App = () => {
-  return (
-      <Provider store={store}>
+    return (
+        <Provider store={store}>
 
-          <BrowserRouter>
+            <BrowserRouter>
 
-              <Nav />
+                <Nav />
 
-              <AppRouter />
+                <AppRouter />
 
-              <Footer />
+                <Footer />
 
-          </BrowserRouter>
+            </BrowserRouter>
 
-      </Provider>
-  )
+        </Provider>
+    )
 }
+
 export default App

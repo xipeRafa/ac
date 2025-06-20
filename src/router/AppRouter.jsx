@@ -11,6 +11,7 @@ import { Login, SignUp} from './authComps';
 
 import { Operators, Units } from '../components';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const AppRouter = () => {
@@ -30,12 +31,16 @@ const AppRouter = () => {
             <Routes>
 
                 <Route path="/ac/auth/login/"    element={<Login />} />
+
                 <Route path="/ac/auth/register/" element={<SignUp />} />
 
-                <Route path="/ac/"  element={<Operators />} />
-                <Route path="/ac/units/"  element={<Units />} />
 
-                <Route path="/*" element={<Navigate to="/ac/" />} /> 
+                <Route path="/ac/"               element={<Operators />} />
+
+                <Route path="/ac/units/"         element={<Units />} />
+
+
+                <Route path="/*"                 element={<Navigate to="/ac/" />} /> 
 
             </Routes>
         </div>
