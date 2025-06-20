@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
     
@@ -29,9 +29,6 @@ export const SignUp = () => {
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
-
-    const location = useLocation()
-
 
     const { startRegister } = useAuth();
 

@@ -83,28 +83,7 @@ export const useAuth = () => {
 
 
     }
-
-
-
-
-
-
-
-    // const checkLogin = async () => {
-    //     const token = localStorage.getItem('token');
-    //     if (!token){ 
-    //         return dispatch(onLogout())
-    //     }
-        
-    //     try {
-    //         // const { data } = await axiosApi.get('auth/renew');
-    //         // dispatch(onLogin({ nombre:data.nombre, uid:data.uid }));
-    //     } catch (error) {
-    //         errorConsoleCatch(error)
-    //         localStorage.clear();
-    //         dispatch(onLogout());
-    //     }
-    // } 
+ 
 
 
 
@@ -112,12 +91,10 @@ export const useAuth = () => {
 
 
     const startLogout = () => {
-        // localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])
         //localStorage.clear();
         localStorage.status = 'not-authenticated'
         localStorage.userName = ''
         dispatch(onLogout())
-        //navigate('/ac/auth/login/')
     }
 
 
@@ -130,7 +107,6 @@ export const useAuth = () => {
         user,
 
         //* Métodos
-        //checkLogin, 
         startLogin,
         startLogout,
         startRegister,

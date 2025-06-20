@@ -57,7 +57,6 @@ export const Units = () => {
 
 
     const handleEdith = (el) => {
-        console.log(el)
         setInfoToForm(el)
         handleShow()
     }

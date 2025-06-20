@@ -6,9 +6,11 @@ import './nav.css'
 import { useAuth } from '../../../hooks/useAuth';
     
 
+
 export const Nav = () => {
 
-    const { status, checkLogin, startLogin, startRegister, startLogout, user, sweetAlertMessage, defaultAlert } = useAuth();
+    const { startLogout } = useAuth();
+
 
    const [isActive, setIsActive] = useState(true);
 
