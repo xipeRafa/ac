@@ -59,14 +59,14 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
 
 
   return (
-    <div className="container">
+    <div className="container sombra mt-5">
     <div className="row">
         <div className="col-lg-8 offset-lg-2">
 
             <form onSubmit={onSubmitUsers}>
 
 
-                <div className="form-group mb-3 mt-4">
+                <div className="form-group mb-3 mt-4 pt-3">
                     {editModeUnits && <label>Descripción</label>}
                     <input
                         type='text'
@@ -106,11 +106,11 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
                 </div>
 
 
-                    <div className='d-flex flex-column flex-sm-row'>
+                    <div className='d-flex flex-column flex-sm-row mb-2 pt-2'>
 
                         <input 
                             type="submit"
-                            className={editModeUnits ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4 primary" } 
+                            className={editModeUnits ? "btn-w w-100 me-5 mb-3 mt-4 primary" : "btn-w w-100 mb-2 mt-3 primary" } 
                             value={ editModeUnits ? 'Guardar Cambios ↑': "Guardar Unidad"} />
 
                         {editModeUnits && 

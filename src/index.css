@@ -102,9 +102,16 @@ input[type=text], input[type=password], input[type=email]{
     margin-left: 5%;
     margin-bottom: 20px;
     background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    box-shadow: rgba(10,110,255, .07) 0px 30px 60px -12px, rgba(0, 0, 60, 0.3) 0px 18px 36px -18px;
+    /*box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;*/
+    box-shadow: rgba(10,110,255, .07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
+     /*box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;*/
+
 }
 
+.sombra{
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
 
 .usersList>button{
     margin-right: 20px!important;
@@ -113,10 +120,9 @@ input[type=text], input[type=password], input[type=email]{
 
 
 .btn-closeX{
-    font-size: 24px;
+    font-size: 20px;
     margin-right: 6px;
     cursor:pointer;
-    color: red;
 }
 
 

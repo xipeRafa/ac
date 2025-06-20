@@ -87,7 +87,7 @@ export const Units = () => {
                     :
                         <Modal.Header className='modal2'>
                             <Modal.Title>NUEVA UNIDAD</Modal.Title>
-                            <b className='btn-closeX' onClick={handleClose}>✘</b>
+                            <b className='btn-closeX' onClick={handleClose}>❌</b>
                         </Modal.Header>
                 }
 

@@ -90,7 +90,7 @@ export const Operators = () => {
                     :
                         <Modal.Header className='modal2' >
                             <Modal.Title>NUEVO OPERADOR</Modal.Title> 
-                            <b className='btn-closeX' onClick={handleClose}>✘</b>
+                            <b className='btn-closeX' onClick={handleClose}>❌</b>
                         </Modal.Header>
                 }
                 

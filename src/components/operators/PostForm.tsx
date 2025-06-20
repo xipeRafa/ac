@@ -56,16 +56,16 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
 
   return (
-    <div className="container">
+    <div className="container sombra mt-5">
     <div className="row">
         <div className="col-lg-8 offset-lg-2" >
             
 
-            <form onSubmit={onSubmitUsers}>
+            <form onSubmit={onSubmitUsers} >
 
 
-                <div className="form-group mb-3 mt-4">
-                    {editMode && <label className="labelOut">Nombre</label>}
+                <div className="form-group mb-3 mt-4 pt-3">
+                    {editMode && <label>Nombre</label>}
                     <input
                         type='text'
                         required
@@ -135,11 +135,11 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
 
 
-                <div className='d-flex flex-column flex-sm-row'>
+                <div className='d-flex flex-column flex-sm-row mb-2 pt-2'>
 
                         <input 
                             type="submit"
-                            className={editMode ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4 w-50 primary" } 
+                            className={editMode ? "btn-w w-100 me-5 mb-3 mt-4 primary" : "btn-w w-100 mb-2 mt-3 primary" } 
                             value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador"} />
 
                         {editMode && 
