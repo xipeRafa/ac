@@ -13,7 +13,7 @@ import { useOperators } from '../../hooks'
 export const Operators = () => {
 
 
-    const { operators, dataUsersGet, deleteUser, postUser, setInfoToForm,
+    const { operatorsSlice, dataUsersGet, deleteUser, postUser, setInfoToForm,
             editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, 
             useEffect, useState, Modal, show, handleClose, handleShow } = useOperators()
     
@@ -126,7 +126,7 @@ export const Operators = () => {
 
 
 
-            {operators?.usuarios?.map((el, i) => (
+            {operatorsSlice.map((el, i) => (
                 <div key={i + '!@#'} className="usersList">
 
                     <h2>{el.name}</h2>

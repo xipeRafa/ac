@@ -15,7 +15,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
 
 
     const { name, phone, idUnit,
-            onInputChange: onPostInputChange, onResetForm } = useForm(unitState);
+            onInputChange: onPostInputChange } = useForm(unitState);
 
 
 
@@ -36,12 +36,10 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
         if(editModeUnits){
             newDataEdit(name, phone, idUnit, editModeUnits.uid)
             setUnitState({name:'', phone:'', idUnit:'' })
-            onResetForm()
         }else{
             postUser({name, phone, idUnit })
         }
 
-        onResetForm()
         handleClose()
     }
 
@@ -50,7 +48,6 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
     const handleCancelEdit =()=>{
         defaultModeEdith()
         setUnitState({name:'', phone:'', idUnit:''})
-        onResetForm()
         handleClose()
     }
 

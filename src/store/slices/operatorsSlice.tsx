@@ -1,34 +1,37 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+
+
 export const operatorsSlice = createSlice({
     name: 'operators',
 
     initialState: {
-        operators: [],
+        operatorsSlice: [],
         editMode: undefined
     },
 
     reducers: {
-        operatorDataPush: (state, { payload }) => {
-            state.operators = payload;
+        opCreateView: (state, { payload }) => {
+            state.operatorsSlice = payload
+            console.log(payload)
         },
-        editOperatorView:(state, {payload})=>{
+        opEditView:(state, {payload})=>{
             state.editMode = payload
         },
         defaultEditMode:(state)=>{
             state.editMode = undefined
         },
-        operatorDeleteView: (state, { payload }) => {
-            state.operators = payload;
+        opDeleteView: (state, { payload }) => {
+            state.operatorsSlice = payload
         },
-        switchOperatorView:(state, {payload})=>{
-            state.operators = payload
+        opSwitchView:(state, {payload})=>{
+            state.operatorsSlice = payload
         }
     }
-});
+})
 
 
 
 
-export const { operatorDataPush, editOperatorView, defaultEditMode, operatorDeleteView, switchOperatorView } = operatorsSlice.actions;
+export const { opCreateView, opEditView, defaultEditMode, opDeleteView, opSwitchView } = operatorsSlice.actions;

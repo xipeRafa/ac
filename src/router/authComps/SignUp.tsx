@@ -17,8 +17,7 @@ export const SignUp = () => {
         useEffect,
         Link,
         dispatch,
-        somethingWentWrong, 
-        somethingWentRigth,
+        aMessageView, 
         useForm,
         navigateTo } = useAuth()
 
@@ -56,12 +55,12 @@ export const SignUp = () => {
         event.preventDefault();
 
         if( registerEmail==='' || registerName==='' || registerPassword==='' || registerPassword2==='' ){
-            dispatch(somethingWentWrong(['Campo Vacio', 'llenar todo por favor', 'warning']))
+            dispatch(aMessageView(['Campo Vacio', 'llenar todo por favor', 'warning']))
             return
         }
 
         if (registerPassword !== registerPassword2) {
-            dispatch(somethingWentWrong(['Error en registro', 'Contraseñas NO son Iguales', 'error']))
+            dispatch(aMessageView(['Error en registro', 'Contraseñas NO son Iguales', 'error']))
             return;
         }  
 

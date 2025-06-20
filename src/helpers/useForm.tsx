@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
-import { useDebounce } from "./useDebounce";
+//import { useDebounce } from "./useDebounce";
 
 
 
@@ -14,7 +14,17 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     const [formState, setFormState] = useState(initialForm);
 
 
-//console.log(formState)
+    const onInputChange = ({ target }) => {
+        const { name, value } = target;
+        setFormState({ ...formState, [name]: value.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()) })
+    }
+
+    useEffect(() => {
+        setFormState(initialForm);
+    }, [initialForm])
+
+
+console.log(formState)
 
 
    // const [formValidation, setFormValidation] = useState({});
@@ -28,9 +38,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
 
-    useEffect(() => {
-        setFormState(initialForm);
-    }, [initialForm])
+   
 
 
 
@@ -72,11 +80,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
 
-    const onInputChange = ({ target }) => {
-
-        const { name, value } = target;
-        setFormState({ ...formState, [name]: value.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()) })
-    }
+   
 
  /*     debounce(onInputChange, 3000) */
  /*   console.log('ddd', lastValue)
@@ -88,9 +92,9 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
 
-    const onResetForm = () => {
-        setFormState({})
-    }
+    // const onResetForm = () => {
+    //     setFormState({})
+    // }
 
 
 
@@ -116,10 +120,10 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
 
-    const isValidEmail = ( email: string ) => {
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
-    }
+    // const isValidEmail = ( email: string ) => {
+    //     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //     return re.test(email);
+    // }
 
 
 
@@ -127,7 +131,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         ...formState,
         formState,
         onInputChange,
-        onResetForm,
+        //onResetForm,
 
        // ...formValidation,
        // isFormValid,

@@ -18,3 +18,11 @@ export function errorConsoleCatch(error) {
 
 
 // data es el primer objeto que viene en  res.json({msg:'})
+
+
+
+//   "warning", "error", "success","info"
+
+  // function SweetAlertError(error){
+  //     dispatch(aMessageView(['Something Went Wrong', error?.response?.data?.errors[0]?.msg || 'working', 'error']))
+  // }

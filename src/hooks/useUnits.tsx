@@ -1,15 +1,15 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { errorConsoleCatch, toggleExplorer, 
-          editExplorer, finderExplorer, postExplorer,
-          paginationExplorer, nextExplorer, deleteExplorer, useForm} from '../helpers'
+import { useNavigate } from 'react-router-dom';
+
+
+import { useForm } from '../helpers'
 
 import {unitsDataPush, editUnitsView, defaultEditMode, unitsDeleteView, switchUnitsView} from  '../store/slices/unitsSlice'
 
-import { somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
+import { aMessageView, clearAlertView } from  '../store/slices/alertSlice'
 
-import { useNavigate } from 'react-router-dom';
  
 import Modal from 'react-bootstrap/Modal';
 
@@ -43,7 +43,7 @@ export const useUnits = () => {
         }  
             
         
-        dispatch(unitsDataPush({usuarios:JSON.parse(localStorage.unitsArray)}))
+        dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
 
   }
 
@@ -65,7 +65,7 @@ export const useUnits = () => {
           
           curretUsers.push({ name, phone, idUnit, dateStart, uid:Date.now() })
           localStorage.unitsArray = JSON.stringify(curretUsers)
-          dispatch(unitsDataPush({usuarios:JSON.parse(localStorage.unitsArray)}))
+          dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
  
   }
 
@@ -89,7 +89,7 @@ export const useUnits = () => {
          
           localStorage.unitsArray = JSON.stringify(editedUsers)
 
-          dispatch(unitsDataPush({usuarios:JSON.parse(localStorage.unitsArray)}))
+          dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
 
           dispatch(defaultEditMode()) 
       
@@ -106,21 +106,21 @@ export const useUnits = () => {
 
   const deleteUser = (usuario) => {
 
-          let curretUsers = JSON.parse(localStorage.unitsArray)
-          let del = curretUsers.filter((el) => el.uid !== usuario.uid)
-          localStorage.unitsArray = JSON.stringify(del)
-          dispatch(unitsDataPush({usuarios:JSON.parse(localStorage.unitsArray)}))
-          dispatch(somethingWentRigth(['Unidad fue Borrada', usuario.name + ' ya no existe ', 'success']))
+        let curretUsers = JSON.parse(localStorage.unitsArray)
+        let del = curretUsers.filter((el) => el.uid !== usuario.uid)
+        localStorage.unitsArray = JSON.stringify(del)
+        dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
+        dispatch(aMessageView(['Unidad fue Borrada', usuario.name + ' ya no existe ', 'success']))
 
   }
 
 
 
 
-   const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
 
 
@@ -143,6 +143,8 @@ export const useUnits = () => {
 
     //react
     navigateTo,
+
+    //react
     useEffect, 
     useState,
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 
 import { onLogin, onLogout } from '../store/slices/authSlice'
-import { clearAlertMessage, somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
+import { clearAlertMessage, aMessageView } from  '../store/slices/alertSlice'
 
 import { errorConsoleCatch, useForm } from '../helpers'
 
@@ -46,11 +46,11 @@ export const useAuth = () => {
                             hello(user[0].nombre)
                              
                     }else{
-                            dispatch(somethingWentWrong(['Something Went Wrong', 'Contraseña Mal' || 'working', 'error']))
+                            dispatch(aMessageView(['Something Went Wrong', 'Contraseña Mal' || 'working', 'error']))
                     }       
   
             }else{
-                    dispatch(somethingWentWrong(['Something Went Wrong', 'Correo Mal' || 'working', 'error']))
+                    dispatch(aMessageView(['Something Went Wrong', 'Correo Mal' || 'working', 'error']))
             }
 
     }
@@ -81,7 +81,7 @@ export const useAuth = () => {
                     hello(nombre)
 
             }else{
-                    dispatch(somethingWentWrong(['Correo ya existe', 'Correo ya existe' || 'working', 'error']))
+                    dispatch(aMessageView(['Correo ya existe', 'Correo ya existe' || 'working', 'error']))
             }
 
 
@@ -122,8 +122,7 @@ export const useAuth = () => {
         navigateTo,
 
         //alert
-        somethingWentWrong, 
-        somethingWentRigth,
+        aMessageView, 
 
     }
 

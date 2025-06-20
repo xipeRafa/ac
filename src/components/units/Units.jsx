@@ -98,6 +98,7 @@ export const Units = () => {
 
             <h2 className="container-fluid text-center bg-white p-3">UNIDADES</h2>
 
+
             <section className='sectionControls'>
                 <button className='btn-w secondary' onClick={()=>handleShow()}>
                         Nueva Unidad
@@ -105,7 +106,8 @@ export const Units = () => {
                 <button className='btn-w secondary-out'>Buscar 🔍︎</button>
             </section>
 
-            {units?.usuarios?.map((el, i) => (
+
+            {units.map((el, i) => (
                 <div key={i + '!@#'} className='usersList' >
 
                     <h2><span style={{fontWeight:'200'}}>Descripcion: </span> {el.name}</h2>

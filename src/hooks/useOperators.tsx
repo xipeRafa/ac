@@ -3,33 +3,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 
-import { errorConsoleCatch, toggleExplorer, 
-          editExplorer, finderExplorer, postExplorer,
-          paginationExplorer, nextExplorer, deleteExplorer, useForm } from '../helpers'
+import { useForm } from '../helpers'
 
-import {operatorDataPush, editOperatorView, defaultEditMode, operatorDeleteView, switchOperatorView} from  '../store/slices/operatorsSlice'
+import {opCreateView, opEditView, defaultEditMode, opDeleteView, opSwitchView} from  '../store/slices/operatorsSlice'
 
-import { somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
+import { aMessageView, clearAlertView } from  '../store/slices/alertSlice'
 
 import Modal from 'react-bootstrap/Modal';
 
-
-
+  
 
 export const useOperators = () => {
 
 
-  const { operators, editMode } = useSelector(state => state.operatorsSlice)
+  const { operatorsSlice, editMode } = useSelector(state => state.operatorsSlice)
 
   const dispatch = useDispatch()
 
   const navigateTo = useNavigate()
-
-  //"warning", "error", "success","info"
-  // function SweetAlertError(error){
-  //     dispatch(somethingWentWrong(['Something Went Wrong', error?.response?.data?.errors[0]?.msg || 'working', 'error']))
-  // }
-
 
 
 
@@ -40,18 +31,14 @@ export const useOperators = () => {
 
       if(localStorage.operatorsArray === undefined){
             localStorage.operatorsArray = JSON.stringify(workshops)
-            dispatch(operatorDataPush(workshops)) 
+            dispatch(opCreateView(workshops)) 
             return
       }  
             
         
-      dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
+      dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
 
   }
-
-
-
-  
 
 
 
@@ -67,14 +54,14 @@ export const useOperators = () => {
           
           curretUsers.push({ name, phone, idOperator, dateStart, uid:Date.now() })
           localStorage.operatorsArray = JSON.stringify(curretUsers)
-          dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
+          dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
  
   }
 
 
 
   const setInfoToForm = (el:Object) => {
-       dispatch(editOperatorView(el))
+       dispatch(opEditView(el))
    }
 
 
@@ -89,7 +76,7 @@ export const useOperators = () => {
          
           localStorage.operatorsArray = JSON.stringify(editedUsers)
 
-          dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
+          dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
 
           dispatch(defaultEditMode()) 
       
@@ -112,17 +99,17 @@ export const useOperators = () => {
 
           localStorage.operatorsArray = JSON.stringify(del)
 
-          dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
-          dispatch(somethingWentRigth(['Operador fue Borrado', usuario.name + ' ya no existe ', 'success']))
+          dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
+          dispatch(aMessageView(['Operador fue Borrado', usuario.name + ' ya no existe ', 'success']))
 
   }
 
 
 
- const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
 
   
@@ -144,13 +131,15 @@ export const useOperators = () => {
 
     //states
     editMode,
-    operators,
+    operatorsSlice,
 
     //react
     navigateTo,
 
     //helper
     useForm,
+
+    //react
     useEffect, 
     useState,
 

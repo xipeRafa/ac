@@ -18,7 +18,7 @@ export const Login = () => {
         useEffect,
         Link,
         dispatch,
-        somethingWentWrong, 
+        aMessageView, 
         useForm,
         navigateTo,
     } = useAuth()
@@ -56,7 +56,7 @@ export const Login = () => {
         event.preventDefault();
  
         if( loginEmail==='' || loginPassword==='' ){
-            dispatch(somethingWentWrong(['Campo Vacio', 'llenar todo por favor', 'warning']))
+            dispatch(aMessageView(['Campo Vacio', 'llenar todo por favor', 'warning']))
             return
         }  
 

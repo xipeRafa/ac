@@ -7,18 +7,15 @@ export const alertSlice = createSlice({
     name: 'alert',
 
     initialState: {
-        sweetAlertMessage: undefined
+        SwalSlice: undefined
     },
 
     reducers: {
-        somethingWentRigth:(state, {payload})=>{
-            state.sweetAlertMessage = payload
+        aMessageView:(state, {payload})=>{
+            state.SwalSlice = payload
         },
-        somethingWentWrong:(state, {payload})=>{
-            state.sweetAlertMessage = payload
-        },
-        clearAlertMessage: (state) => {
-            state.sweetAlertMessage = undefined;
+        clearAlertView: (state) => {
+            state.SwalSlice = undefined;
         }
     }
     
@@ -27,7 +24,7 @@ export const alertSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 
-export const { clearAlertMessage, somethingWentWrong, somethingWentRigth } = alertSlice.actions;
+export const { aMessageView, clearAlertView } = alertSlice.actions;
 
 
 
