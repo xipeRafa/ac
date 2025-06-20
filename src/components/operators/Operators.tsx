@@ -12,24 +12,20 @@ import Modal from 'react-bootstrap/Modal';
 
 export const Operators = () => {
 
- const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     const navigate = useNavigate();
 
-    
-
-    const usersListCSS2 = {
-        fontWeight:'200'
-    }
 
 
-    const { dataUsersGet, operators, deleteUser, postUser, switchUser, setInfoToForm,
-            editMode, newDataEdit, defaultModeEdith, uploadUserImg, usersFinder, 
-            paginationSelect, paginationNext } = useOperators()
+    const { operators, dataUsersGet, deleteUser, postUser, setInfoToForm,
+            editMode, newDataEdit, defaultModeEdith } = useOperators()
 
 
 
@@ -54,16 +50,15 @@ export const Operators = () => {
     }, [])
 
 
+
+
     const handleDelete = (el: Object) => {
         deleteUser(el)
     }
 
-    // const handleSwitch = (el) => {
-    //     switchUser(el)
-    // }
+
 
     const handleEdith = (el: String) => {
-        //console.log(el)
         setInfoToForm(el)
         handleShow()
     }
@@ -80,12 +75,11 @@ export const Operators = () => {
 
     return (
         <div className='mt-4'>
-{ localStorage?.status == 'authenticated' && <> 
+
+        { localStorage?.status == 'authenticated' && <> 
 
 
-
-
-        <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
+            <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
                 {editMode 
                     ?
@@ -118,23 +112,30 @@ export const Operators = () => {
                 </Modal.Footer>
 
 
-        </Modal>
+            </Modal>
 
 
 
 
 
-        <h2 className="container-fluid text-center bg-white p-3">OPERADORES</h2>
+            <h2 className="container-fluid text-center bg-white p-3">
+                    OPERADORES
+            </h2>
+
+
+
 
             <section className='sectionControls'>
+
                     <button className='btn-w secondary' onClick={()=>handleShow()}>
-                            Nuevo OPERADOR
+                            NUEVO OPERADOR
                     </button>
-                    <button className='btn-w secondary-out'>Buscar 🔍︎</button>
+
+                    <button className='btn-w secondary-out'>
+                            Buscar 🔍︎
+                    </button>
+
             </section>
-
-
-
 
 
 
@@ -144,8 +145,8 @@ export const Operators = () => {
 
                     <h2>{el.name}</h2>
 
-                    <p><span style={usersListCSS2}>ID: </span>      {el.idOperator}</p>
-                    <p><span style={usersListCSS2}>Telefono:</span> {el.phone}</p>
+                    <p><span style={{fontWeight:'200'}}>ID: </span>      {el.idOperator}</p>
+                    <p><span style={{fontWeight:'200'}}>Telefono:</span> {el.phone}</p>
 
                     {/*<img src={el.img} width='100px' />*/}
 
@@ -154,7 +155,7 @@ export const Operators = () => {
                     <button className='btn-w' onClick={() => handleDelete(el)}>Eliminar</button>
                     <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
 
-                    <button className='btn-w primary'>Primary</button>
+                   {/* <button className='btn-w primary'>Primary</button>
                     <button className='btn-w primary-out'>Primary-out</button>
 
                     <button className='btn-w secondary'>Secondary</button>
@@ -164,7 +165,7 @@ export const Operators = () => {
                     <button className='btn-w success-out'>Success-out</button>
 
                      <button className='btn-w danger'>Danger</button>
-                    <button className='btn-w danger-out'>Danger-out</button>
+                    <button className='btn-w danger-out'>Danger-out</button>*/}
 
 
                     {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}
@@ -172,7 +173,11 @@ export const Operators = () => {
 
                 </div>
             ))}
-</>}
+
+
+        </>}
+
+
         </div>
     )
 }

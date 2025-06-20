@@ -1,12 +1,11 @@
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 import { onChecking, onLogin, onLogout } from '../store/slices/authSlice'
-import { errorConsoleCatch } from '../helpers'
+
 import { clearAlertMessage, somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
 
-
+import { errorConsoleCatch } from '../helpers'
 
 
 
@@ -17,23 +16,9 @@ export const useAuth = () => {
     const navigate = useNavigate();
 
     const { status, user } = useSelector(state => state.authSlice);
-    const { sweetAlertMessage } = useSelector(state => state.alertSlice);
 
+    
     const dispatch = useDispatch();
-
-
-    function SweetAlertError(){
-        dispatch(somethingWentWrong(['Something Went Wrong', 'Algo Salio Mal' || 'working', 'error']))
-    }
-
-
-
-
-    function defaultAlert(){
-        setTimeout(() => {
-            dispatch(clearAlertMessage())
-        }, 1000);
-    }
 
 
     const hello=(NOMBRE)=>{
@@ -142,8 +127,6 @@ export const useAuth = () => {
     return {
         //* estado
         status,
-        sweetAlertMessage,
-        defaultAlert,
         user,
 
         //* Métodos

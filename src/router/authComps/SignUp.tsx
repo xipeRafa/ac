@@ -1,10 +1,16 @@
 import { useEffect } from 'react'
+
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+    
+import { somethingWentWrong, somethingWentRigth } from  '../../store/slices/alertSlice'
+
+import { useForm } from '../../helpers';
+
+import { useAuth } from '../../hooks/useAuth';
 
 
-import {useForm} from '../../helpers';
 
 const registerFormFields = {
     registerName: '',
@@ -18,13 +24,16 @@ const registerFormFields = {
 
 
 
-export const SignUp = ({ startRegister }) => {
+export const SignUp = () => {
 
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
-
     const location = useLocation()
+
+
+    const { startRegister } = useAuth();
 
 
     useEffect(() => { 
@@ -43,7 +52,6 @@ export const SignUp = ({ startRegister }) => {
 
             if(localStorage.status === 'authenticated'){
                     navigate('/ac/')
-                    console.log('siiiii')
             }
 
     }, [])
@@ -59,12 +67,12 @@ export const SignUp = ({ startRegister }) => {
         event.preventDefault();
 
         if( registerEmail==='' || registerName==='' || registerPassword==='' || registerPassword2==='' ){
-            Swal.fire('Campo Vacio', 'llenar todo por favor', 'error');
+            dispatch(somethingWentWrong(['Campo Vacio', 'llenar todo por favor', 'warning']))
             return
         }
 
         if (registerPassword !== registerPassword2) {
-            Swal.fire('Error en registro', 'Contraseñas NO son Iguales', 'error');
+            dispatch(somethingWentWrong(['Error en registro', 'Contraseñas NO son Iguales', 'error']))
             return;
         }  
 
@@ -80,7 +88,7 @@ export const SignUp = ({ startRegister }) => {
         <div className="container login-container p-4" style={{border:'2px solid white'}}>
 
             <div className="row">
-                <div className="col-md-6 login-form-2">
+                <div className="col-md-6">
                     <h3>Registro</h3>
 
                     <form onSubmit={registerSubmit}>

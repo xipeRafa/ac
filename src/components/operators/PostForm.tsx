@@ -7,6 +7,8 @@ import { useForm } from '../../helpers';
 
 export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, handleClose }) => {
 
+
+
     const[operatorState, setOperatorState]=useState({
         name:'', phone:'', idOperator:''
     })

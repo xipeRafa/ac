@@ -8,7 +8,11 @@ import { useUnits } from '../../hooks'
 import Modal from 'react-bootstrap/Modal';
 
 
+
+
 export const Units = () => {
+
+
 
     const [show, setShow] = useState(false);
 
@@ -20,14 +24,8 @@ export const Units = () => {
 
 
 
-    const usersListCSS2 = {
-        fontWeight:'200'
-    }
-
-
-    const { dataUsersGet, units, deleteUser, postUser, switchUser, setInfoToForm,
-            editModeUnits, newDataEdit, defaultModeEdith, uploadUserImg, 
-            paginationSelect, paginationNext } = useUnits()
+    const { dataUsersGet, units, deleteUser, postUser, setInfoToForm,
+            editModeUnits, newDataEdit, defaultModeEdith } = useUnits()
 
 
 
@@ -56,9 +54,7 @@ export const Units = () => {
         deleteUser(el)
     }
 
-    // const handleSwitch = (el) => {
-    //     switchUser(el)
-    // }
+
 
     const handleEdith = (el) => {
         console.log(el)
@@ -78,7 +74,6 @@ export const Units = () => {
 
     return (
         <div className='mt-4'>
-{ localStorage?.status == 'authenticated' && <> 
 
 
         <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
@@ -126,10 +121,10 @@ export const Units = () => {
             {units?.usuarios?.map((el, i) => (
                 <div key={i + '!@#'} className='usersList' >
 
-                    <h2><span style={usersListCSS2}>Descripcion: </span> {el.name}</h2>
+                    <h2><span style={{fontWeight:'200'}}>Descripcion: </span> {el.name}</h2>
 
-                    <p><span style={usersListCSS2}>Numero Economico: </span>      {el.idUnit}</p>
-                    <p><span style={usersListCSS2}>ID: </span> {el.phone}</p>
+                    <p><span style={{fontWeight:'200'}}>Numero Economico: </span>      {el.idUnit}</p>
+                    <p><span style={{fontWeight:'200'}}>ID: </span> {el.phone}</p>
                     <p>Historial de Trabajo: </p>
                     <p>Status: </p>
 
@@ -146,7 +141,7 @@ export const Units = () => {
 
                 </div>
             ))}
-</>}
+
         </div>
     )
 }

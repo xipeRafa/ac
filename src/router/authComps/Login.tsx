@@ -1,10 +1,16 @@
 
 import { useEffect } from 'react'
+
 import { Link, useNavigate } from 'react-router-dom';
 
-import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
 
 import { useForm } from '../../helpers';
+
+import { somethingWentWrong, somethingWentRigth } from  '../../store/slices/alertSlice'
+
+import { useAuth } from '../../hooks/useAuth';
+
 
 
 
@@ -19,19 +25,22 @@ const loginFormFields:loginFormFields = {
 }
 
 
-export const Login = ({ startLogin }) => {
+export const Login = () => {
 
+
+    const dispatch = useDispatch();
 
     const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields);
 
     const navigate = useNavigate();
 
-    
+    const { startLogin } = useAuth();
+
     const loginSubmit = (event: any) => {
         event.preventDefault();
  
         if( loginEmail==='' || loginPassword==='' ){
-            Swal.fire('Campo vacio', 'llenar todo por favor', 'error');
+            dispatch(somethingWentWrong(['Campo Vacio', 'llenar todo por favor', 'warning']))
             return
         }  
 
@@ -69,14 +78,13 @@ export const Login = ({ startLogin }) => {
         <div className="container login-container p-4" style={{border:'2px solid white'}}>
 
             <div className="row">
-                <div className="col-md-6 login-form-1">
+                <div className="col-md-6">
 
                     <h3>Entrar</h3>
 
                     <form onSubmit={loginSubmit}>
                         <div className="form-group mb-3 form-floating">
                             <input
-                                required
                                 type="text"
                                 className="form-control"
                                 placeholder="Correo"
@@ -88,7 +96,6 @@ export const Login = ({ startLogin }) => {
                         </div>
                         <div className="form-group mb-4 form-floating">
                             <input
-                                required
                                 type="password"
                                 className="form-control"
                                 placeholder="Contraseña"

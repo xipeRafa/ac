@@ -1,14 +1,17 @@
 
 
 import { useEffect } from 'react'; 
+
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 
-import { useAuth } from '../hooks/useAuth';
+import Swal from 'sweetalert2'; //"warning", "error", "success","info"
 
 import { Login, SignUp} from './authComps';
+
 import { Operators, Units } from '../components';
+
 
 
 
@@ -16,16 +19,18 @@ import { Operators, Units } from '../components';
 const AppRouter = () => {
 
 
-    const { checkLogin, startLogin, startRegister, startLogout, user, sweetAlertMessage, defaultAlert } = useAuth();
 
+    const { sweetAlertMessage } = useSelector(state => state.alertSlice);
 
+    
 
     useEffect(() => {
         if (sweetAlertMessage !== undefined) {
            Swal.fire(sweetAlertMessage[0], sweetAlertMessage[1], sweetAlertMessage[2]);
-           defaultAlert()
+           console.log('alerta')
        } 
     }, [sweetAlertMessage]) 
+
 
 
  
@@ -48,8 +53,8 @@ const AppRouter = () => {
 
             <Routes>
 
-                <Route path="/ac/auth/login/"    element={<Login  startLogin={startLogin}        />} />
-                <Route path="/ac/auth/register/" element={<SignUp startRegister={startRegister}  />} />
+                <Route path="/ac/auth/login/"    element={<Login />} />
+                <Route path="/ac/auth/register/" element={<SignUp />} />
 
                 <Route path="/ac/"  element={<Operators />} />
                 <Route path="/ac/units/"  element={<Units />} />

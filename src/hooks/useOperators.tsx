@@ -16,6 +16,7 @@ import { somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSl
 
 export const useOperators = () => {
 
+
   const { operators, editMode } = useSelector(state => state.operatorsSlice)
 
   const dispatch = useDispatch()
@@ -25,11 +26,6 @@ export const useOperators = () => {
   // function SweetAlertError(error){
   //     dispatch(somethingWentWrong(['Something Went Wrong', error?.response?.data?.errors[0]?.msg || 'working', 'error']))
   // }
-
-
-    
-
-
 
 
 
@@ -43,7 +39,6 @@ export const useOperators = () => {
             return
       }  
             
-      //localStorage.operatorsArray = JSON.stringify(workshops)
         
       dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
 
@@ -59,8 +54,7 @@ export const useOperators = () => {
 /* -=-=-=-=-=-=-=-=-=--=- POST =-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- post =-=-=-=-=-=-=-=-=-=-=- */
 /* -=-=-=-=-=-=-=-=-=--=- POST =-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- post =-=-=-=-=-=-=-=-=-=-=- */
 
-// online solo arriba
-// offline abajo + arriba 
+
 
   const postUser = ({ name, phone, idOperator, dateStart }) => {
 
@@ -99,7 +93,7 @@ export const useOperators = () => {
 
 
   const defaultModeEdith = () => {
-      dispatch(defaultEditMode())
+          dispatch(defaultEditMode())
   }
 
 
@@ -108,8 +102,11 @@ export const useOperators = () => {
   const deleteUser = (usuario: Object) => {
 
           let curretUsers = JSON.parse(localStorage.operatorsArray)
+
           let del = curretUsers.filter((el) => el.uid !== usuario.uid)
+
           localStorage.operatorsArray = JSON.stringify(del)
+
           dispatch(operatorDataPush({usuarios:JSON.parse(localStorage.operatorsArray)}))
           dispatch(somethingWentRigth(['Operador fue Borrado', usuario.name + ' ya no existe ', 'success']))
 
@@ -138,5 +135,6 @@ export const useOperators = () => {
     //states
     editMode,
     operators,
+
   }
 }

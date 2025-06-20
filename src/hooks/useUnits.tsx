@@ -30,10 +30,7 @@ export const useUnits = () => {
     
 
 
-
-
-
-  const dataUsersGet = async (from=0, limit=8) => {
+  const dataUsersGet = () => {
 
         let workshops = []
         
@@ -42,7 +39,6 @@ export const useUnits = () => {
               dispatch(unitsDataPush(workshops)) 
         }  
             
-        //localStorage.unitsArray = JSON.stringify(workshops)
         
         dispatch(unitsDataPush({usuarios:JSON.parse(localStorage.unitsArray)}))
 
@@ -138,5 +134,6 @@ export const useUnits = () => {
     //states
     editModeUnits,
     units,
+
   }
 }
