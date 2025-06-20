@@ -16,7 +16,7 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
 
     const { name, phone, idOperator,
-            onInputChange: onPostInputChange, onResetForm } = useForm(operatorState);
+            onInputChange: onPostInputChange } = useForm(operatorState);
 
 
     useEffect(() => { 
@@ -36,12 +36,10 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
         if(editMode){
             newDataEdit(name, phone, idOperator, editMode.uid)
             setOperatorState({name:'', phone:'', idOperator:'' })
-            onResetForm()
         }else{
             postUser({name, phone, idOperator })
         }
 
-        onResetForm()
         handleClose()
     }
 
@@ -50,7 +48,6 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
     const handleCancelEdit =()=>{
         defaultModeEdith()
         setOperatorState({name:'', phone:'', idOperator:''})
-        onResetForm()
         handleClose()
     }
 
@@ -59,16 +56,16 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
 
   return (
-    <div className="container login-container fix">
+    <div className="container">
     <div className="row">
-        <div className="col-md-12 login-form-1 fixed">
+        <div className="col-lg-8 offset-lg-2" >
             
 
             <form onSubmit={onSubmitUsers}>
 
 
                 <div className="form-group mb-3 mt-4">
-                    {editMode && <label>Nombre</label>}
+                    {editMode && <label className="labelOut">Nombre</label>}
                     <input
                         type='text'
                         required
@@ -142,7 +139,7 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
                         <input 
                             type="submit"
-                            className={editMode ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4 w-50" } 
+                            className={editMode ? "btn-w w-100 me-4 mb-3 mt-4 primary" : "btn-w w-100 mt-4 w-50 primary" } 
                             value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador"} />
 
                         {editMode && 

@@ -59,9 +59,9 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
 
 
   return (
-    <div className="container login-container fix">
+    <div className="container">
     <div className="row">
-        <div className="col-md-12 login-form-1 fixed">
+        <div className="col-lg-8 offset-lg-2">
 
             <form onSubmit={onSubmitUsers}>
 

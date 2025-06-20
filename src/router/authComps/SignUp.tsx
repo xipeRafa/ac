@@ -1,16 +1,5 @@
-import { useEffect } from 'react'
-
-import { Link, useNavigate } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
-    
-import { somethingWentWrong, somethingWentRigth } from  '../../store/slices/alertSlice'
-
-import { useForm } from '../../helpers';
 
 import { useAuth } from '../../hooks/useAuth';
-
-
 
 const registerFormFields = {
     registerName: '',
@@ -21,16 +10,24 @@ const registerFormFields = {
 
 
 
-
-
-
 export const SignUp = () => {
 
-    const dispatch = useDispatch();
 
-    const navigate = useNavigate();
+    const { startRegister, 
+        useEffect,
+        Link,
+        dispatch,
+        somethingWentWrong, 
+        somethingWentRigth,
+        useForm,
+        navigateTo } = useAuth()
 
-    const { startRegister } = useAuth();
+
+    const { registerEmail,
+        registerName, 
+        registerPassword, 
+        registerPassword2, 
+        onInputChange: onRegisterInputChange } = useForm(registerFormFields)
 
 
     useEffect(() => { 
@@ -48,15 +45,10 @@ export const SignUp = () => {
             }
 
             if(localStorage.status === 'authenticated'){
-                    navigate('/ac/')
+                    navigateTo('/ac/')
             }
 
     }, [])
-
-
-
-
-    const { registerEmail, registerName, registerPassword, registerPassword2, onInputChange: onRegisterInputChange } = useForm(registerFormFields);
 
     
 

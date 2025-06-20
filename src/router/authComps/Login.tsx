@@ -1,52 +1,31 @@
 
-import { useEffect } from 'react'
-
-import { Link, useNavigate } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
-
-import { useForm } from '../../helpers';
-
-import { somethingWentWrong, somethingWentRigth } from  '../../store/slices/alertSlice'
 
 import { useAuth } from '../../hooks/useAuth';
 
 
-
-
-type loginFormFields = {
-    loginEmail: String,
-    loginPassword: String,
-}
-
-const loginFormFields:loginFormFields = {
-    loginEmail:    '',
+const loginFormFields = {
+    loginEmail:'',
     loginPassword: '',
 }
+
 
 
 export const Login = () => {
 
 
-    const dispatch = useDispatch();
+    const { 
+        startLogin, 
+        useEffect,
+        Link,
+        dispatch,
+        somethingWentWrong, 
+        useForm,
+        navigateTo,
+    } = useAuth()
 
-    const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields);
 
-    const navigate = useNavigate();
 
-    const { startLogin } = useAuth();
-
-    const loginSubmit = (event: any) => {
-        event.preventDefault();
- 
-        if( loginEmail==='' || loginPassword==='' ){
-            dispatch(somethingWentWrong(['Campo Vacio', 'llenar todo por favor', 'warning']))
-            return
-        }  
-
-        startLogin({ correo: loginEmail, password: loginPassword });
-         
-    }
+    const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields)
 
 
 
@@ -65,13 +44,26 @@ export const Login = () => {
             }
 
             if(localStorage.status === 'authenticated'){
-                    navigate('/ac/')
+                    navigateTo('/ac/')
             }
 
     }, [])
 
 
-   
+
+
+    const loginSubmit = (event: any) => {
+        event.preventDefault();
+ 
+        if( loginEmail==='' || loginPassword==='' ){
+            dispatch(somethingWentWrong(['Campo Vacio', 'llenar todo por favor', 'warning']))
+            return
+        }  
+
+        startLogin({ correo: loginEmail, password: loginPassword });
+         
+    }
+
 
 
     return (

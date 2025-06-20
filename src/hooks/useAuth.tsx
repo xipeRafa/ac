@@ -1,11 +1,13 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
 
-import { onChecking, onLogin, onLogout } from '../store/slices/authSlice'
-
+import { onLogin, onLogout } from '../store/slices/authSlice'
 import { clearAlertMessage, somethingWentWrong, somethingWentRigth } from  '../store/slices/alertSlice'
 
-import { errorConsoleCatch } from '../helpers'
+import { errorConsoleCatch, useForm } from '../helpers'
+
+
 
 
 
@@ -13,10 +15,11 @@ import { errorConsoleCatch } from '../helpers'
 export const useAuth = () => {
 
 
-    const navigate = useNavigate();
+    
 
     const { status, user } = useSelector(state => state.authSlice);
 
+    const navigateTo = useNavigate();
     
     const dispatch = useDispatch();
 
@@ -24,7 +27,7 @@ export const useAuth = () => {
     const hello=(NOMBRE)=>{
             localStorage.userName=NOMBRE
             localStorage.status = 'authenticated'
-            navigate('/ac/')
+            navigateTo('/ac/')
     }
 
 
@@ -110,6 +113,18 @@ export const useAuth = () => {
         startLogin,
         startLogout,
         startRegister,
+
+        //react
+        useEffect,
+        Link,
+        dispatch,
+        useForm,
+        navigateTo,
+
+        //alert
+        somethingWentWrong, 
+        somethingWentRigth,
+
     }
 
 }

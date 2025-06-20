@@ -17,13 +17,13 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 //console.log(formState)
 
 
-    const [formValidation, setFormValidation] = useState({});
+   // const [formValidation, setFormValidation] = useState({});
 
 
 
-    useEffect(() => {
-        createValidators();
-    }, [formState])
+    // useEffect(() => {
+    //     createValidators();
+    // }, [formState])
 
 
 
@@ -36,15 +36,15 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
 
-    const isFormValid = useMemo(() => {
+    // const isFormValid = useMemo(() => {
 
-        for (const formValue of Object.keys(formValidation)) {
-            if (formValidation[formValue] !== null) 
-                return false;
-        }
+    //     for (const formValue of Object.keys(formValidation)) {
+    //         if (formValidation[formValue] !== null) 
+    //             return false;
+    //     }
 
-        return true;
-    }, [formValidation])
+    //     return true;
+    // }, [formValidation])
 
  
     
@@ -66,7 +66,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
 
-    const lastValue = useDebounce(formState, 3000);
+    //const lastValue = useDebounce(formState, 3000);
 
 
 
@@ -89,26 +89,26 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
     const onResetForm = () => {
-        setFormState(initialForm);
+        setFormState({})
     }
 
 
 
 
 
-    const createValidators = () => {
+    // const createValidators = () => {
 
-        const formCheckedValues = {};
+    //     const formCheckedValues = {};
 
 
-        for (const formField of Object.keys(formValidations)) {
-            const [fn, errorMessage] = formValidations[formField];
+    //     for (const formField of Object.keys(formValidations)) {
+    //         const [fn, errorMessage] = formValidations[formField];
 
-            formCheckedValues[`${formField}Valid`] = fn(formState[formField]) ? null : errorMessage;
-        }
+    //         formCheckedValues[`${formField}Valid`] = fn(formState[formField]) ? null : errorMessage;
+    //     }
 
-        setFormValidation(formCheckedValues);
-    }
+    //     setFormValidation(formCheckedValues);
+    // }
     
 
 
@@ -129,8 +129,8 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         onInputChange,
         onResetForm,
 
-        ...formValidation,
-        isFormValid,
-        isValidEmail, // retorna true or false, resive el email text input 
+       // ...formValidation,
+       // isFormValid,
+        //isValidEmail, // retorna true or false, resive el email text input 
     }
 }

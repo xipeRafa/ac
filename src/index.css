@@ -23,7 +23,7 @@
     --slate-900:#181c25;
     --slate-950:#0e1118;
 
-    --bg-color:rgba(0,110,255, .07);
+    --bg-color:rgba(10,110,255, .07);
     --primary-color:#014063;
 
     --jade-100:#70FCBA;
@@ -39,6 +39,8 @@
     --red-350:#F17961;
     --red-200:#F5B7A8;
     --red-100:#F8DCD6;
+
+    --zinc-500:#6F7887;
     
 }
 
@@ -120,6 +122,11 @@ input[type=text], input[type=password], input[type=email]{
 
 .modal-title{
      margin-right: auto;
+}
+
+
+form>div>label{
+    color: var(--zinc-500);
 }
 
 
