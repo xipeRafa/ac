@@ -134,10 +134,57 @@ Toast.fire({
 
 
     const startLogout = () => {
-        //localStorage.clear();
+
+  Swal.fire({
+    title: "Quiere Salir?",
+    text: "Desea Cerrar Cesión ?",
+    icon: "question",
+    // buttons: true,
+    // dangerMode: true,
+    showCancelButton: true,
+    confirmButtonColor: "#014063",
+    cancelButtonColor: "#d93526",
+    confirmButtonText: "Salir",
+    cancelButtonText: 'Cancelar',
+    //color: "#716add",
+    //background:'red',
+  })
+  .then((result) => {
+
+    if (result.isConfirmed) {
+
+
+        // Swal.fire({
+        //   title: `Operador Fue Borrado!`,
+        //   text: usuario.name,
+        //   icon: "success",
+        //   buttonColor: "#014063",
+        // })
+
+
+             //localStorage.clear();
         localStorage.status = 'not-authenticated'
         localStorage.userName = ''
         dispatch(onLogout())
+        navigateTo('/ac/auth/login')
+         
+
+
+    } else {
+
+      // Swal.fire({
+      //   title: 'No Fue Borrado',
+      //   text: "Está a Salvo",
+      //   // icon: "success",
+      //    okButtonColor: "#014063",
+      // })
+
+    }
+
+  })
+
+
+       
     }
 
 
