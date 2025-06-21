@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import Swal from 'sweetalert2'; //"warning", "error", "success","info"
+import Swal from 'sweetalert2'; //"warning", "error", "success","info", "question"
 
 import { Login, SignUp} from './authComps';
 import { Operators, Units } from '../components';

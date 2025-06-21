@@ -8,7 +8,7 @@ import { clearAlertMessage, aMessageView } from  '../store/slices/alertSlice'
 import { errorConsoleCatch, useForm } from '../helpers'
 
 
-
+import Swal from 'sweetalert2';
 
 
 
@@ -44,6 +44,26 @@ export const useAuth = () => {
                        
                             dispatch(onLogin({ nombre: user[0].nombre, uid: user[0].uid }));
                             hello(user[0].nombre)
+
+                            const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 6000,
+  theme:'dark',
+  timerProgressBar: true,
+  //draggable: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+
+
+Toast.fire({
+  icon: "success",
+  title: "Signed in Successfully"
+});
                              
                     }else{
                             dispatch(aMessageView(['Something Went Wrong', 'Contraseña Mal' || 'working', 'error']))
