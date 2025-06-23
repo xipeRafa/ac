@@ -14,7 +14,6 @@ export const operatorsSlice = createSlice({
     reducers: {
         opCreateView: (state, { payload }) => {
             state.operatorsSlice = payload
-            console.log(payload)
         },
         opEditView:(state, {payload})=>{
             state.editMode = payload

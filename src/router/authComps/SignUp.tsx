@@ -19,52 +19,52 @@ export const SignUp = () => {
         dispatch,
         aMessageView, 
         useForm,
-        navigateTo } = useAuth()
+        navigateTo,
+        onCheckingRedirect,
+    } = useAuth()
 
 
-    const { registerEmail,
+    const { 
+        isValidEmail,
+        registerEmail,
         registerName, 
         registerPassword, 
         registerPassword2, 
-        onInputChange: onRegisterInputChange } = useForm(registerFormFields)
+        onInputChange: onRegisterInputChange, 
+    } = useForm(registerFormFields)
 
 
     useEffect(() => { 
-
-            if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
-
-                localStorage.userName=''
-                localStorage.status = 'not-authenticated'
-
-                if(localStorage.usersRegistered === undefined){
-                        localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
-                }    
-                
-                return
-            }
-
-            if(localStorage.status === 'authenticated'){
-                    navigateTo('/ac/')
-            }
-
+            onCheckingRedirect(navigateTo)
     }, [])
 
-    
+    console.log(registerPassword.length)
 
     const registerSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+
 
         if( registerEmail==='' || registerName==='' || registerPassword==='' || registerPassword2==='' ){
             dispatch(aMessageView(['Campo Vacio', 'llenar todo por favor', 'warning']))
             return
         }
 
+        // if(!isValidEmail(registerEmail)){
+        //      dispatch(aMessageView(['Correo ?', 'Correo No Válido !!!', 'error']))
+        //      return
+        // }
+
+        // if (registerPassword.length < 4) {
+        //     dispatch(aMessageView(['Contraseña', 'Minimo 4 Caracteres', 'error']))
+        //     return;
+        // } 
+
         if (registerPassword !== registerPassword2) {
             dispatch(aMessageView(['Error en registro', 'Contraseñas NO son Iguales', 'error']))
             return;
         }  
 
-        startRegister({ nombre: registerName, correo: registerEmail, password: registerPassword });
+        startRegister({ nombre: registerName.toLowerCase(), correo: registerEmail.toLowerCase(), password: registerPassword });
         
     }
 
@@ -93,11 +93,11 @@ export const SignUp = () => {
                         </div>
                         <div className="form-group mb-3 form-floating">
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control"
                                 placeholder="Correo"
                                 name="registerEmail"
-                                value={registerEmail}
+                                value={registerEmail.toLowerCase()}
                                 onChange={onRegisterInputChange}
                             />
                             <label>Correo</label>

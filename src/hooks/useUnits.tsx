@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 
-import { useForm } from '../helpers'
+import { useForm, useConfirmDeleteAlerts, onCheckingRedirect } from '../helpers'
 
 import {unitsDataPush, editUnitsView, defaultEditMode, unitsDeleteView, switchUnitsView} from  '../store/slices/unitsSlice'
 
@@ -26,16 +26,15 @@ export const useUnits = () => {
   
   const navigateTo = useNavigate()
 
-  //"warning", "error", "success","info"
-  // function SweetAlertError(error){
-  //     dispatch(somethingWentWrong(['Something Went Wrong', error?.response?.data?.errors[0]?.msg || 'working', 'error']))
-  // }
-
 
     
 
 
-  const dataUsersGet = () => {
+  const dataUsersGet = (a) => {
+
+        if(localStorage.status !== 'authenticated'){
+            return
+        }
 
         let workshops = []
         
@@ -95,16 +94,14 @@ export const useUnits = () => {
 
 
 
+  const { confirmDeleteAlerts } = useConfirmDeleteAlerts(
+       { collection:'Unidad', dispatch, unitsDataPush } 
+  )
 
-  const deleteUser = (usuario) => {
-
-        let curretUsers = JSON.parse(localStorage.unitsArray)
-        let del = curretUsers.filter((el) => el.uid !== usuario.uid)
-        localStorage.unitsArray = JSON.stringify(del)
-        dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
-        dispatch(aMessageView(['Unidad fue Borrada', usuario.name + ' ya no existe ', 'success']))
-
+  const deleteUser = (usuario: Object) => {
+          confirmDeleteAlerts(usuario)
   }
+
 
 
 
@@ -147,7 +144,8 @@ export const useUnits = () => {
     handleShow,
 
     //helpers
-    useForm
+    useForm,
+    onCheckingRedirect,
 
   }
 }

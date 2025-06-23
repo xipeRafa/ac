@@ -12,27 +12,18 @@ export const Units = () => {
 
     const { dataUsersGet, units, deleteUser, postUser, setInfoToForm,
             editModeUnits, newDataEdit, defaultModeEdith, navigateTo, useEffect, 
-                useState, Modal, show, handleClose, handleShow, useForm } = useUnits()
+                useState, Modal, show, handleClose, handleShow, useForm, onCheckingRedirect } = useUnits()
 
 
 
 
     useEffect(() => {
 
-        if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
+        let a = false
 
-                localStorage.userName=''
-                localStorage.status = 'not-authenticated'
-                navigateTo('/ac/auth/login/')
+        onCheckingRedirect(navigateTo)
 
-                if(localStorage.usersRegistered === undefined){
-                        localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
-                }    
-                
-                return
-        }
-
-        dataUsersGet()
+        dataUsersGet(a)
 
     }, [])
 
@@ -49,11 +40,6 @@ export const Units = () => {
     }
 
 
-    const handlePaginationSelect=(ps)=>{
-        let step = Number(ps)
-        paginationSelect(step)
-    }
-
 
      
 
@@ -61,36 +47,34 @@ export const Units = () => {
     return (
         <div className='mt-4'>
 
+{ localStorage?.status == 'authenticated' && <> 
+
 
         <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
-
-                {editModeUnits 
-                    ?
-                        <Modal.Header className='modal2' >
-                            <Modal.Title>EDITAR UNIDAD</Modal.Title>
-                        </Modal.Header>
-
-                    :
-                        <Modal.Header className='modal2'>
-                            <Modal.Title>NUEVA UNIDAD</Modal.Title>
-                            <b className='btn-closeX' onClick={handleClose}>❌</b>
-                        </Modal.Header>
-                }
-
+                <Modal.Header className='modal2' >
+                        <Modal.Title>{editModeUnits ? 'EDITAR UNIDAD' : 'NUEVA UNIDAD' }</Modal.Title> 
+                        {editModeUnits ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
+                </Modal.Header>
 
                 <Modal.Body className='modal2'>
 
-            <PostFormUnits handleClose={handleClose} postUser={postUser} useEffect={useEffect} useState={useState}
-                editModeUnits={editModeUnits} newDataEdit={newDataEdit} defaultModeEdith={defaultModeEdith} useForm={useForm} />
+                        <PostFormUnits 
+                            handleClose={handleClose} 
+                            postUser={postUser} 
+                            useEffect={useEffect} 
+                            useState={useState}
+                            editModeUnits={editModeUnits} 
+                            newDataEdit={newDataEdit} 
+                            defaultModeEdith={defaultModeEdith} 
+                            useForm={useForm} 
+                        />
 
-             </Modal.Body>
-
+                </Modal.Body>
 
                 <Modal.Footer className='modal2'>
                         
                 </Modal.Footer>
-
 
         </Modal>
 
@@ -112,7 +96,7 @@ export const Units = () => {
 
                     <h2><span style={{fontWeight:'200'}}>Descripcion: </span> {el.name}</h2>
 
-                    <p><span style={{fontWeight:'200'}}>Numero Economico: </span>      {el.idUnit}</p>
+                    <p><span style={{fontWeight:'200'}}>Numero Economico: </span> {el.idUnit}</p>
                     <p><span style={{fontWeight:'200'}}>ID: </span> {el.phone}</p>
                     <p>Historial de Trabajo: </p>
                     <p>Status: </p>
@@ -130,6 +114,8 @@ export const Units = () => {
 
                 </div>
             ))}
+
+</>}
 
         </div>
     )

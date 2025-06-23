@@ -15,7 +15,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
 
 
     const { name, phone, idUnit,
-            onInputChange: onPostInputChange } = useForm(unitState);
+            onInputChange: onPostInputChange, noSpace } = useForm(unitState);
 
 
 
@@ -34,9 +34,11 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
         event.preventDefault();
 
         if(editModeUnits){
+            const { name, phone, idUnit } = noSpace
             newDataEdit(name, phone, idUnit, editModeUnits.uid)
             setUnitState({name:'', phone:'', idUnit:'' })
         }else{
+            const { name, phone, idUnit } = noSpace
             postUser({name, phone, idUnit })
         }
 
@@ -110,7 +112,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
                             value={ editModeUnits ? 'Guardar Cambios ↑': "Guardar Unidad"} />
 
                         {editModeUnits && 
-                            <button onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
+                            <button type="reset" onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
                                     Cancelar Edición <b style={{color:'red'}}>✘</b> 
                             </button>
                         }

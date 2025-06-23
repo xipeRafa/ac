@@ -1,0 +1,106 @@
+
+import Swal from 'sweetalert2';
+
+
+
+
+//   if (confirm("Are you sure you want to delete this item?")) {}
+
+  //let userConfirmed = confirm("Do you want to save your changes?");
+    // if (userConfirmed) {
+    //   // Code to save changes
+    // } else {
+    //   // Code to handle cancellation
+    // }
+
+
+
+
+export const useConfirmDeleteAlerts = (...args) => {
+
+
+  let collection = args[0].collection
+  let dispatch = args[0].dispatch
+  let opCreateView = args[0].opCreateView
+  let unitsDataPush = args[0].unitsDataPush
+
+
+  const confirmDeleteAlerts =(COLLECTION)=>{
+
+  	Swal.fire({
+    	title: "Quieres Borrar?",
+    	text: "Una Vez Borrado NO Podras Recuperarlo!",
+    	icon: "question",
+      //showCloseButton: true,
+    	// buttons: true,
+    	//dangerMode: true,
+    	showCancelButton: true,
+    	confirmButtonColor: "#015887",
+    	cancelButtonColor: "#d93526",
+    	confirmButtonText: "Confirmar",
+    	cancelButtonText: 'Cancelar',
+	    //color: "#716add",
+    	background:'linear-gradient(var(--slate-100), var(--slate-50),#fff,#fff,#fff,#fff,#fff,#fff,#fff,#fff, var(--slate-50), var(--slate-150)',
+	})
+  	.then((result) => {
+
+    	if (result.isConfirmed) {
+
+        	Swal.fire({
+          	title: `${ collection } Fue Borrado!`,
+		        text: COLLECTION.name,
+            //showCloseButton: true,
+    		    icon: "success",
+        	  confirmButtonColor: "#015887", // ok button
+    			  background:'linear-gradient(var(--slate-100), var(--slate-50),#fff,#fff,#fff,#fff,#fff,#fff,#fff,#fff, var(--slate-50), var(--slate-150)',
+        	})
+
+
+          if(collection==='Operador'){
+              let curretUsers = JSON.parse(localStorage.operatorsArray)
+              let del = curretUsers.filter((el) => el.uid !== COLLECTION.uid)
+              localStorage.operatorsArray = JSON.stringify(del)
+              dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
+          }
+
+
+          if(collection==='Unidad'){
+              let curretUsers = JSON.parse(localStorage.unitsArray)
+              let del = curretUsers.filter((el) => el.uid !== COLLECTION.uid)
+              localStorage.unitsArray = JSON.stringify(del)
+              dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
+          }
+
+        	  
+
+    	} else {	
+
+      		Swal.fire({
+        		title: 'No Fue Borrado',
+	        	text: "Esta a Salvo",
+            //showCloseButton: true,
+		        // icon: "success",
+    		    confirmButtonColor: "#015887",
+    			  background:'linear-gradient(var(--slate-100), var(--slate-50),#fff,#fff,#fff,#fff,#fff,#fff,#fff,#fff, var(--slate-50), var(--slate-150)',
+      		})
+
+    	}
+
+  	})
+
+  }
+
+
+  return {
+  	 	confirmDeleteAlerts
+  }
+
+}
+
+
+
+
+
+
+
+

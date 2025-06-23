@@ -21,32 +21,17 @@ export const Login = () => {
         aMessageView, 
         useForm,
         navigateTo,
+        onCheckingRedirect,
     } = useAuth()
 
 
 
-    const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields)
+    const { isValidEmail, loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields)
 
 
 
     useEffect(() => { 
-
-            if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
-
-                localStorage.userName=''
-                localStorage.status = 'not-authenticated'
-
-                if(localStorage.usersRegistered === undefined){
-                        localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
-                }    
-                
-                return
-            }
-
-            if(localStorage.status === 'authenticated'){
-                    navigateTo('/ac/')
-            }
-
+            onCheckingRedirect(navigateTo)
     }, [])
 
 
@@ -60,14 +45,25 @@ export const Login = () => {
             return
         }  
 
-        startLogin({ correo: loginEmail, password: loginPassword });
+        // if(!isValidEmail(loginEmail)){
+        //      dispatch(aMessageView(['Correo ?', 'Correo No Válido !!!', 'error']))
+        //      return
+        // }
+
+        // if (loginPassword.length < 4) {
+        //     dispatch(aMessageView(['Contraseña', 'Minimo 4 Caracteres', 'error']))
+        //     return;
+        // } 
+        
+
+        startLogin({ correo: loginEmail.toLowerCase(), password: loginPassword });
          
     }
 
 
 
     return (
-        <div className="container login-container p-4" style={{border:'2px solid white'}}>
+        <div className="container p-4" style={{border:'2px solid white'}}>
 
             <div className="row">
                 <div className="col-md-6">
@@ -81,7 +77,7 @@ export const Login = () => {
                                 className="form-control"
                                 placeholder="Correo"
                                 name="loginEmail"
-                                value={loginEmail}
+                                value={loginEmail.toLowerCase()}
                                 onChange={onLoginInputChange}
                             />
                             <label>Correo</label>

@@ -1,19 +1,18 @@
 
 
 
-export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, handleClose, useForm, useState, useEffect }) => {
+export const PostForm = ({postUser, editMode, newDataEdit, defaultModeEdith, handleClose, useForm, useState, useEffect }) => {
 
 
 
-    const[operatorState, setOperatorState]=useState({
-        name:'', phone:'', idOperator:''
-    })
-
+    const[operatorState, setOperatorState]=useState({name:'', phone:'', idOperator:'' })
 
 
     const { name, phone, idOperator,
-            onInputChange: onPostInputChange } = useForm(operatorState);
+            onInputChange: onPostInputChange, noSpace} = useForm(operatorState);
 
+
+console.log(noSpace)
 
     useEffect(() => { 
         if(editMode !== undefined) {
@@ -25,14 +24,14 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
 
 
 
-
     const onSubmitUsers = (event: any) => {
         event.preventDefault();
 
         if(editMode){
+            const { name, phone, idOperator } = noSpace
             newDataEdit(name, phone, idOperator, editMode.uid)
-            setOperatorState({name:'', phone:'', idOperator:'' })
         }else{
+            const { name, phone, idOperator } = noSpace
             postUser({name, phone, idOperator })
         }
 
@@ -43,10 +42,13 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
     
     const handleCancelEdit =()=>{
         defaultModeEdith()
-        setOperatorState({name:'', phone:'', idOperator:''})
         handleClose()
     }
 
+
+    const capitalize=(v)=>{
+        return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+    }
   
 
 
@@ -68,7 +70,7 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
                         className="form-control"
                         placeholder="Nombre"
                         name="name"
-                        value={name}
+                        value={name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -81,7 +83,7 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
                         className="form-control"
                         placeholder="ID"
                         name="idOperator"
-                        value={idOperator}
+                        value={idOperator.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -94,7 +96,7 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
                         className="form-control"
                         placeholder="# Telefono"
                         name="phone"
-                        value={phone}
+                        value={phone.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -139,7 +141,7 @@ export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, ha
                             value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador"} />
 
                         {editMode && 
-                            <button onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
+                            <button type="reset" onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
                                     Cancelar Edición <b style={{color:'red'}}>✘</b> 
                             </button>
                         }

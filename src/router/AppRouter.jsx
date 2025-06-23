@@ -9,7 +9,7 @@ import { Login, SignUp} from './authComps';
 import { Operators, Units } from '../components';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import '../index.css'
 
 
 const AppRouter = () => {

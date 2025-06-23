@@ -2,6 +2,24 @@
 
 @import url('./assets/buttons.css');
 
+.customAlert{
+    text-align: center!important;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+}
+
+
+
+@media(max-width: 800px){
+    .alertContainer{
+        width: 100%!important;
+    }
+}
+
+.swal2-timer-progress-bar{
+    background-color: rgb(167, 219, 138);
+}
+
 :root{
     --slate-50:#eff1f4;
     --slate-100:#dfe3eb;
@@ -48,7 +66,7 @@
 
 
 html{
-    background-color:var(--bg-color);
+     background-color:var(--bg-color);
 }
 
 body{
@@ -57,12 +75,12 @@ body{
 
 
 #root{
+      background-color:var(--bg-color)!important;
 }
 
 
 
 .appContariner{
-    background-color:var(--bg-color);
     min-height: 100dvh;
     margin-top: 50px;
 }
@@ -90,7 +108,7 @@ input[type=text], input[type=password], input[type=email]{
 
 
 .modal2{
-    background-color: var(--bg-color);
+    background-color: var(--bg-color)!important;
 }
 
 

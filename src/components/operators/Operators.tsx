@@ -1,12 +1,7 @@
 
 
-
 import { PostForm } from './PostForm';
-
 import { useOperators } from '../../hooks'
-
-
-
 
 
 
@@ -15,24 +10,14 @@ export const Operators = () => {
 
     const { operatorsSlice, dataUsersGet, deleteUser, postUser, setInfoToForm,
             editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, 
-            useEffect, useState, Modal, show, handleClose, handleShow } = useOperators()
+            useEffect, useState, Modal, show, 
+            handleClose, handleShow, onCheckingRedirect} = useOperators()
     
 
 
     useEffect(() => {
 
-        if(localStorage.status === undefined || localStorage.status === 'not-authenticated'){
-
-                localStorage.userName=''
-                localStorage.status = 'not-authenticated'
-                navigateTo('/ac/auth/login/')
-
-                if(localStorage.usersRegistered === undefined){
-                        localStorage.usersRegistered = JSON.stringify([{correo:'noexiste'}])    
-                }    
-                
-                return
-        }
+        onCheckingRedirect(navigateTo)
 
         dataUsersGet()
 
@@ -53,6 +38,10 @@ export const Operators = () => {
     }
 
 
+    const capitalize=(v)=>{
+        return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+    }
+
      
 
 
@@ -64,20 +53,10 @@ export const Operators = () => {
 
             <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
-                {editMode 
-                    ?
-                        <Modal.Header className='modal2' >
-                            <Modal.Title>EDITAR OPERADOR</Modal.Title>
-                        </Modal.Header>
-
-                    :
-                        <Modal.Header className='modal2' >
-                            <Modal.Title>NUEVO OPERADOR</Modal.Title> 
-                            <b className='btn-closeX' onClick={handleClose}>❌</b>
-                        </Modal.Header>
-                }
-                
-
+                <Modal.Header className='modal2' >
+                    <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR' }</Modal.Title> 
+                    {editMode ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
+                </Modal.Header>
 
                 <Modal.Body className='modal2'>
                         <PostForm 
@@ -92,23 +71,15 @@ export const Operators = () => {
                         />
                 </Modal.Body>
 
-
                 <Modal.Footer className='modal2'>
-                        
                 </Modal.Footer>
 
-
             </Modal>
-
-
-
 
 
             <h2 className="container-fluid text-center bg-white p-3">
                     OPERADORES
             </h2>
-
-
 
 
             <section className='sectionControls'>
@@ -129,10 +100,10 @@ export const Operators = () => {
             {operatorsSlice.map((el, i) => (
                 <div key={i + '!@#'} className="usersList">
 
-                    <h2>{el.name}</h2>
+                    <h2>{capitalize(el.name)}</h2>
 
-                    <p><span style={{fontWeight:'200'}}>ID: </span>      {el.idOperator}</p>
-                    <p><span style={{fontWeight:'200'}}>Telefono:</span> {el.phone}</p>
+                    <p><span style={{fontWeight:'200'}}>ID: </span>      {el.idOperator.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}</p>
+                    <p><span style={{fontWeight:'200'}}>Telefono:</span> {el.phone.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}</p>
 
                     {/*<img src={el.img} width='100px' />*/}
 
