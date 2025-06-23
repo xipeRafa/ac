@@ -10,7 +10,7 @@ export const onCheckingRedirect =(navigateTo)=>{
 
                 if(location.pathname !== '/ac/auth/login/' &&
                    location.pathname !== '/ac/auth/register/'){
-                        console.log('not-authenticated and redirected to: /ac/auth/login/') 
+                        // console.log('not-authenticated and redirected to: /ac/auth/login/') 
                         navigateTo('/ac/auth/login/')    
                 }
 
@@ -26,20 +26,29 @@ export const onCheckingRedirect =(navigateTo)=>{
 
         if(localStorage.status === 'authenticated'){
 
-                console.log('authenticated and redirected to: ', location.pathname)
+                // console.log('authenticated and redirected to: ', location.pathname)
 
                 if(location.pathname === '/ac/auth/login/' ||
                    location.pathname === '/ac/auth/register/'){
-                        console.log('authenticated and redirected to: /ac/') 
+                        // console.log('authenticated and redirected to: /ac/') 
                         navigateTo('/ac/')   
                 }
 
         }
 
         
-        console.log(localStorage.status)
+        // console.log(localStorage.status)
 
 }
+
+
+
+
+
+
+
+
+
 
 
 

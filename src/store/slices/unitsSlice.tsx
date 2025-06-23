@@ -5,29 +5,29 @@ export const unitsSlice = createSlice({
     name: 'units',
 
     initialState: {
-        units: [],
+        unitsSlice: [],
         editModeUnits: undefined,
     },
 
     reducers: {
-        unitsDataPush: (state, { payload }) => {
-            state.units = payload;
+        unitsCreateView: (state, { payload }) => {
+            state.unitsSlice = payload;
         },
-        editUnitsView:(state, {payload})=>{
+        unitsEditView:(state, {payload})=>{
             state.editModeUnits = payload
         },
         defaultEditMode:(state)=>{
             state.editModeUnits = undefined
         },
         unitsDeleteView: (state, { payload }) => {
-            state.units = payload;
+            state.unitsSlice = payload;
         },
         switchUnitsView:(state, {payload})=>{
-            state.units = payload
+            state.unitsSlice = payload
         }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { unitsDataPush, editUnitsView, defaultEditMode, unitsDeleteView, switchUnitsView } = unitsSlice.actions;
+export const { unitsCreateView, unitsEditView, defaultEditMode, unitsDeleteView, switchUnitsView } = unitsSlice.actions;

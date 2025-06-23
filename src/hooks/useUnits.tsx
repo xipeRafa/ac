@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useForm, useConfirmDeleteAlerts, onCheckingRedirect } from '../helpers'
 
-import {unitsDataPush, editUnitsView, defaultEditMode, unitsDeleteView, switchUnitsView} from  '../store/slices/unitsSlice'
+import {unitsCreateView, unitsEditView, defaultEditMode, unitsDeleteView, switchUnitsView} from  '../store/slices/unitsSlice'
 
 import { aMessageView, clearAlertView } from  '../store/slices/alertSlice'
 
@@ -20,7 +20,7 @@ export const useUnits = () => {
 
 
 
-  const { units, editModeUnits} = useSelector(state => state.unitsSlice)
+  const { unitsSlice, editModeUnits} = useSelector(state => state.unitsSlice)
 
   const dispatch = useDispatch()
   
@@ -40,11 +40,11 @@ export const useUnits = () => {
         
         if(localStorage.unitsArray === undefined){
               localStorage.unitsArray = JSON.stringify(workshops)
-              dispatch(unitsDataPush(workshops)) 
+              dispatch(unitsCreateView(workshops)) 
         }  
             
         
-        dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
+        dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
 
   }
 
@@ -56,7 +56,7 @@ export const useUnits = () => {
           
           curretUsers.push({ name, phone, idUnit, dateStart, uid:Date.now() })
           localStorage.unitsArray = JSON.stringify(curretUsers)
-          dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
+          dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
  
   }
 
@@ -65,7 +65,7 @@ export const useUnits = () => {
 
 
   const setInfoToForm = (el) => {
-        dispatch(editUnitsView(el))
+        dispatch(unitsEditView(el))
   }
 
 
@@ -80,7 +80,7 @@ export const useUnits = () => {
          
           localStorage.unitsArray = JSON.stringify(editedUsers)
 
-          dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
+          dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
 
           dispatch(defaultEditMode()) 
       
@@ -95,7 +95,7 @@ export const useUnits = () => {
 
 
   const { confirmDeleteAlerts } = useConfirmDeleteAlerts(
-       { collection:'Unidad', dispatch, unitsDataPush } 
+       { collection:'Unidad', dispatch, unitsCreateView } 
   )
 
   const deleteUser = (usuario: Object) => {
@@ -113,7 +113,9 @@ export const useUnits = () => {
 
 
 
-
+  const capitalize=(v)=>{
+        return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+  }
 
 
   return {
@@ -128,7 +130,7 @@ export const useUnits = () => {
 
     //states
     editModeUnits,
-    units,
+    unitsSlice,
 
     //react
     navigateTo,
@@ -146,6 +148,7 @@ export const useUnits = () => {
     //helpers
     useForm,
     onCheckingRedirect,
+    capitalize,
 
   }
 }

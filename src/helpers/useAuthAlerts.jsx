@@ -18,11 +18,9 @@ export const useAuthAlerts = () => {
       timer: 8000,
       theme: "dark",
       timerProgressBar: true,
-      timerProgressBarColor: "red",
-      timerProgressBarBßackground: "red",
       //background:'linear-gradient(#000,#000,#000,#000,#000,#000,#000,#fff',
       //background:'black',
-      draggable: true,
+      //draggable: false,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
         toast.onmouseleave = Swal.resumeTimer;
@@ -32,7 +30,6 @@ export const useAuthAlerts = () => {
         title: "customAlert",
       },
       width: "60%",
-      allowOutsideClick: false,
       showCloseButton: true,
     });
 
@@ -72,7 +69,7 @@ export const useAuthAlerts = () => {
         container: "alertContainer",
         title: "customAlert",
       },
-      showCloseButton: false,
+      showCloseButton: true,
     });
 
     ToastRegistred2.fire({

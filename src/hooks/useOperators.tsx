@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 
-import { useForm, useConfirmDeleteAlerts, onCheckingRedirect } from '../helpers'
+import { useForm, useConfirmDeleteAlerts, onCheckingRedirect  } from '../helpers'
 
 import {opCreateView, opEditView, defaultEditMode, opDeleteView, opSwitchView} from  '../store/slices/operatorsSlice'
 
@@ -109,7 +109,11 @@ export const useOperators = () => {
   const handleShow = () => setShow(true)
 
 
-  
+  const capitalize=(v)=>{
+        return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+  }
+
+ 
 
 
   return {
@@ -132,6 +136,7 @@ export const useOperators = () => {
     //helper
     useForm,
     onCheckingRedirect,
+    capitalize,
 
     //react
     useEffect, 

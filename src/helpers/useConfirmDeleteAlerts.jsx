@@ -22,7 +22,7 @@ export const useConfirmDeleteAlerts = (...args) => {
   let collection = args[0].collection
   let dispatch = args[0].dispatch
   let opCreateView = args[0].opCreateView
-  let unitsDataPush = args[0].unitsDataPush
+  let unitsCreateView = args[0].unitsCreateView
 
 
   const confirmDeleteAlerts =(COLLECTION)=>{
@@ -68,7 +68,7 @@ export const useConfirmDeleteAlerts = (...args) => {
               let curretUsers = JSON.parse(localStorage.unitsArray)
               let del = curretUsers.filter((el) => el.uid !== COLLECTION.uid)
               localStorage.unitsArray = JSON.stringify(del)
-              dispatch(unitsDataPush(JSON.parse(localStorage.unitsArray)))
+              dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
           }
 
         	  

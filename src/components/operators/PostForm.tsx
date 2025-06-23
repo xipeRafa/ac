@@ -1,7 +1,8 @@
 
 
 
-export const PostForm = ({postUser, editMode, newDataEdit, defaultModeEdith, handleClose, useForm, useState, useEffect }) => {
+
+export const PostForm = ({ postUser, editMode, newDataEdit, defaultModeEdith, handleClose, useForm, useState, useEffect }) => {
 
 
 
@@ -9,10 +10,10 @@ export const PostForm = ({postUser, editMode, newDataEdit, defaultModeEdith, han
 
 
     const { name, phone, idOperator,
-            onInputChange: onPostInputChange, noSpace} = useForm(operatorState);
+            onInputChange: onPostInputChange, noSpace, capitalize} = useForm(operatorState);
 
 
-console.log(noSpace)
+
 
     useEffect(() => { 
         if(editMode !== undefined) {
@@ -46,9 +47,6 @@ console.log(noSpace)
     }
 
 
-    const capitalize=(v)=>{
-        return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
-    }
   
 
 
@@ -70,7 +68,7 @@ console.log(noSpace)
                         className="form-control"
                         placeholder="Nombre"
                         name="name"
-                        value={name.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}
+                        value={capitalize(name)}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -83,7 +81,7 @@ console.log(noSpace)
                         className="form-control"
                         placeholder="ID"
                         name="idOperator"
-                        value={idOperator.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}
+                        value={capitalize(idOperator)}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -96,7 +94,7 @@ console.log(noSpace)
                         className="form-control"
                         placeholder="# Telefono"
                         name="phone"
-                        value={phone.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}
+                        value={capitalize(phone)}
                         onChange={onPostInputChange}
                     />
                 </div>

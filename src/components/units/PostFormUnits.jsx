@@ -14,8 +14,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
 
 
 
-    const { name, phone, idUnit,
-            onInputChange: onPostInputChange, noSpace } = useForm(unitState);
+    const { name, phone, idUnit, onInputChange: onPostInputChange, noSpace, capitalize } = useForm(unitState);
 
 
 
@@ -72,7 +71,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
                         className="form-control"
                         placeholder="Descripción"
                         name="name"
-                        value={name}
+                        value={capitalize(name)}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -85,7 +84,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
                         className="form-control"
                         placeholder="Numero Economico"
                         name="phone"
-                        value={phone}
+                        value={capitalize(phone)}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -98,7 +97,7 @@ export const PostFormUnits = ({ postUser, editModeUnits, newDataEdit, defaultMod
                         className="form-control"
                         placeholder="ID"
                         name="idUnit"
-                        value={idUnit}
+                        value={capitalize(idUnit)}
                         onChange={onPostInputChange}
                     />
                 </div>

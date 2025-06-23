@@ -10,8 +10,8 @@ export const Units = () => {
 
 
 
-    const { dataUsersGet, units, deleteUser, postUser, setInfoToForm,
-            editModeUnits, newDataEdit, defaultModeEdith, navigateTo, useEffect, 
+    const { dataUsersGet, unitsSlice, deleteUser, postUser, setInfoToForm,
+            editModeUnits, newDataEdit, defaultModeEdith, navigateTo, useEffect, capitalize,
                 useState, Modal, show, handleClose, handleShow, useForm, onCheckingRedirect } = useUnits()
 
 
@@ -19,11 +19,9 @@ export const Units = () => {
 
     useEffect(() => {
 
-        let a = false
-
         onCheckingRedirect(navigateTo)
 
-        dataUsersGet(a)
+        dataUsersGet()
 
     }, [])
 
@@ -91,13 +89,13 @@ export const Units = () => {
             </section>
 
 
-            {units.map((el, i) => (
+            {unitsSlice.map((el, i) => (
                 <div key={i + '!@#'} className='usersList' >
 
-                    <h2><span style={{fontWeight:'200'}}>Descripcion: </span> {el.name}</h2>
+                    <h2><span style={{fontWeight:'200'}}>Descripcion: </span> {capitalize(el.name)}</h2>
 
-                    <p><span style={{fontWeight:'200'}}>Numero Economico: </span> {el.idUnit}</p>
-                    <p><span style={{fontWeight:'200'}}>ID: </span> {el.phone}</p>
+                    <p><span style={{fontWeight:'200'}}>Numero Economico: </span> {capitalize(el.idUnit)}</p>
+                    <p><span style={{fontWeight:'200'}}>ID: </span> {capitalize(el.phone)}</p>
                     <p>Historial de Trabajo: </p>
                     <p>Status: </p>
 

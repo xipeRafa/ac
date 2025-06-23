@@ -17,7 +17,7 @@ export const SignUp = () => {
         useEffect,
         Link,
         dispatch,
-        aMessageView, 
+        messageView, 
         useForm,
         navigateTo,
         onCheckingRedirect,
@@ -38,34 +38,29 @@ export const SignUp = () => {
             onCheckingRedirect(navigateTo)
     }, [])
 
-    console.log(registerPassword.length)
-
-    const registerSubmit = (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
 
 
-        if( registerEmail==='' || registerName==='' || registerPassword==='' || registerPassword2==='' ){
-            dispatch(aMessageView(['Campo Vacio', 'llenar todo por favor', 'warning']))
-            return
+    const registerSubmit = (event) => {
+
+        event.preventDefault()
+
+
+        const validations = [
+                { condition: !isValidEmail(registerEmail), message: ['Correo ?', 'Correo No Válido !!!', 'error'] },
+                { condition: registerPassword?.length < 4, message: ['Contraseña', 'Minimo 4 Caracteres', 'error'] },
+                { condition: registerPassword !== registerPassword2, message: ['Error en registro', 'Contraseñas NO son Iguales', 'error'] }
+        ]
+
+
+        for (const validation of validations) {
+                if (validation.condition) {
+                        dispatch(messageView(validation.message))
+                        return
+                }
         }
 
-        // if(!isValidEmail(registerEmail)){
-        //      dispatch(aMessageView(['Correo ?', 'Correo No Válido !!!', 'error']))
-        //      return
-        // }
-
-        // if (registerPassword.length < 4) {
-        //     dispatch(aMessageView(['Contraseña', 'Minimo 4 Caracteres', 'error']))
-        //     return;
-        // } 
-
-        if (registerPassword !== registerPassword2) {
-            dispatch(aMessageView(['Error en registro', 'Contraseñas NO son Iguales', 'error']))
-            return;
-        }  
 
         startRegister({ nombre: registerName.toLowerCase(), correo: registerEmail.toLowerCase(), password: registerPassword });
-        
     }
 
 
@@ -82,6 +77,7 @@ export const SignUp = () => {
                     <form onSubmit={registerSubmit}>
                         <div className="form-group mb-3 form-floating">
                             <input
+                                required
                                 type="text"
                                 className="form-control"
                                 placeholder="Nombre"
@@ -93,6 +89,7 @@ export const SignUp = () => {
                         </div>
                         <div className="form-group mb-3 form-floating">
                             <input
+                                required
                                 type="text"
                                 className="form-control"
                                 placeholder="Correo"
@@ -104,6 +101,7 @@ export const SignUp = () => {
                         </div>
                         <div className="form-group mb-3 form-floating">
                             <input
+                                required
                                 type="password"
                                 className="form-control"
                                 placeholder="Contraseña"
@@ -116,6 +114,7 @@ export const SignUp = () => {
 
                         <div className="form-group mb-4 form-floating">
                             <input
+                                required
                                 type="password"
                                 className="form-control"
                                 placeholder="Repita la contraseña"

@@ -11,7 +11,7 @@ export const alertSlice = createSlice({
     },
 
     reducers: {
-        aMessageView:(state, {payload})=>{
+        messageView:(state, {payload})=>{
             state.SwalSlice = payload
         },
         clearAlertView: (state) => {
@@ -19,12 +19,17 @@ export const alertSlice = createSlice({
         }
     }
     
-});
+})
+
+export const { messageView, clearAlertView } = alertSlice.actions;
 
 
-// Action creators are generated for each case reducer function
 
-export const { aMessageView, clearAlertView } = alertSlice.actions;
+
+
+
+
+
 
 
 

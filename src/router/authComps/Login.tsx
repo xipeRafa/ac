@@ -18,7 +18,7 @@ export const Login = () => {
         useEffect,
         Link,
         dispatch,
-        aMessageView, 
+        messageView, 
         useForm,
         navigateTo,
         onCheckingRedirect,
@@ -38,24 +38,22 @@ export const Login = () => {
 
 
     const loginSubmit = (event: any) => {
-        event.preventDefault();
- 
-        if( loginEmail==='' || loginPassword==='' ){
-            dispatch(aMessageView(['Campo Vacio', 'llenar todo por favor', 'warning']))
-            return
-        }  
 
-        // if(!isValidEmail(loginEmail)){
-        //      dispatch(aMessageView(['Correo ?', 'Correo No Válido !!!', 'error']))
-        //      return
-        // }
+        event.preventDefault()
 
-        // if (loginPassword.length < 4) {
-        //     dispatch(aMessageView(['Contraseña', 'Minimo 4 Caracteres', 'error']))
-        //     return;
-        // } 
+        const validations = [
+                { condition: loginEmail==='' || loginPassword==='', message: ['Campo Vacio', 'Llenar todo por favor', 'warning'] },
+                { condition: !isValidEmail(loginEmail), message: ['Correo ?', 'Correo No Válido !!!', 'error'] },
+                { condition: loginPassword?.length < 4, message: ['Contraseña', 'Minimo 4 Caracteres', 'error'] },
+        ]
+
+        for (const validation of validations) {
+                if (validation.condition) {
+                        dispatch(messageView(validation.message))
+                        return
+                }
+        } 
         
-
         startLogin({ correo: loginEmail.toLowerCase(), password: loginPassword });
          
     }

@@ -10,9 +10,11 @@ export const Operators = () => {
 
     const { operatorsSlice, dataUsersGet, deleteUser, postUser, setInfoToForm,
             editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, 
-            useEffect, useState, Modal, show, 
+            useEffect, useState, Modal, show, capitalize,
             handleClose, handleShow, onCheckingRedirect} = useOperators()
     
+
+
 
 
     useEffect(() => {
@@ -37,10 +39,6 @@ export const Operators = () => {
         handleShow()
     }
 
-
-    const capitalize=(v)=>{
-        return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
-    }
 
      
 
@@ -102,8 +100,8 @@ export const Operators = () => {
 
                     <h2>{capitalize(el.name)}</h2>
 
-                    <p><span style={{fontWeight:'200'}}>ID: </span>      {el.idOperator.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}</p>
-                    <p><span style={{fontWeight:'200'}}>Telefono:</span> {el.phone.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())}</p>
+                    <p><span style={{fontWeight:'200'}}>ID: </span>      {capitalize(el.idOperator)}</p>
+                    <p><span style={{fontWeight:'200'}}>Telefono:</span> {capitalize(el.phone)}</p>
 
                     {/*<img src={el.img} width='100px' />*/}
 

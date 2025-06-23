@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 
 import { onLogin, onLogout } from '../store/slices/authSlice'
-import { clearAlertMessage, aMessageView } from  '../store/slices/alertSlice'
+import { clearAlertMessage, messageView } from  '../store/slices/alertSlice'
 
 import { errorConsoleCatch, useForm, onCheckingRedirect, useAuthAlerts } from '../helpers'
 
@@ -32,8 +32,8 @@ export const useAuth = () => {
 
     const startLogin = ({ correo, password }) => {
 
-
             let isThere = JSON.parse(localStorage.usersRegistered).some(el => el.correo === correo)
+
 
             if(isThere){
 
@@ -47,11 +47,11 @@ export const useAuth = () => {
                             ToastLogin()
                              
                     }else{
-                            dispatch(aMessageView(['Error', 'Contraseña Mal' || 'working', 'error']))
+                            dispatch(messageView(['Error', 'Contraseña Mal' || 'working', 'error']))
                     }       
   
             }else{
-                    dispatch(aMessageView(['Error', 'Correo Incorrecta' || 'working', 'error']))
+                    dispatch(messageView(['Error', 'Correo Incorrecto' || 'working', 'error']))
             }
 
     }
@@ -84,7 +84,7 @@ export const useAuth = () => {
                     ToastRegistred()
 
             }else{
-                    dispatch(aMessageView(['Correo ya existe', 'Correo ya existe' || 'working', 'error']))
+                    dispatch(messageView(['Correo ya existe', 'Correo ya existe' || 'working', 'error']))
             }
 
 
@@ -121,7 +121,7 @@ export const useAuth = () => {
         navigateTo,
 
         //alert
-        aMessageView,
+        messageView,
 
         //herpers
         onCheckingRedirect,
