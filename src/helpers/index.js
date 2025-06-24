@@ -7,6 +7,7 @@ export * from './useForm';
 export * from './useConfirmDeleteAlerts';
 export * from './onCheckingRedirect';
 export * from './useAuthAlerts';
+export * from './useUtils';
 
 export * from './explorers/postExplorer';
 export * from './explorers/editExplorer';

@@ -9,6 +9,7 @@
 
 .menuX{
     color: white;
+    margin-right: 12px;
 }
 
 
@@ -34,7 +35,7 @@
 
 .hamburger {
     height: 50px;
-    padding:  16px;
+    padding:  4.2px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -43,7 +44,6 @@
     align-items: center;
     cursor: pointer;
     user-select: none;
-    height: 50px;
     position: fixed;
     top:0;
     width: 100%;
@@ -72,8 +72,10 @@
 }
 
 .menu>span{
-       padding: 16px!important;
+       padding: 12px!important;
        font-family: serif;
+       margin-top: 4px;
+       /*text-decoration: underline;*/
 }
 
 @media (max-width: 1000px) {
@@ -97,6 +99,9 @@
     transition: .4s;
 }
 
+
+
+
 @media (min-width: 1000px) {
     .hamburger {
         display: none;
@@ -104,13 +109,33 @@
     .display {
         flex-direction: row;
     }
+    
 }
 
 
+.logo-A{
+    width: 40px!important;
+    margin-right: 11px;
+    margin-bottom: 4.5px;
+}
 
 
+@media (max-width: 1000px) {
+    .logo-A{
+         margin-right: 0;
+        margin-bottom: 1px; 
 
+    }
+}
 
+.cruzCerrar{
+    font-size: 22px;
+}
+
+.puntitos{
+    /*font-size: 26px;*/
+    font-size: 25px;
+}
 
 
 

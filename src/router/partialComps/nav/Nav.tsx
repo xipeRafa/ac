@@ -1,15 +1,12 @@
-import { Link } from 'react-router-dom';
-import { useState } from "react";
-import colors from '../assets/pico-color-palette.json'
+
 import './nav.css'
-
 import { useAuth } from '../../../hooks/useAuth';
-    
-
+import colors from '../../../assets/pico.json'    
+import A from '../../../assets/a.png'
 
 export const Nav = () => {
 
-    const { startLogout } = useAuth();
+    const { startLogout, useState, Link } = useAuth();
 
 
    const [isActive, setIsActive] = useState(true);
@@ -20,13 +17,16 @@ export const Nav = () => {
         if (windowWidth < 999) {
             setIsActive(true);
         }
-    };
+    }
 
+
+
+    //c(colors['red'][150])
 
 
     //  red pink fuchsia purple violet indigo blue azure cyan jade 
     //  green lime yellow amber pumpkin orange sand grey zinc slate
-    // https://picocss.com/docs/colors
+    // https://picocss.com/docs/colors ⋮ {/*☰*/}
 
 
 
@@ -37,19 +37,29 @@ export const Nav = () => {
         { localStorage?.status == 'authenticated' && <> 
 
             <div onClick={() => setIsActive(!isActive)} className="hamburger">
-                <div className="menu-barras">
-                   <div className="uno" />
-                    <div className="dos" />
-                    <div className="tres" />
-                    {/*☰*/}
-                </div>
-                <span className='menuX'>{isActive ? "MENU" : "✘"}</span>
+                
+                <img src={A} className='logo-A'/>
+                {/*<span className='menuX'>{isActive ? <span className='puntitos'>☰</span> : "✘"}</span>*/}
+
+
+
+                <span className='menuX'>
+                    {isActive 
+                        ?   <div className="menu-barras">
+                                <div className="uno" />
+                                <div className="dos" />
+                                <div className="tres" />
+                            </div>
+                        : <span className='cruzCerrar'>✕</span>
+                    }
+                </span>
             </div>
 
 
             <div className={isActive ? "menu" : "menu display"} onClick={InWidth} style={{color:"white"}}>
 
-                <span>{localStorage.userName}</span>
+                <span><img src={A} className='logo-A'/>{ localStorage.userName.slice(0,10)}</span>
+
 
                 
                 <Link to="/ac/"      >Operadores  </Link>

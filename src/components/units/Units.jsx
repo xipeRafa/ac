@@ -1,7 +1,7 @@
 
 import { useUnits } from '../../hooks'
 
-import { PostFormUnits } from './PostFormUnits';
+import { UnitsForm } from './UnitsForm';
 
 
 
@@ -10,27 +10,20 @@ export const Units = () => {
 
 
 
-    const { dataUsersGet, unitsSlice, deleteUser, postUser, setInfoToForm,
-            editModeUnits, newDataEdit, defaultModeEdith, navigateTo, useEffect, capitalize,
-                useState, Modal, show, handleClose, handleShow, useForm, onCheckingRedirect } = useUnits()
-
-
+    const { unitsGet, unitsSlice, unitsDelete, unitsPost, setInfoToForm,
+            editMode, newDataEdit, defaultModeEdith, navigateTo, useEffect,
+            useState, Modal, show, handleClose, handleShow, useForm, onCheckingRedirect 
+    } = useUnits()
 
 
     useEffect(() => {
-
         onCheckingRedirect(navigateTo)
-
-        dataUsersGet()
-
+        unitsGet()
     }, [])
 
-
     const handleDelete = (el) => {
-        deleteUser(el)
+        unitsDelete(el)
     }
-
-
 
     const handleEdith = (el) => {
         setInfoToForm(el)
@@ -48,44 +41,18 @@ export const Units = () => {
 { localStorage?.status == 'authenticated' && <> 
 
 
-        <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
-
-                <Modal.Header className='modal2' >
-                        <Modal.Title>{editModeUnits ? 'EDITAR UNIDAD' : 'NUEVA UNIDAD' }</Modal.Title> 
-                        {editModeUnits ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
-                </Modal.Header>
-
-                <Modal.Body className='modal2'>
-
-                        <PostFormUnits 
-                            handleClose={handleClose} 
-                            postUser={postUser} 
-                            useEffect={useEffect} 
-                            useState={useState}
-                            editModeUnits={editModeUnits} 
-                            newDataEdit={newDataEdit} 
-                            defaultModeEdith={defaultModeEdith} 
-                            useForm={useForm} 
-                        />
-
-                </Modal.Body>
-
-                <Modal.Footer className='modal2'>
-                        
-                </Modal.Footer>
-
-        </Modal>
-
-
-
-            <h2 className="container-fluid text-center bg-white p-3">UNIDADES</h2>
+            <h2 className="container-fluid text-center bg-white p-3">
+                UNIDADES
+            </h2>
 
 
             <section className='sectionControls'>
                 <button className='btn-w secondary' onClick={()=>handleShow()}>
                         Nueva Unidad
                 </button>
-                <button className='btn-w secondary-out'>Buscar 🔍︎</button>
+                <button className='btn-w secondary-out'>
+                    Buscar 🔍︎
+                </button>
             </section>
 
 
@@ -112,6 +79,34 @@ export const Units = () => {
 
                 </div>
             ))}
+
+
+
+            <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
+
+                <Modal.Header className='modal2' >
+                        <Modal.Title>{editMode ? 'EDITAR UNIDAD' : 'NUEVA UNIDAD' }</Modal.Title> 
+                        {editMode ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
+                </Modal.Header>
+
+                <Modal.Body className='modal2'>
+
+                        <UnitsForm 
+                            handleClose={handleClose} 
+                            unitsPost={unitsPost} 
+                            useEffect={useEffect} 
+                            useState={useState}
+                            editMode={editMode} 
+                            newDataEdit={newDataEdit} 
+                            defaultModeEdith={defaultModeEdith} 
+                            useForm={useForm} 
+                        />
+
+                </Modal.Body>
+
+                <Modal.Footer className='modal2'></Modal.Footer>
+
+            </Modal>
 
 </>}
 

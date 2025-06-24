@@ -48,7 +48,7 @@ export const useConfirmDeleteAlerts = (...args) => {
 
         	Swal.fire({
           	title: `${ collection } Fue Borrado!`,
-		        text: COLLECTION.name,
+		        text: capitalize(COLLECTION.name),
             //showCloseButton: true,
     		    icon: "success",
         	  confirmButtonColor: "#015887", // ok button

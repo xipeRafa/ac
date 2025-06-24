@@ -1,11 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate, Route, Routes } from 'react-router-dom';
 
-import { onLogin, onLogout } from '../store/slices/authSlice'
-import { clearAlertMessage, messageView } from  '../store/slices/alertSlice'
+import Swal from 'sweetalert2'; //"warning", "error", "success","info", "question"
+
+import { onLoginView, onLogoutView } from '../store/slices/authSlice'
+import { clearAlertView, messageView } from  '../store/slices/alertSlice'
 
 import { errorConsoleCatch, useForm, onCheckingRedirect, useAuthAlerts } from '../helpers'
+
 
 
 
@@ -13,17 +16,15 @@ import { errorConsoleCatch, useForm, onCheckingRedirect, useAuthAlerts } from '.
 export const useAuth = () => {
 
 
-    const { ToastLogin, ToastRegistred, alertLogout }= useAuthAlerts()
+    const { statusSlice, userSlice } = useSelector(state => state.authSlice)
 
-    const { status, user } = useSelector(state => state.authSlice);
+    const navigateTo = useNavigate()
+    const dispatch = useDispatch()
 
-    const navigateTo = useNavigate();
-    
-    const dispatch = useDispatch();
+    const { toastLoginAlert, toastRegistredAlert, alertLogout }= useAuthAlerts(Swal)
 
-
-    const hello=(NOMBRE)=>{
-            localStorage.userName=NOMBRE
+    const hello = (NAME) => {
+            localStorage.userName=NAME
             localStorage.status = 'authenticated'
             navigateTo('/ac/')
     }
@@ -41,10 +42,10 @@ export const useAuth = () => {
 
                     if(user[0].password === password){
                        
-                            dispatch(onLogin({ nombre: user[0].nombre, uid: user[0].uid }));
+                            dispatch(onLoginView({ nombre: user[0].nombre, uid: user[0].uid }));
                             hello(user[0].nombre)
 
-                            ToastLogin()
+                            toastLoginAlert()
                              
                     }else{
                             dispatch(messageView(['Error', 'Contraseña Mal' || 'working', 'error']))
@@ -77,11 +78,11 @@ export const useAuth = () => {
                     usersLS.push({ nombre, correo, password, uid:Date.now() })
 
                     localStorage.usersRegistered = JSON.stringify(usersLS)
-                    dispatch(onLogin({ nombre: nombre }));
+                    dispatch(onLoginView({ nombre: nombre }));
 
                     hello(nombre)
 
-                    ToastRegistred()
+                    toastRegistredAlert()
 
             }else{
                     dispatch(messageView(['Correo ya existe', 'Correo ya existe' || 'working', 'error']))
@@ -91,23 +92,17 @@ export const useAuth = () => {
     }
  
 
-
-
-
-
-
     const startLogout = () => {
-            alertLogout(dispatch, navigateTo, onLogout)
+            alertLogout(dispatch, navigateTo, onLogoutView)
     }
-
 
 
 
 
     return {
         //* estado
-        status,
-        user,
+        statusSlice,
+        userSlice,
 
         //* Métodos
         startLogin,
@@ -119,6 +114,11 @@ export const useAuth = () => {
         Link,
         dispatch,
         navigateTo,
+        useState,
+        Navigate, 
+        Route, 
+        Routes,
+        useSelector,
 
         //alert
         messageView,
@@ -126,6 +126,8 @@ export const useAuth = () => {
         //herpers
         onCheckingRedirect,
         useForm, 
+
+        Swal,
 
     }
 

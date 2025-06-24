@@ -36,7 +36,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
     localStorage.obj = JSON.stringify(formState)
-    let aa = JSON.parse(localStorage.obj)
+    let stateInLS = JSON.parse(localStorage.obj)
 
 
     const quitarEspaciosFinales=(obj)=> {
@@ -48,9 +48,9 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     }
 
 
-    quitarEspaciosFinales(aa)
+    quitarEspaciosFinales(stateInLS)
 
-    localStorage.sinEspacios = JSON.stringify(aa)
+    localStorage.sinEspacios = JSON.stringify(stateInLS)
 
     let noSpace = JSON.parse(localStorage.sinEspacios)
 
@@ -58,11 +58,6 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     const isValidEmail = ( email: string ) => {
             const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
-    }
-
-
-    const capitalize=(v)=>{
-            return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
     }
 
 
@@ -178,7 +173,6 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         onInputChange,
         //onResetForm,
         noSpace,
-        capitalize,
 
        // ...formValidation,
        //isFormValid,

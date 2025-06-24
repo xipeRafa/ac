@@ -5,28 +5,29 @@ export const authSlice = createSlice({
     name: 'auth',
 
     initialState: {
-        status: 'checking', // 'authenticated','not-authenticated',
-        user: {}
+        statusSlice: 'checking', // 'authenticated','not-authenticated',
+        userSlice: {}
     },
     
     reducers: { 
-        onChecking: (state) => {
+        onCheckingView: (state) => {
             state.status = 'checking';
             state.user = {};
         },
-        onLogin: (state, { payload }) => {
+        onLoginView: (state, { payload }) => {
             state.status = 'authenticated';
             state.user = payload;
         },
-        onLogout: (state) => {
+        onLogoutView: (state) => {
             state.status = 'not-authenticated';
             state.user = {};
         }
     }
-});
+
+})
 
 
 
 
 
-export const { onChecking, onLogin, onLogout } = authSlice.actions;
+export const { onCheckingView, onLoginView, onLogoutView } = authSlice.actions;

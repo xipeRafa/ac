@@ -1,6 +1,6 @@
 
 
-import { PostForm } from './PostForm';
+import { OperatorsForm } from './OperatorsForm';
 import { useOperators } from '../../hooks'
 
 
@@ -8,31 +8,20 @@ import { useOperators } from '../../hooks'
 export const Operators = () => {
 
 
-    const { operatorsSlice, dataUsersGet, deleteUser, postUser, setInfoToForm,
+    const { operatorsSlice, operatorsGet, operatorsDelete, operatorsPost, setInfoToForm,
             editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, 
-            useEffect, useState, Modal, show, capitalize,
-            handleClose, handleShow, onCheckingRedirect} = useOperators()
+            useEffect, useState, Modal, show,
+            handleClose, handleShow, onCheckingRedirect
+    } = useOperators()
     
-
-
-
-
     useEffect(() => {
-
         onCheckingRedirect(navigateTo)
-
-        dataUsersGet()
-
+        operatorsGet()
     }, [])
 
-
-
-
     const handleDelete = (el: Object) => {
-        deleteUser(el)
+        operatorsDelete(el)
     }
-
-
 
     const handleEdith = (el: String) => {
         setInfoToForm(el)
@@ -40,59 +29,22 @@ export const Operators = () => {
     }
 
 
-     
-
-
+    
     return (
         <div className='mt-4'>
 
         { localStorage?.status == 'authenticated' && <> 
 
-
-            <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
-
-                <Modal.Header className='modal2' >
-                    <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR' }</Modal.Title> 
-                    {editMode ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
-                </Modal.Header>
-
-                <Modal.Body className='modal2'>
-                        <PostForm 
-                            postUser={postUser} 
-                            editMode={editMode} 
-                            newDataEdit={newDataEdit} 
-                            defaultModeEdith={defaultModeEdith}
-                            handleClose={handleClose}
-                            useForm={useForm}
-                            useEffect={useEffect}
-                            useState={useState}
-                        />
-                </Modal.Body>
-
-                <Modal.Footer className='modal2'>
-                </Modal.Footer>
-
-            </Modal>
-
-
-            <h2 className="container-fluid text-center bg-white p-3">
-                    OPERADORES
-            </h2>
-
+            <h2 className="container-fluid text-center bg-white p-3">OPERADORES</h2>
 
             <section className='sectionControls'>
-
                     <button className='btn-w secondary' onClick={()=>handleShow()}>
                             NUEVO OPERADOR
                     </button>
-
                     <button className='btn-w secondary-out'>
                             Buscar 🔍︎
                     </button>
-
             </section>
-
-
 
 
             {operatorsSlice.map((el, i) => (
@@ -128,6 +80,33 @@ export const Operators = () => {
 
                 </div>
             ))}
+
+
+
+
+            <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
+
+                <Modal.Header className='modal2' >
+                    <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR' }</Modal.Title> 
+                    {editMode ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
+                </Modal.Header>
+
+                <Modal.Body className='modal2'>
+                        <OperatorsForm 
+                            operatorsPost={operatorsPost} 
+                            editMode={editMode} 
+                            newDataEdit={newDataEdit} 
+                            defaultModeEdith={defaultModeEdith}
+                            handleClose={handleClose}
+                            useForm={useForm}
+                            useEffect={useEffect}
+                            useState={useState}
+                        />
+                </Modal.Body>
+
+                <Modal.Footer className='modal2'></Modal.Footer>
+
+            </Modal>
 
 
         </>}

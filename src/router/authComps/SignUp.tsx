@@ -82,7 +82,7 @@ export const SignUp = () => {
                                 className="form-control"
                                 placeholder="Nombre"
                                 name="registerName"
-                                value={registerName}
+                                value={capitalize(registerName)}
                                 onChange={onRegisterInputChange}
                             />
                             <label>Nombre</label>

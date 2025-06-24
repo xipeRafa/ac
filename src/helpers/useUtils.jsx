@@ -1,5 +1,26 @@
 
 
+import Modal from 'react-bootstrap/Modal';
+
+
+
+
+export const useUtils = (useState) => {
+
+	Modal
+
+	const [show, setShow] = useState(false)
+	const handleClose = () => setShow(false)
+	const handleShow = () => setShow(true)
+
+	return{
+		handleClose,
+		handleShow, 
+		show, 
+		Modal
+	}
+
+}
 
 
 

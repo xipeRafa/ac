@@ -28,6 +28,7 @@ export const operatorsSlice = createSlice({
             state.operatorsSlice = payload
         }
     }
+    
 })
 
 

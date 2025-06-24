@@ -2,12 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <link rel="icon" type="image/svg+xml" href="src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignations Control</title>
+    <style>
+          @import 'bootstrap/dist/css/bootstrap.min.css';
+          @import 'src/index.css'
+    </style>
+    <script>
+
+        const c =(v)=>{
+            console.log(v)
+        }
+
+
+        const capitalize=(v)=>{
+            return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+        }
+
+    </script>
   </head>
-  <body id="body">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
+
+

@@ -1,15 +1,15 @@
-import Swal from "sweetalert2";
-
-
-
-export const useAuthAlerts = () => {
 
 
 
 
+export const useAuthAlerts = (Swal) => {
 
 
-  const ToastLogin = () => {
+
+
+
+
+  const toastLoginAlert = () => {
     const ToastLogin = Swal.mixin({
       toast: true,
       position: "top",
@@ -50,7 +50,7 @@ export const useAuthAlerts = () => {
 
 
 
-  const ToastRegistred = () => {
+  const toastRegistredAlert = () => {
     const ToastRegistred2 = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -87,7 +87,7 @@ export const useAuthAlerts = () => {
 
 
 
-  const alertLogout = (dispatch, navigateTo, onLogout) => {
+  const alertLogout = (dispatch, navigateTo, onLogoutView) => {
     Swal.fire({
       title: "Quiere Salir?",
       text: "Desea Cerrar Cesión ?",
@@ -113,7 +113,7 @@ export const useAuthAlerts = () => {
         //localStorage.clear();
         localStorage.status = "not-authenticated";
         localStorage.userName = "";
-        dispatch(onLogout());
+        dispatch(onLogoutView());
         navigateTo("/ac/auth/login");
       } else {
         // Swal.fire({
@@ -140,8 +140,8 @@ export const useAuthAlerts = () => {
 
 
   return {
-    ToastLogin,
-    ToastRegistred,
+    toastLoginAlert,
+    toastRegistredAlert,
     alertLogout,
-  };
-};
+  }
+}

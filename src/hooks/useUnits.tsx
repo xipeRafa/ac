@@ -3,15 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
-import { useForm, useConfirmDeleteAlerts, onCheckingRedirect } from '../helpers'
-
+import { messageView, clearAlertView } from  '../store/slices/alertSlice'
 import {unitsCreateView, unitsEditView, defaultEditMode, unitsDeleteView, switchUnitsView} from  '../store/slices/unitsSlice'
 
-import { aMessageView, clearAlertView } from  '../store/slices/alertSlice'
-
- 
-import Modal from 'react-bootstrap/Modal';
+import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils } from '../helpers'
 
 
 
@@ -19,86 +14,58 @@ import Modal from 'react-bootstrap/Modal';
 export const useUnits = () => {
 
 
-
-  const { unitsSlice, editModeUnits} = useSelector(state => state.unitsSlice)
-
+  const { unitsSlice, editMode } = useSelector(state => state.unitsSlice)
   const dispatch = useDispatch()
-  
   const navigateTo = useNavigate()
 
 
-    
-
-
-  const dataUsersGet = (a) => {
+  const unitsGet = (a) => {
 
         if(localStorage.status !== 'authenticated'){
             return
         }
-
-        let workshops = []
         
         if(localStorage.unitsArray === undefined){
-              localStorage.unitsArray = JSON.stringify(workshops)
-              dispatch(unitsCreateView(workshops)) 
+              localStorage.unitsArray = JSON.stringify([])
+              dispatch(unitsCreateView([])) 
         }  
             
-        
         dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
-
   }
 
 
 
-  const postUser = ({ name, phone, idUnit, dateStart }) => {
-
-          let curretUsers = JSON.parse(localStorage.unitsArray)
-          
+  const unitsPost = ({ name, phone, idUnit, dateStart }) => {
+          let curretUsers = JSON.parse(localStorage.unitsArray)      
           curretUsers.push({ name, phone, idUnit, dateStart, uid:Date.now() })
           localStorage.unitsArray = JSON.stringify(curretUsers)
           dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
- 
   }
-
-
-
 
 
   const setInfoToForm = (el) => {
         dispatch(unitsEditView(el))
   }
 
-
-
-
-
   const newDataEdit = (name, phone, idUnit, uid) => { 
-
           let curretUsers = JSON.parse(localStorage.unitsArray)
-
-          let editedUsers = curretUsers.map((el) => (el.uid === uid ? {...editModeUnits, name, phone, idUnit } : el))
-         
+          let editedUsers = curretUsers.map((el) => (el.uid === uid ? {...editMode, name, phone, idUnit } : el))    
           localStorage.unitsArray = JSON.stringify(editedUsers)
-
           dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
-
-          dispatch(defaultEditMode()) 
-      
+          dispatch(defaultEditMode())   
   }
 
 
 
   const defaultModeEdith = () => {
-      dispatch(defaultEditMode())
+          dispatch(defaultEditMode())
   }
 
 
 
-  const { confirmDeleteAlerts } = useConfirmDeleteAlerts(
-       { collection:'Unidad', dispatch, unitsCreateView } 
-  )
+  const { confirmDeleteAlerts } = useConfirmDeleteAlerts({ collection:'Unidad', dispatch, unitsCreateView })
 
-  const deleteUser = (usuario: Object) => {
+  const unitsDelete = (usuario: Object) => {
           confirmDeleteAlerts(usuario)
   }
 
@@ -106,22 +73,16 @@ export const useUnits = () => {
 
 
 
-  const [show, setShow] = useState(false)
-
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const { Modal, show, handleClose, handleShow } = useUtils(useState)
 
 
 
-  const capitalize=(v)=>{
-        return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
-  }
 
 
   return {
-    dataUsersGet,
-    deleteUser,
-    postUser,
+    unitsGet,
+    unitsDelete,
+    unitsPost,
 
     //edit
     setInfoToForm,
@@ -129,13 +90,11 @@ export const useUnits = () => {
     defaultModeEdith,
 
     //states
-    editModeUnits,
+    editMode,
     unitsSlice,
 
     //react
     navigateTo,
-
-    //react
     useEffect, 
     useState,
 
@@ -148,7 +107,7 @@ export const useUnits = () => {
     //helpers
     useForm,
     onCheckingRedirect,
-    capitalize,
+
 
   }
 }
