@@ -1,4 +1,4 @@
-.navBar2{
+.navbar2{
     position: fixed;
     top:0px;
     left: 0px;
@@ -119,6 +119,12 @@
     margin-bottom: 4.5px;
 }
 
+.logo-A-menu{
+    width: 40px!important;
+     position: fixed;
+    top:4.4px;
+    left: 4px;
+}
 
 @media (max-width: 1000px) {
     .logo-A{

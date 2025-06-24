@@ -32,7 +32,7 @@ export const Nav = () => {
 
   return (
     
-    <div className="navbar2">
+    <div className="navBar2">
 
         { localStorage?.status == 'authenticated' && <> 
 
@@ -58,7 +58,7 @@ export const Nav = () => {
 
             <div className={isActive ? "menu" : "menu display"} onClick={InWidth} style={{color:"white"}}>
 
-                <span><img src={A} className='logo-A'/>{ localStorage.userName.slice(0,10)}</span>
+                <span><img src={A} className='logo-A-menu'/></span>
 
 
                 
