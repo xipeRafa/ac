@@ -13,13 +13,26 @@
     </style>
     <script>
 
-        const c =(v)=>{
-            console.log(v)
+        
+
+        const c = (d, v) =>{
+            if(v===undefined){
+                console.log(d)
+            }else{
+                console.log(d, v)
+            }
         }
 
-
-        const capitalize=(v)=>{
+        const capitalize = (v) => {
             return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+        }
+
+        const ls = (name, data) => { 
+            if(data === undefined){
+                return localStorage[name] !== undefined ? JSON.parse(localStorage[name]) : undefined // regresando, exa: ls('status')
+            }else{
+                localStorage[name] = JSON.stringify(data) // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
+            } 
         }
 
     </script>

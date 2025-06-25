@@ -1,8 +1,5 @@
+
 import { useEffect, useState } from 'react';
-
-
-//import { useDebounce } from "./useDebounce";
-
 
 
 
@@ -10,9 +7,7 @@ import { useEffect, useState } from 'react';
 export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
-
-    const [formState, setFormState] = useState(initialForm);
-
+    const [formState, setFormState] = useState(initialForm)
 
     const onInputChange = ({ target }) => {
 
@@ -25,34 +20,30 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
                 setFormState({ ...formState, [name]: value.trimStart() })
         }
 
-
     }
 
-
     useEffect(() => {
-        setFormState(initialForm);
+        setFormState(initialForm)
     }, [initialForm])
 
 
-
-    localStorage.obj = JSON.stringify(formState)
-    let stateInLS = JSON.parse(localStorage.obj)
-
+    ls('obj', formState)
+    let stateInLS = ls('obj')
 
     const quitarEspaciosFinales=(obj)=> {
-            for (const key in obj) {
-                    if (Object.hasOwn(obj, key) && typeof obj[key] === 'string') {
-                            obj[key] = obj[key].trimEnd().toLowerCase()
-                    }
+        for (const key in obj) {
+            if (Object.hasOwn(obj, key) && typeof obj[key] === 'string') {
+                obj[key] = obj[key].trimEnd().toLowerCase()
             }
+        }
     }
-
 
     quitarEspaciosFinales(stateInLS)
 
-    localStorage.sinEspacios = JSON.stringify(stateInLS)
 
-    let noSpace = JSON.parse(localStorage.sinEspacios)
+    ls('sinEspacios', stateInLS)
+
+    let noSpace = ls('sinEspacios')
 
 
     const isValidEmail = ( email: string ) => {
@@ -61,10 +52,33 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     }
 
 
+    return {
+        ...formState,
+        formState,
+        onInputChange,
+        //onResetForm,
+        noSpace,
+
+       // ...formValidation,
+       //isFormValid,
+        isValidEmail, // retorna true or false, resive el email text input 
+    }
+
+}
 
 
 
-   // const [formValidation, setFormValidation] = useState({});
+
+
+
+
+
+
+
+//import { useDebounce } from "./useDebounce";
+
+
+ // const [formValidation, setFormValidation] = useState({});
 
 
 
@@ -161,21 +175,22 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         // }
 
 
+ // import React from "react";
+ 
+ // export const useDebounce = (value, delay) => {
+ //    const [debouncedValue, setDebouncedValue] = React.useState(value);
+  
+ //    React.useEffect(() => {
+ //      const handler = setTimeout(() => {
+ //        setDebouncedValue(value);
+ //      }, delay);
+  
+ //      return () => {
+ //        clearTimeout(handler);
+ //      };
+ //    }, [value]);
+  
+ //    return debouncedValue;
 
-
-   
-
-
-
-    return {
-        ...formState,
-        formState,
-        onInputChange,
-        //onResetForm,
-        noSpace,
-
-       // ...formValidation,
-       //isFormValid,
-        isValidEmail, // retorna true or false, resive el email text input 
-    }
-}
+    
+ //  };

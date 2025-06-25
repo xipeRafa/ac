@@ -1,5 +1,4 @@
 
-
 import { useAuth } from '../../hooks/useAuth';
 
 
@@ -14,24 +13,19 @@ export const Login = () => {
 
 
     const { 
-        startLogin, 
-        useEffect,
-        Link,
-        dispatch,
-        messageView, 
-        useForm,
-        navigateTo,
-        onCheckingRedirect,
+        startLogin, useEffect, Link, dispatch, messageView, 
+        useForm, navigateTo, onCheckingRedirect,
     } = useAuth()
 
 
-
-    const { isValidEmail, loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields)
-
+    const { 
+        isValidEmail,loginEmail, loginPassword, 
+        onInputChange: onLoginInputChange 
+    } = useForm(loginFormFields)
 
 
     useEffect(() => { 
-            onCheckingRedirect(navigateTo)
+        onCheckingRedirect(navigateTo)
     }, [])
 
 
@@ -42,16 +36,16 @@ export const Login = () => {
         event.preventDefault()
 
         const validations = [
-                { condition: loginEmail==='' || loginPassword==='', message: ['Campo Vacio', 'Llenar todo por favor', 'warning'] },
-                { condition: !isValidEmail(loginEmail), message: ['Correo ?', 'Correo No Válido !!!', 'error'] },
-                { condition: loginPassword?.length < 4, message: ['Contraseña', 'Minimo 4 Caracteres', 'error'] },
+            { condition: loginEmail==='' || loginPassword==='', message: ['Campo Vacio', 'Llenar todo por favor', 'warning'] },
+            { condition: !isValidEmail(loginEmail), message: ['Correo ?', 'Correo No Válido !!!', 'error'] },
+            { condition: loginPassword?.length < 4, message: ['Contraseña', 'Minimo 4 Caracteres', 'error'] },
         ]
 
         for (const validation of validations) {
-                if (validation.condition) {
-                        dispatch(messageView(validation.message))
-                        return
-                }
+            if (validation.condition) {
+                dispatch(messageView(validation.message))
+                return
+            }
         } 
         
         startLogin({ correo: loginEmail.toLowerCase(), password: loginPassword });

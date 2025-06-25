@@ -50,7 +50,7 @@ export const useAuthAlerts = (Swal) => {
 
 
 
-  const toastRegistredAlert = () => {
+  const toastRegisterAlert = () => {
     const ToastRegistred2 = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -111,10 +111,10 @@ export const useAuthAlerts = (Swal) => {
         // })
 
         //localStorage.clear();
-        localStorage.status = "not-authenticated";
-        localStorage.userName = "";
+        localStorage.status = '"not-authenticated"';
+        localStorage.userName = '""';
         dispatch(onLogoutView());
-        navigateTo("/ac/auth/login");
+        navigateTo("/ac/auth/login/");
       } else {
         // Swal.fire({
         //   title: 'No Fue Borrado',
@@ -141,7 +141,7 @@ export const useAuthAlerts = (Swal) => {
 
   return {
     toastLoginAlert,
-    toastRegistredAlert,
+    toastRegisterAlert,
     alertLogout,
   }
 }

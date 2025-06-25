@@ -1,6 +1,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+
 export const authSlice = createSlice({
     name: 'auth',
 
@@ -25,9 +26,6 @@ export const authSlice = createSlice({
     }
 
 })
-
-
-
 
 
 export const { onCheckingView, onLoginView, onLogoutView } = authSlice.actions;

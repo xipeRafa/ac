@@ -4,45 +4,33 @@ import { useAuth } from '../../../hooks/useAuth';
 import colors from '../../../assets/pico.json'    
 import A from '../../../assets/a.png'
 
+
+
+
 export const Nav = () => {
 
-    const { startLogout, useState, Link } = useAuth();
+    const { startLogout, useState, Link } = useAuth()
 
+    const [isActive, setIsActive] = useState(true)
 
-   const [isActive, setIsActive] = useState(true);
-
-    const windowWidth = window.innerWidth;
+    const windowWidth = window.innerWidth
 
     const InWidth = () => {
         if (windowWidth < 999) {
-            setIsActive(true);
+            setIsActive(true)
         }
     }
 
 
-
-    //c(colors['red'][150])
-
-
-    //  red pink fuchsia purple violet indigo blue azure cyan jade 
-    //  green lime yellow amber pumpkin orange sand grey zinc slate
-    // https://picocss.com/docs/colors ⋮ {/*☰*/}
-
-
-
-  return (
+    return (
     
-    <div className="navBar2">
+    <div>
 
-        { localStorage?.status == 'authenticated' && <> 
+        { ls('status') === 'authenticated' && <> 
 
-            <div onClick={() => setIsActive(!isActive)} className="hamburger">
-                
+            <div className="hamburger" onClick={() => setIsActive(!isActive)} >
                 <img src={A} className='logo-A'/>
                 {/*<span className='menuX'>{isActive ? <span className='puntitos'>☰</span> : "✘"}</span>*/}
-
-
-
                 <span className='menuX'>
                     {isActive 
                         ?   <div className="menu-barras">
@@ -50,7 +38,7 @@ export const Nav = () => {
                                 <div className="dos" />
                                 <div className="tres" />
                             </div>
-                        : <span className='cruzCerrar'>✕</span>
+                        :   <span className='cruzCerrar'>✕</span>
                     }
                 </span>
             </div>
@@ -60,12 +48,10 @@ export const Nav = () => {
 
                 <span><img src={A} className='logo-A-menu'/></span>
 
-
-                
                 <Link to="/ac/"      >Operadores  </Link>
+
                 <Link to="/ac/units/">Unidades    </Link>
                 
-
                 <Link  to="/ac/auth/login/" style={{textDecoration:'none'}} onClick={startLogout}>
                     salir ➪
                 </Link>
@@ -76,6 +62,6 @@ export const Nav = () => {
 
     </div>
  
-  )
+    )
 
 }

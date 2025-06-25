@@ -1,27 +1,28 @@
 
-
 import { OperatorsForm } from './OperatorsForm';
 import { useOperators } from '../../hooks'
-
 
 
 export const Operators = () => {
 
 
-    const { operatorsSlice, operatorsGet, operatorsDelete, operatorsPost, setInfoToForm,
-            editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, 
-            useEffect, useState, Modal, show,
-            handleClose, handleShow, onCheckingRedirect
+    const { 
+        operatorsSlice, operatorsGet, operatorsDelete, operatorsPost, setInfoToForm,
+        editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, useEffect,
+         useState, Modal, show,handleClose, handleShow, onCheckingRedirect
     } = useOperators()
-    
+   
+
     useEffect(() => {
         onCheckingRedirect(navigateTo)
         operatorsGet()
     }, [])
 
+
     const handleDelete = (el: Object) => {
         operatorsDelete(el)
     }
+
 
     const handleEdith = (el: String) => {
         setInfoToForm(el)
@@ -33,16 +34,16 @@ export const Operators = () => {
     return (
         <div className='mt-4'>
 
-        { localStorage?.status == 'authenticated' && <> 
-
-            <h2 className="container-fluid text-center bg-white p-3">OPERADORES</h2>
+            <h2 className="container-fluid text-center bg-white p-3">
+                    OPERADORES
+            </h2>
 
             <section className='sectionControls'>
                     <button className='btn-w secondary' onClick={()=>handleShow()}>
-                            NUEVO OPERADOR
+                        NUEVO OPERADOR
                     </button>
                     <button className='btn-w secondary-out'>
-                            Buscar 🔍︎
+                        Buscar 🔍︎
                     </button>
             </section>
 
@@ -62,19 +63,6 @@ export const Operators = () => {
                     <button className='btn-w' onClick={() => handleDelete(el)}>Eliminar</button>
                     <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
 
-                   {/* <button className='btn-w primary'>Primary</button>
-                    <button className='btn-w primary-out'>Primary-out</button>
-
-                    <button className='btn-w secondary'>Secondary</button>
-                    <button className='btn-w secondary-out'>Secondary-out</button>
-
-                    <button className='btn-w success'>Success</button>
-                    <button className='btn-w success-out'>Success-out</button>
-
-                     <button className='btn-w danger'>Danger</button>
-                    <button className='btn-w danger-out'>Danger-out</button>*/}
-
-
                     {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}
                     {/*<input type="file" id="file-upload" onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}
 
@@ -88,7 +76,7 @@ export const Operators = () => {
 
                 <Modal.Header className='modal2' >
                     <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR' }</Modal.Title> 
-                    {editMode ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
+                    {!editMode && <b className='btn-closeX' onClick={handleClose}>❌</b> }
                 </Modal.Header>
 
                 <Modal.Body className='modal2'>
@@ -107,10 +95,6 @@ export const Operators = () => {
                 <Modal.Footer className='modal2'></Modal.Footer>
 
             </Modal>
-
-
-        </>}
-
 
         </div>
     )

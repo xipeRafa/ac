@@ -13,29 +13,20 @@ const registerFormFields = {
 export const SignUp = () => {
 
 
-    const { startRegister, 
-        useEffect,
-        Link,
-        dispatch,
-        messageView, 
-        useForm,
-        navigateTo,
-        onCheckingRedirect,
+    const { 
+        startRegister, useEffect, Link, dispatch, messageView, useForm,
+        navigateTo,onCheckingRedirect,
     } = useAuth()
 
 
     const { 
-        isValidEmail,
-        registerEmail,
-        registerName, 
-        registerPassword, 
-        registerPassword2, 
-        onInputChange: onRegisterInputChange, 
+        isValidEmail, registerEmail, registerName, registerPassword, 
+        registerPassword2, onInputChange: onRegisterInputChange, 
     } = useForm(registerFormFields)
 
 
     useEffect(() => { 
-            onCheckingRedirect(navigateTo)
+        onCheckingRedirect(navigateTo)
     }, [])
 
 
@@ -44,23 +35,22 @@ export const SignUp = () => {
 
         event.preventDefault()
 
-
         const validations = [
-                { condition: !isValidEmail(registerEmail), message: ['Correo ?', 'Correo No Válido !!!', 'error'] },
-                { condition: registerPassword?.length < 4, message: ['Contraseña', 'Minimo 4 Caracteres', 'error'] },
-                { condition: registerPassword !== registerPassword2, message: ['Error en registro', 'Contraseñas NO son Iguales', 'error'] }
+            { condition: !isValidEmail(registerEmail), message: ['Correo ?', 'Correo No Válido !!!', 'error'] },
+            { condition: registerPassword?.length < 4, message: ['Contraseña', 'Minimo 4 Caracteres', 'error'] },
+            { condition: registerPassword !== registerPassword2, message: ['Error en registro', 'Contraseñas NO son Iguales', 'error'] }
         ]
 
 
         for (const validation of validations) {
-                if (validation.condition) {
-                        dispatch(messageView(validation.message))
-                        return
-                }
+            if (validation.condition) {
+                dispatch(messageView(validation.message))
+                return
+            }
         }
 
-
-        startRegister({ nombre: registerName.toLowerCase(), correo: registerEmail.toLowerCase(), password: registerPassword });
+        startRegister({ nombre: registerName.toLowerCase(), correo: registerEmail.toLowerCase(), password: registerPassword })
+        
     }
 
 

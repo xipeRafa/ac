@@ -12,11 +12,13 @@ const AppRouter = () => {
     const { SwalSlice } = useSelector(state => state.alertSlice);
 
     useEffect(() => {
-            if (SwalSlice !== undefined) {
-                    Swal.fire(SwalSlice[0], SwalSlice[1], SwalSlice[2])
-            } 
+        if (SwalSlice !== undefined) {
+            Swal.fire(SwalSlice[0], SwalSlice[1], SwalSlice[2])
+        } 
     }, [SwalSlice]) 
  
+
+    let status = (ls('status') === 'not-authenticated' || ls('status') === undefined)
 
 
 
@@ -26,14 +28,13 @@ const AppRouter = () => {
 
                 <Route path="/ac/auth/login/"    element={<Login />} />
                 <Route path="/ac/auth/register/" element={<SignUp />} />
-
+            
 
                 <Route path="/ac/"               element={<Operators />} />
                 <Route path="/ac/units/"         element={<Units />} />
 
-
-                <Route path="/*"                 element={<Navigate to="/ac/" />} /> 
-
+                <Route path="/*" element={status ? <Navigate to="/ac/auth/login/" /> : <Navigate to="/ac/" />} /> 
+            
             </Routes>
         </div>
     )

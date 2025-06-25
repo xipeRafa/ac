@@ -1,10 +1,6 @@
 
-
-
-
-
-export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith, handleClose, useEffect, useState, useForm }) => {
-
+export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith, 
+                                handleClose, useEffect, useState, useForm }) => {
 
 
     const[unitState, setUnitState]=useState({
@@ -12,10 +8,9 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith, 
     })
 
 
-
-
-    const { name, phone, idUnit, onInputChange: onPostInputChange, noSpace } = useForm(unitState);
-
+    const { 
+        name, phone, idUnit, onInputChange: onPostInputChange, noSpace 
+    } = useForm(unitState)
 
 
     useEffect(() => { 
@@ -26,10 +21,7 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith, 
     }, [editMode]) 
 
 
-
-
-
-    const onSubmitUsers = () => {
+    const onSubmit = () => {
         event.preventDefault();
 
         if(editMode){
@@ -44,9 +36,8 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith, 
         handleClose()
     }
 
-
-    
-    const handleCancelEdit =()=>{
+ 
+    const handleCancelEdit = () => {
         defaultModeEdith()
         setUnitState({name:'', phone:'', idUnit:''})
         handleClose()
@@ -60,7 +51,7 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith, 
     <div className="row">
         <div className="col-lg-8 offset-lg-2">
 
-            <form onSubmit={onSubmitUsers}>
+            <form onSubmit={onSubmit}>
 
 
                 <div className="form-group mb-3 mt-4 pt-3">

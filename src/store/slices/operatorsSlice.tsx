@@ -2,7 +2,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 
-
 export const operatorsSlice = createSlice({
     name: 'operators',
 
@@ -28,10 +27,8 @@ export const operatorsSlice = createSlice({
             state.operatorsSlice = payload
         }
     }
-    
+
 })
-
-
 
 
 export const { opCreateView, opEditView, defaultEditMode, opDeleteView, opSwitchView } = operatorsSlice.actions;

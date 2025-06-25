@@ -20,7 +20,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
     }, [editMode]) 
 
 
-    const onSubmitUsers = (event: any) => {
+    const onSubmit = (event: any) => {
         event.preventDefault();
 
         if(editMode){
@@ -46,7 +46,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
         <div className="col-lg-8 offset-lg-2" >
             
 
-            <form onSubmit={onSubmitUsers} >
+            <form onSubmit={onSubmit} >
 
                 <div className="form-group mb-3 mt-4 pt-3">
                     {editMode && <label>Nombre</label>}

@@ -1,18 +1,15 @@
 
 import { useUnits } from '../../hooks'
-
 import { UnitsForm } from './UnitsForm';
-
-
 
 
 export const Units = () => {
 
 
-
-    const { unitsGet, unitsSlice, unitsDelete, unitsPost, setInfoToForm,
-            editMode, newDataEdit, defaultModeEdith, navigateTo, useEffect,
-            useState, Modal, show, handleClose, handleShow, useForm, onCheckingRedirect 
+    const { 
+        unitsGet, unitsSlice, unitsDelete, unitsPost, setInfoToForm, editMode,
+        newDataEdit, defaultModeEdith, navigateTo, useEffect, useState, Modal,
+        show, handleClose, handleShow, useForm, onCheckingRedirect 
     } = useUnits()
 
 
@@ -21,9 +18,11 @@ export const Units = () => {
         unitsGet()
     }, [])
 
+
     const handleDelete = (el) => {
         unitsDelete(el)
     }
+
 
     const handleEdith = (el) => {
         setInfoToForm(el)
@@ -32,14 +31,8 @@ export const Units = () => {
 
 
 
-     
-
-
     return (
         <div className='mt-4'>
-
-{ localStorage?.status == 'authenticated' && <> 
-
 
             <h2 className="container-fluid text-center bg-white p-3">
                 UNIDADES
@@ -48,7 +41,7 @@ export const Units = () => {
 
             <section className='sectionControls'>
                 <button className='btn-w secondary' onClick={()=>handleShow()}>
-                        Nueva Unidad
+                    Nueva Unidad
                 </button>
                 <button className='btn-w secondary-out'>
                     Buscar 🔍︎
@@ -86,7 +79,7 @@ export const Units = () => {
 
                 <Modal.Header className='modal2' >
                         <Modal.Title>{editMode ? 'EDITAR UNIDAD' : 'NUEVA UNIDAD' }</Modal.Title> 
-                        {editMode ? '' : <b className='btn-closeX' onClick={handleClose}>❌</b> }
+                        {!editMode && <b className='btn-closeX' onClick={handleClose}>❌</b>}
                 </Modal.Header>
 
                 <Modal.Body className='modal2'>
@@ -107,8 +100,6 @@ export const Units = () => {
                 <Modal.Footer className='modal2'></Modal.Footer>
 
             </Modal>
-
-</>}
 
         </div>
     )
