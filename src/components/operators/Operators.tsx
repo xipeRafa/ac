@@ -9,7 +9,7 @@ export const Operators = () => {
     const { 
         operatorsSlice, operatorsGet, operatorsDelete, operatorsPost, setInfoToForm,
         editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, useEffect,
-         useState, Modal, show,handleClose, handleShow, onCheckingRedirect
+         useState, Modal, show, handleClose, handleShow, onCheckingRedirect
     } = useOperators()
    
 
@@ -34,7 +34,7 @@ export const Operators = () => {
     return (
         <div className='mt-4'>
 
-            <h2 className="container-fluid text-center bg-white p-3">
+            <h2 className="header">
                     OPERADORES
             </h2>
 

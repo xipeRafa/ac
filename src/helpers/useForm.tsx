@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 
 
-
 export const useForm = (initialForm = {}, formValidations = {}) => {
 
 
@@ -41,9 +40,9 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     quitarEspaciosFinales(stateInLS)
 
 
-    ls('sinEspacios', stateInLS)
+    ls('noSpace', stateInLS)
 
-    let noSpace = ls('sinEspacios')
+    let noSpace = ls('noSpace')
 
 
     const isValidEmail = ( email: string ) => {

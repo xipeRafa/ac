@@ -46,7 +46,6 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
     <div className="container sombra mt-5 ">
       <div className="row">
         <div className="col-lg-8 offset-lg-2" >
-            
 
             <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-4'}>
 

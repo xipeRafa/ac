@@ -51,7 +51,6 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
 
             <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-4'}>
 
-
                 <div className="form-group mb-3 pt-3">
                     {editMode && <label>Descripción</label>}
                     <input
@@ -78,7 +77,7 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
                     />
                 </div>
 
-                 <div className="form-group mb-3">
+                <div className="form-group mb-3">
                     {editMode && <label>Identificador</label>}
                     <input
                         type='text'

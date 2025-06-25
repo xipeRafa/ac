@@ -34,7 +34,7 @@ export const Units = () => {
     return (
         <div className='mt-4'>
 
-            <h2 className="container-fluid text-center bg-white p-3">
+            <h2 className="header">
                 UNIDADES
             </h2>
 
