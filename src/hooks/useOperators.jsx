@@ -23,7 +23,7 @@ export const useOperators = () => {
 
 
     const operatorsGet = () => {
-        if(ls('status') !== 'authenticated'){
+        if (ls('status') !== 'authenticated'){
             return
         }
         ls('operatorsArray') === undefined && ls('operatorsArray', []) 

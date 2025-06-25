@@ -9,17 +9,20 @@ import A from '../../../assets/a.png'
 
 export const Nav = () => {
 
-    const { startLogout, useState, Link } = useAuth()
+    const { startLogout, useState, Link, useEffect, useLocation } = useAuth()
+
+
+    const { pathname } = useLocation()
+  
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "auto", })
+    }, [pathname])
+
 
     const [isActive, setIsActive] = useState(true)
 
     const windowWidth = window.innerWidth
 
-    const InWidth = () => {
-        if (windowWidth < 999) {
-            setIsActive(true)
-        }
-    }
 
 
     return (
@@ -29,8 +32,9 @@ export const Nav = () => {
         { ls('status') === 'authenticated' && <> 
 
             <div className="hamburger" onClick={() => setIsActive(!isActive)} >
+
                 <img src={A} className='logo-A'/>
-                {/*<span className='menuX'>{isActive ? <span className='puntitos'>☰</span> : "✘"}</span>*/}
+
                 <span className='menuX'>
                     {isActive 
                         ?   <div className="menu-barras">
@@ -41,10 +45,11 @@ export const Nav = () => {
                         :   <span className='cruzCerrar'>✕</span>
                     }
                 </span>
+                
             </div>
 
 
-            <div className={isActive ? "menu" : "menu display"} onClick={InWidth} style={{color:"white"}}>
+            <div className={isActive ? "menu" : "menu display"} onClick={()=>windowWidth < 999 && setIsActive(true)} style={{color:"white"}}>
 
                 <span><img src={A} className='logo-A-menu'/></span>
 

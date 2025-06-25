@@ -1,5 +1,6 @@
 
 import { useAuth } from '../../hooks/useAuth';
+import AC from '../../assets/AC.png'
 
 
 const loginFormFields = {
@@ -58,9 +59,9 @@ export const Login = () => {
         <div className="container p-4" style={{border:'2px solid white'}}>
 
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-lg-6 mb-4">
 
-                    <h3>Entrar</h3>
+                    <h3>ENTRAR</h3>
 
                     <form onSubmit={loginSubmit}>
                         <div className="form-group mb-3 form-floating">
@@ -90,10 +91,20 @@ export const Login = () => {
 
                     </form>
 
-                    <Link to="/ac/auth/register/">ir a Registro</Link>
+                    <Link to="/ac/auth/register/">Crear Cuenta</Link>
 
                 </div>
+
+
+                <div className="col-lg-6">
+                           <img src={AC} className='AC-logo'/>
+                </div>
             </div>
+
+
+
+              
+
 
         </div>
     )

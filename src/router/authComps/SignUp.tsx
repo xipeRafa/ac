@@ -1,5 +1,8 @@
 
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth'
+
+import AC from '../../assets/AC.png'
+
 
 const registerFormFields = {
     registerName: '',
@@ -61,8 +64,9 @@ export const SignUp = () => {
         <div className="container login-container p-4" style={{border:'2px solid white'}}>
 
             <div className="row">
-                <div className="col-md-6">
-                    <h3>Registro</h3>
+                <div className="col-lg-6 mb-4">
+
+                    <h3>REGISTRO</h3>
 
                     <form onSubmit={registerSubmit}>
                         <div className="form-group mb-3 form-floating">
@@ -118,12 +122,16 @@ export const SignUp = () => {
                             <input
                                 type="submit"
                                 className="btn btn-dark btn-lg mb-3 w-100"
-                                value="Crear Cuenta" />
+                                value="CREAR CUENTA" />
 
                     </form>
 
                     <Link to="/ac/auth/login/">Entrar </Link>
 
+                </div>
+
+                 <div className="col-lg-6">
+                           <img src={AC} className='AC-logo'/>
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@ const AppRouter = () => {
                 <Route path="/ac/"               element={<Operators />} />
                 <Route path="/ac/units/"         element={<Units />} />
 
-                <Route path="/*" element={status ? <Navigate to="/ac/auth/login/" /> : <Navigate to="/ac/" />} /> 
+                <Route path="/*" element={ status ? <Navigate to="/ac/auth/login/" /> : <Navigate to="/ac/" /> } /> 
             
             </Routes>
         </div>

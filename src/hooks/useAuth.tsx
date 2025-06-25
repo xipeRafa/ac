@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link, Navigate, Route, Routes } from 'react-router-dom';
+import { useNavigate, Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import { onLoginView, onLogoutView } from '../store/slices/authSlice'
 import { clearAlertView, messageView } from  '../store/slices/alertSlice'
@@ -109,6 +109,7 @@ export const useAuth = () => {
         Route, 
         Routes,
         useSelector,
+        useLocation,
 
         //alert
         messageView,

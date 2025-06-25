@@ -23,7 +23,7 @@ export const useUnits = () => {
 
 
     const unitsGet = () => {
-        if(ls('status') !== 'authenticated'){
+        if (ls('status') !== 'authenticated'){
             return
         }
         ls('unitsArray') === undefined && ls('unitsArray', [])

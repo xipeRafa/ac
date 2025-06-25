@@ -16,6 +16,7 @@ export const useConfirmDeleteAlerts = (...args) => {
 
   const confirmDeleteAlerts =(COLLECTION)=>{
 
+
   	Swal.fire({
     	title: "Quieres Borrar?",
     	text: "Una Vez Borrado NO Podras Recuperarlo!",
@@ -37,7 +38,7 @@ export const useConfirmDeleteAlerts = (...args) => {
 
         	Swal.fire({
           	title: `${ collection } Fue Borrado!`,
-		        text: capitalize(COLLECTION.name) || capitalize(COLLECTION.idUnit),
+		        // text: capitalize(COLLECTION.name) || capitalize(COLLECTION.ne),
             //showCloseButton: true,
     		    icon: "success",
         	  confirmButtonColor: "#015887", // ok button
