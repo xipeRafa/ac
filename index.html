@@ -2,8 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
     <link rel="icon" type="image/svg+xml" href="https://xipeRafa.github.io/ac/assets/favicon-CN_BPqfj.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignations Control</title>
@@ -1431,6 +1429,28 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
 .btn-dark:hover{
     background-color: var(--slate-600)!important;
 }
+.sb{
+    width: 100%;
+    margin-top: 12px; 
+    margin-bottom: 7px;
+}
+/* Submit Edit Button */
+.seb{ 
+    width: 100%!important;
+    margin-right: 20px;
+    margin-top: 24px;
+}
+/* submit Cancelar Button */
+.scb{
+    width: 100%!important;
+    margin-top: 24px;
+    margin-bottom: 20px;
+}
+@media(max-width: 575px){
+    .scb{
+        margin-top: 44px;
+    }
+}
 {/* <button className='btn-w primary'>Primary</button>
                     <button className='btn-w primary-out'>Primary-out</button>
 
@@ -1574,7 +1594,7 @@ footer{
 
         
 
-        const c = (d, v) =>{
+        const c = (d, v) => {
             if(v===undefined){
                 console.log(d)
             }else{
@@ -1582,9 +1602,13 @@ footer{
             }
         }
 
+
+
         const capitalize = (v) => {
             return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
+
+
 
         const ls = (name, data) => { 
             if(data === undefined){
@@ -1594,8 +1618,10 @@ footer{
             } 
         }
 
+
+
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-Cfr4RAqe.js"></script>
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-OF68lfIT.js"></script>
     <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-WwMl-hQ7.css">
   </head>
   <body>
