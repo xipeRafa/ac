@@ -2,7 +2,9 @@
 
 
 
-export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultModeEdith, handleClose, useForm, useState, useEffect }) => {
+export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultModeEdith, 
+                                    handleClose, useForm, useState, useEffect }) => {
+
 
 
     const[operatorState, setOperatorState]=useState({name:'', phone:'', idOperator:'' })
@@ -10,7 +12,6 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
 
     const { name, phone, idOperator,
             onInputChange: onPostInputChange, noSpace} = useForm(operatorState);
-
 
 
     useEffect(() => { 
@@ -42,7 +43,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
 
 
   return (
-    <div className="container sombra mt-5">
+    <div className="container sombra mt-5 ">
       <div className="row">
         <div className="col-lg-8 offset-lg-2" >
             
@@ -52,8 +53,8 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                 <div className="form-group mb-3 mt-4 pt-3">
                     {editMode && <label>Nombre</label>}
                     <input
-                        type='text'
                         required
+                        type='text'
                         className="form-control"
                         placeholder="Nombre"
                         name="name"
@@ -65,8 +66,8 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                 <div className="form-group mb-3">
                     {editMode && <label>Identificador</label>}
                     <input
-                        type='text'
                         required
+                        type='text'
                         className="form-control"
                         placeholder="ID"
                         name="idOperator"
@@ -78,8 +79,8 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                 <div className="form-group mb-3">
                     {editMode && <label>Telefono</label>}
                     <input
-                        type='text'
                         required
+                        type='text'
                         className="form-control"
                         placeholder="# Telefono"
                         name="phone"
@@ -89,14 +90,14 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                 </div>
 
 
-                <div className='d-flex flex-column flex-sm-row mb-2 pt-2'>
+                <div className='d-flex flex-column flex-sm-row mb-2 pt-2 '>
 
                         <input type="submit"
-                            className={editMode ? "btn-w w-100 me-5 mb-3 mt-4 primary" : "btn-w w-100 mb-2 mt-3 primary" } 
+                            className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 
                             value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador"} />
 
                         {editMode && 
-                            <button type="reset" onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
+                            <button type="reset" onClick={handleCancelEdit} className="btn-w scb primary-out">    
                                     Cancelar Edición <b style={{color:'red'}}>✘</b> 
                             </button>
                         }

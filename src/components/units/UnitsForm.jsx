@@ -27,7 +27,6 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
         if(editMode){
             const { descri, ne, idUnit } = noSpace
             newDataEdit(descri, ne, idUnit, editMode.uid)
-            // setUnitState({name:'', phone:'', idUnit:'' })
         }else{
             const { descri, ne, idUnit } = noSpace
             unitsPost({descri, ne, idUnit })
@@ -39,7 +38,6 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
  
     const handleCancelEdit = () => {
         defaultModeEdith()
-        // setUnitState({name:'', phone:'', idUnit:''})
         handleClose()
     }
 
@@ -94,15 +92,15 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
                 </div>
 
 
-                    <div className='d-flex flex-column flex-sm-row mb-2 pt-2'>
+                <div className='d-flex flex-column flex-sm-row mb-2 pt-2'>
 
                         <input 
                             type="submit"
-                            className={editMode ? "btn-w w-100 me-5 mb-3 mt-4 primary" : "btn-w w-100 mb-2 mt-3 primary" } 
+                            className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 
                             value={ editMode ? 'Guardar Cambios ↑': "Guardar Unidad"} />
 
                         {editMode && 
-                            <button type="reset" onClick={handleCancelEdit} className="btn-w w-100 mt-4 primary-out">    
+                            <button type="reset" onClick={handleCancelEdit} className="btn-w scb primary-out">    
                                     Cancelar Edición <b style={{color:'red'}}>✘</b> 
                             </button>
                         }

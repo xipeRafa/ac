@@ -2,8 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
     <link rel="icon" type="image/svg+xml" href="src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignations Control</title>
@@ -15,7 +13,7 @@
 
         
 
-        const c = (d, v) =>{
+        const c = (d, v) => {
             if(v===undefined){
                 console.log(d)
             }else{
@@ -23,9 +21,13 @@
             }
         }
 
+
+
         const capitalize = (v) => {
             return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
+
+
 
         const ls = (name, data) => { 
             if(data === undefined){
@@ -34,6 +36,8 @@
                 localStorage[name] = JSON.stringify(data) // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
             } 
         }
+
+
 
     </script>
   </head>

@@ -171,6 +171,35 @@
 }
 
 
+.sb{
+    width: 100%;
+    margin-top: 12px; 
+    margin-bottom: 7px;
+}
+
+/* Submit Edit Button */
+.seb{ 
+    width: 100%!important;
+    margin-right: 20px;
+    margin-top: 24px;
+}
+
+
+/* submit Cancelar Button */
+.scb{
+    width: 100%!important;
+    margin-top: 24px;
+    margin-bottom: 20px;
+}
+
+
+@media(max-width: 575px){
+    .scb{
+        margin-top: 44px;
+    }
+}
+
+
 
 
                 {/* <button className='btn-w primary'>Primary</button>
