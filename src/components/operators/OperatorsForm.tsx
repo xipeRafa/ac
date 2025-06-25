@@ -12,6 +12,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             onInputChange: onPostInputChange, noSpace} = useForm(operatorState);
 
 
+
     useEffect(() => { 
         if(editMode !== undefined) {
             const { name, phone, idOperator } = editMode

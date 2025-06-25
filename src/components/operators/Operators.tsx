@@ -19,12 +19,12 @@ export const Operators = () => {
     }, [])
 
 
-    const handleDelete = (el: Object) => {
+    const handleDelete = (el) => {
         operatorsDelete(el)
     }
 
 
-    const handleEdith = (el: String) => {
+    const handleEdith = (el) => {
         setInfoToForm(el)
         handleShow()
     }

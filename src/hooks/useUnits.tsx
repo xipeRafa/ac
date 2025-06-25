@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { messageView, clearAlertView } from  '../store/slices/alertSlice'
 import { unitsCreateView, unitsEditView, defaultEditMode, unitsDeleteView, switchUnitsView } from  '../store/slices/unitsSlice'
 
-import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils } from '../helpers'
+import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils, editExplorer } from '../helpers'
 
 
 
@@ -19,31 +19,23 @@ export const useUnits = () => {
     const dispatch = useDispatch()
     const navigateTo = useNavigate()
 
-    const { confirmDeleteAlerts } = useConfirmDeleteAlerts({ collection:'Unidad', dispatch, unitsCreateView })
     const { Modal, show, handleClose, handleShow } = useUtils(useState)
 
 
-    const unitsGet = (a) => {
-
-        if(localStorage.status !== 'authenticated'){
+    const unitsGet = () => {
+        if(ls('status') !== 'authenticated'){
             return
         }
-        
-        if(localStorage.unitsArray === undefined){
-              localStorage.unitsArray = JSON.stringify([])
-              dispatch(unitsCreateView([])) 
-        }  
-            
-        dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
-
+        ls('unitsArray') === undefined && ls('unitsArray', [])
+        dispatch(unitsCreateView(ls('unitsArray')))
     }
 
 
-    const unitsPost = ({ name, phone, idUnit, dateStart }) => {
-        let curretUsers = JSON.parse(localStorage.unitsArray)      
-        curretUsers.push({ name, phone, idUnit, dateStart, uid:Date.now() })
-        localStorage.unitsArray = JSON.stringify(curretUsers)
-        dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
+    const unitsPost = ({ descri, ne, idUnit, }) => {
+        let posted = ls('unitsArray')      
+        posted.push({ descri, ne, idUnit, uid:Date.now() })
+        ls('unitsArray', posted)
+        dispatch(unitsCreateView(ls('unitsArray')))
     }
 
 
@@ -51,11 +43,11 @@ export const useUnits = () => {
         dispatch(unitsEditView(el))
     }
 
-    const newDataEdit = (name, phone, idUnit, uid) => { 
-        let curretUsers = JSON.parse(localStorage.unitsArray)
-        let editedUsers = curretUsers.map((el) => (el.uid === uid ? {...editMode, name, phone, idUnit } : el))    
-        localStorage.unitsArray = JSON.stringify(editedUsers)
-        dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
+
+    const newDataEdit = (descri, ne, idUnit, uid) => { 
+        const { editedUnit } = editExplorer() 
+        ls('unitsArray', editedUnit({editMode, descri, ne, idUnit, uid}))
+        dispatch(unitsCreateView(ls('unitsArray')))
         dispatch(defaultEditMode())   
     }
 
@@ -65,8 +57,9 @@ export const useUnits = () => {
     }
 
 
-    const unitsDelete = (usuario: Object) => {
-        confirmDeleteAlerts(usuario)
+    const unitsDelete = (operator) => {
+        const { confirmDeleteAlerts } = useConfirmDeleteAlerts({ collection:'Unidad', dispatch, unitsCreateView })
+        confirmDeleteAlerts(operator)
     }
 
 

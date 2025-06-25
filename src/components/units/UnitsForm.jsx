@@ -4,19 +4,19 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
 
 
     const[unitState, setUnitState]=useState({
-        name:'', phone:'', idUnit:''
+        descri:'', ne:'', idUnit:''
     })
 
 
     const { 
-        name, phone, idUnit, onInputChange: onPostInputChange, noSpace 
+        descri, ne, idUnit, onInputChange: onPostInputChange, noSpace 
     } = useForm(unitState)
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            const { name, phone, idUnit } = editMode
-            setUnitState({name, phone, idUnit})
+            const { descri, ne, idUnit } = editMode
+            setUnitState({descri, ne, idUnit})
         }
     }, [editMode]) 
 
@@ -25,12 +25,12 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
         event.preventDefault();
 
         if(editMode){
-            const { name, phone, idUnit } = noSpace
-            newDataEdit(name, phone, idUnit, editMode.uid)
-            setUnitState({name:'', phone:'', idUnit:'' })
+            const { descri, ne, idUnit } = noSpace
+            newDataEdit(descri, ne, idUnit, editMode.uid)
+            // setUnitState({name:'', phone:'', idUnit:'' })
         }else{
-            const { name, phone, idUnit } = noSpace
-            unitsPost({name, phone, idUnit })
+            const { descri, ne, idUnit } = noSpace
+            unitsPost({descri, ne, idUnit })
         }
 
         handleClose()
@@ -39,7 +39,7 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
  
     const handleCancelEdit = () => {
         defaultModeEdith()
-        setUnitState({name:'', phone:'', idUnit:''})
+        // setUnitState({name:'', phone:'', idUnit:''})
         handleClose()
     }
 
@@ -61,8 +61,8 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
                         required
                         className="form-control"
                         placeholder="Descripción"
-                        name="name"
-                        value={capitalize(name)}
+                        name="descri"
+                        value={capitalize(descri)}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -74,8 +74,8 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
                         required
                         className="form-control"
                         placeholder="Numero Economico"
-                        name="phone"
-                        value={capitalize(phone)}
+                        name="ne"
+                        value={capitalize(ne)}
                         onChange={onPostInputChange}
                     />
                 </div>

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 import { clearAlertView, messageView } from  '../store/slices/alertSlice'
 import { opCreateView, opEditView, defaultEditMode, opDeleteView, opSwitchView } from  '../store/slices/operatorsSlice'
-import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils } from '../helpers'
+import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils, editExplorer } from '../helpers'
 
 
 
@@ -18,31 +18,24 @@ export const useOperators = () => {
     const dispatch = useDispatch()
     const navigateTo = useNavigate()
 
-    const { confirmDeleteAlerts } = useConfirmDeleteAlerts({ collection:'Operador', dispatch, opCreateView })
+    
     const { Modal, show, handleClose, handleShow } = useUtils(useState)
 
 
     const operatorsGet = () => {
-
-        if(localStorage.status !== 'authenticated'){
+        if(ls('status') !== 'authenticated'){
             return
         }
-
-        if(localStorage.operatorsArray === undefined){
-                localStorage.operatorsArray = JSON.stringify([])
-                dispatch(opCreateView([])) 
-        } 
-
-        dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
-
+        ls('operatorsArray') === undefined && ls('operatorsArray', []) 
+        dispatch(opCreateView(ls('operatorsArray')))
     }
 
 
     const operatorsPost = ({ name, phone, idOperator, dateStart }) => {
-        let curretUsers = JSON.parse(localStorage.operatorsArray)
-        curretUsers.push({ name, phone, idOperator, dateStart, uid:Date.now() })
-        localStorage.operatorsArray = JSON.stringify(curretUsers)
-        dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
+        let posted = ls('operatorsArray')
+        posted.push({ name, phone, idOperator, dateStart, uid:Date.now() })
+        ls('operatorsArray', posted)
+        dispatch(opCreateView(ls('operatorsArray')))
     }
 
 
@@ -50,12 +43,12 @@ export const useOperators = () => {
         dispatch(opEditView(el))
     }
 
+    
 
     const newDataEdit = (name, phone, idOperator, uid) => { 
-        let curretUsers = JSON.parse(localStorage.operatorsArray)
-        let editedUsers = curretUsers.map((el) => (el.uid === uid ? {...editMode, name, phone, idOperator } : el))
-        localStorage.operatorsArray = JSON.stringify(editedUsers)
-        dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
+        const { editedOp } = editExplorer() 
+        ls('operatorsArray', editedOp({editMode, name, phone, idOperator, uid}))
+        dispatch(opCreateView(ls('operatorsArray')))
         dispatch(defaultEditMode()) 
     }
 
@@ -65,8 +58,9 @@ export const useOperators = () => {
     }
 
 
-    const operatorsDelete = (usuario) => {
-        confirmDeleteAlerts(usuario)
+    const operatorsDelete = (operator) => {
+        const { confirmDeleteAlerts } = useConfirmDeleteAlerts({ collection:'Operador', dispatch, opCreateView })
+        confirmDeleteAlerts(operator)
     }
 
 

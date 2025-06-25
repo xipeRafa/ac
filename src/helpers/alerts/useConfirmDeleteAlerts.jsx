@@ -4,17 +4,6 @@ import Swal from 'sweetalert2';
 
 
 
-//   if (confirm("Are you sure you want to delete this item?")) {}
-
-  //let userConfirmed = confirm("Do you want to save your changes?");
-    // if (userConfirmed) {
-    //   // Code to save changes
-    // } else {
-    //   // Code to handle cancellation
-    // }
-
-
-
 
 export const useConfirmDeleteAlerts = (...args) => {
 
@@ -48,7 +37,7 @@ export const useConfirmDeleteAlerts = (...args) => {
 
         	Swal.fire({
           	title: `${ collection } Fue Borrado!`,
-		        text: capitalize(COLLECTION.name),
+		        text: capitalize(COLLECTION.name) || capitalize(COLLECTION.idUnit),
             //showCloseButton: true,
     		    icon: "success",
         	  confirmButtonColor: "#015887", // ok button
@@ -57,18 +46,18 @@ export const useConfirmDeleteAlerts = (...args) => {
 
 
           if(collection==='Operador'){
-              let curretUsers = JSON.parse(localStorage.operatorsArray)
-              let del = curretUsers.filter((el) => el.uid !== COLLECTION.uid)
-              localStorage.operatorsArray = JSON.stringify(del)
-              dispatch(opCreateView(JSON.parse(localStorage.operatorsArray)))
+              let arr = ls('operatorsArray')
+              let del = arr.filter((el) => el.uid !== COLLECTION.uid)
+              ls('operatorsArray', del)
+              dispatch(opCreateView(ls('operatorsArray')))
           }
 
 
           if(collection==='Unidad'){
-              let curretUsers = JSON.parse(localStorage.unitsArray)
-              let del = curretUsers.filter((el) => el.uid !== COLLECTION.uid)
-              localStorage.unitsArray = JSON.stringify(del)
-              dispatch(unitsCreateView(JSON.parse(localStorage.unitsArray)))
+              let arr = ls('unitsArray')
+              let del = arr.filter((el) => el.uid !== COLLECTION.uid)
+              ls('unitsArray', del)
+              dispatch(unitsCreateView(ls('unitsArray')))
           }
 
         	  
@@ -96,6 +85,36 @@ export const useConfirmDeleteAlerts = (...args) => {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//   if (confirm("Are you sure you want to delete this item?")) {}
+
+  //let userConfirmed = confirm("Do you want to save your changes?");
+    // if (userConfirmed) {
+    //   // Code to save changes
+    // } else {
+    //   // Code to handle cancellation
+    // }
+
+
+
+
+
+
+
+
+
+
 
 
 

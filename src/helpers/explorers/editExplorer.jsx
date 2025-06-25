@@ -1,64 +1,43 @@
 
-// the next arguments should be like objects {} to get the key 
-// and always use the key name like parameter name
-
-//   const { newArray } = editExplorer(saveInFall, {uid}, array, {nombre}, {correo})
+export function editExplorer(){
 
 
+    const editedOp =({editMode, name, phone, idOperator, uid})=>{
+
+        let arr = ls('operatorsArray')
+
+        let editedOp = arr.map((el) => 
+            (el.uid === uid ? {...editMode, name, phone, idOperator } : el)
+        )
+
+        return editedOp
+    }
 
 
-export function editExplorer(saveInFall=false, objId, fallUsersArr, array){
-//const { objTarget } = editExplorer(false, {uid}, fallUsersArr, usersLSArr, {nombre}, {correo})
+    const editedUnit =({editMode, descri, ne, idUnit, uid})=>{
 
-     const arrString = JSON.stringify(array)
-     const newArray =  JSON.parse(arrString)
+        let arr = ls('unitsArray')
 
-     let keyId = Object.keys(objId)[0]
-     let valueId = Object.values(objId)[0]
+        let editedUnit = arr.map((el) => 
+            (el.uid === uid ? {...editMode, descri, ne, idUnit } : el)
+        )
 
-
-
-      let indexTarget = newArray.findIndex((el) => el[keyId] === valueId)
-
-      let objTarget = newArray.slice(indexTarget, indexTarget +1)[0]
-
-
-
-      for (let index = 4; index < arguments.length; index++) {
-        let arg = arguments[index];
-
-        let key = Object.keys(arg)[0]
-
-        let value = Object.values(arg)[0]
-
-        newArray.map(el => el[keyId] === valueId ? el[key] = value :el) 
-      } 
-
-
-      localStorage.UsersArray = JSON.stringify(newArray) //try
+        return editedUnit
+    }
 
 
      
-     
-      if (saveInFall) {
-
-         let some = fallUsersArr.some(el => el.uid === objTarget.uid) //catch
-
-         if(!some){ // no existe
-            fallUsersArr.push(objTarget)  
-            localStorage.fallUsersArr = JSON.stringify(fallUsersArr)  
-         }else{
-            let ind = fallUsersArr.findIndex(el => el.uid === objTarget.uid) // true
-            fallUsersArr.splice(ind, 1, objTarget) // replace
-            localStorage.fallUsersArr = JSON.stringify(fallUsersArr)
-         }
-
-      }
-
-
-
-
-     
-     return { objTarget }   
+    return { 
+        editedOp, 
+        editedUnit 
+    }   
      
  }
+
+
+
+
+
+
+
+
