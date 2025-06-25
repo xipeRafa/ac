@@ -171,6 +171,34 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btnContainer{
+    display: flex;
+    margin-bottom: 9px;
+    padding-top:9px;
+}
 .sb{
     width: 100%;
     margin-top: 12px; 
@@ -181,21 +209,27 @@
 .seb{ 
     width: 100%!important;
     margin-right: 20px;
-    margin-top: 24px;
+    margin-top: 20px;
 }
 
 
 /* submit Cancelar Button */
 .scb{
     width: 100%!important;
-    margin-top: 24px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 16px;
 }
 
 
 @media(max-width: 575px){
     .scb{
         margin-top: 44px;
+    }
+    .btnContainer{
+        flex-direction: column;
+    }
+    .seb{ 
+        margin-top: 20px;
     }
 }
 

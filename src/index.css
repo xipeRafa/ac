@@ -127,6 +127,14 @@ input[type=text], input[type=password], input[type=email]{
 
 }
 
+.usersList>p>span{
+    font-weight: 200;
+}
+
+.usersList>h2>span{
+    font-weight: 200;
+}
+
 .sombra{
      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

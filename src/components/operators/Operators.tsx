@@ -53,8 +53,8 @@ export const Operators = () => {
 
                     <h2>{capitalize(el.name)}</h2>
 
-                    <p><span style={{fontWeight:'200'}}>ID: </span>      {capitalize(el.idOperator)}</p>
-                    <p><span style={{fontWeight:'200'}}>Telefono:</span> {capitalize(el.phone)}</p>
+                    <p><span>ID: </span>      {capitalize(el.idOperator)}</p>
+                    <p><span>Telefono:</span> {capitalize(el.phone)}</p>
 
                     {/*<img src={el.img} width='100px' />*/}
 

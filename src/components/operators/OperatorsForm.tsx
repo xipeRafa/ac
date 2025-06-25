@@ -48,9 +48,9 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
         <div className="col-lg-8 offset-lg-2" >
             
 
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-4'}>
 
-                <div className="form-group mb-3 mt-4 pt-3">
+                <div className="form-group mb-3 pt-3 ">
                     {editMode && <label>Nombre</label>}
                     <input
                         required
@@ -90,7 +90,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                 </div>
 
 
-                <div className='d-flex flex-column flex-sm-row mb-2 pt-2 '>
+                <div className='btnContainer'>
 
                         <input type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 

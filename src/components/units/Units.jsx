@@ -52,10 +52,11 @@ export const Units = () => {
             {unitsSlice.map((el, i) => (
                 <div key={i + '!@#'} className='usersList' >
 
-                    <h2><span style={{fontWeight:'200'}}>Descripción: </span> {capitalize(el.descri)}</h2>
+                    <h2><span>Descripción:     </span> {capitalize(el.descri)}</h2>
 
-                    <p><span style={{fontWeight:'200'}}>Numero Economico: </span> {capitalize(el.ne)}</p>
-                    <p><span style={{fontWeight:'200'}}>ID: </span> {capitalize(el.idUnit)}</p>
+                    <p><span>Numero Economico: </span> {capitalize(el.ne)}</p>
+                    <p><span>ID:               </span> {capitalize(el.idUnit)}</p>
+                    
                     <p>Historial de Trabajo: </p>
                     <p>Status: </p>
 
