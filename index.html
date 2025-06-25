@@ -1431,6 +1431,17 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
 .btn-dark:hover{
     background-color: var(--slate-600)!important;
 }
+{/* <button className='btn-w primary'>Primary</button>
+                    <button className='btn-w primary-out'>Primary-out</button>
+
+                    <button className='btn-w secondary'>Secondary</button>
+                    <button className='btn-w secondary-out'>Secondary-out</button>
+
+                    <button className='btn-w success'>Success</button>
+                    <button className='btn-w success-out'>Success-out</button>
+
+                     <button className='btn-w danger'>Danger</button>
+                    <button className='btn-w danger-out'>Danger-out</button>*/}
 /*@media(max-width: 1000px){
         .sectionControls{
                 flex-direction: column;
@@ -1561,18 +1572,31 @@ footer{
 /*# sourceMappingURL=index.html?html-proxy&inline-css&index=0.css.map */</style>
     <script>
 
-        const c =(v)=>{
-            console.log(v)
+        
+
+        const c = (d, v) =>{
+            if(v===undefined){
+                console.log(d)
+            }else{
+                console.log(d, v)
+            }
         }
 
-
-        const capitalize=(v)=>{
+        const capitalize = (v) => {
             return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
 
+        const ls = (name, data) => { 
+            if(data === undefined){
+                return localStorage[name] !== undefined ? JSON.parse(localStorage[name]) : undefined // regresando, exa: ls('status')
+            }else{
+                localStorage[name] = JSON.stringify(data) // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
+            } 
+        }
+
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-Cgp9TMHt.js"></script>
-    <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-DGmWjfho.css">
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-Cfr4RAqe.js"></script>
+    <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-WwMl-hQ7.css">
   </head>
   <body>
     <div id="root"></div>
