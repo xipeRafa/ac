@@ -12,6 +12,7 @@ export const useConfirmDeleteAlerts = (...args) => {
   let dispatch = args[0].dispatch
   let opCreateView = args[0].opCreateView
   let unitsCreateView = args[0].unitsCreateView
+  let assCreateView = args[0].assCreateView
 
 
   const confirmDeleteAlerts =(COLLECTION)=>{
@@ -59,6 +60,13 @@ export const useConfirmDeleteAlerts = (...args) => {
               let del = arr.filter((el) => el.uid !== COLLECTION.uid)
               ls('unitsArray', del)
               dispatch(unitsCreateView(ls('unitsArray')))
+          }
+
+          if(collection==='Assignation'){
+              let arr = ls('assignationsArray')
+              let del = arr.filter((el) => el.uid !== COLLECTION.uid)
+              ls('assignationsArray', del)
+              dispatch(assCreateView(ls('assignationsArray')))
           }
 
         	  

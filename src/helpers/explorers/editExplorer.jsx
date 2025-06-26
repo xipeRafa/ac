@@ -26,10 +26,23 @@ export function editExplorer(){
     }
 
 
+    const editedAss =({editMode, name, phone, idAss, uid})=>{
+
+        let arr = ls('operatorsArray')
+
+        let editedAss = arr.map((el) => 
+            (el.uid === uid ? {...editMode, name, phone, idAss } : el)
+        )
+
+        return editedAss
+    }
+
+
      
     return { 
         editedOp, 
-        editedUnit 
+        editedUnit,
+        editedAss 
     }   
      
  }

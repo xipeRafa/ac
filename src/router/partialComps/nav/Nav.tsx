@@ -45,7 +45,7 @@ export const Nav = () => {
                         :   <span className='cruzCerrar'>✕</span>
                     }
                 </span>
-                
+
             </div>
 
 
@@ -56,6 +56,8 @@ export const Nav = () => {
                 <Link to="/ac/"      >Operadores  </Link>
 
                 <Link to="/ac/units/">Unidades    </Link>
+
+                <Link to="/ac/assignations/">Assignations</Link>
                 
                 <Link  to="/ac/auth/login/" style={{textDecoration:'none'}} onClick={startLogout}>
                     salir ➪

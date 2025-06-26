@@ -13,7 +13,8 @@ export const onCheckingRedirect =(navigateTo)=>{
             ls('userName', '')
             ls('status', 'not-authenticated')
 
-            const isIncludes = ['/ac/auth/login/', '/ac/auth/register/', '/ac/auth/login', '/ac/auth/register'].includes(path)
+            const isIncludes = ['/ac/auth/login/', '/ac/auth/register/', 
+                                '/ac/auth/login', '/ac/auth/register'].includes(path)
 
             if (!isIncludes) {
                 navigateTo('/ac/auth/login/');
@@ -28,7 +29,9 @@ export const onCheckingRedirect =(navigateTo)=>{
 
         if(lss === 'authenticated'){
 
-            if(['/ac/auth/login/', '/ac/auth/register/', '/ac/auth/login', '/ac/auth/register'].includes(path)){
+            if(['/ac/auth/login/', '/ac/auth/register/',
+                 '/ac/auth/login', '/ac/auth/register'].includes(path)){
+
                 navigateTo('/ac/')
             }
 
