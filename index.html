@@ -28,6 +28,10 @@
         }
 
 
+        if(localStorage.status.charAt()!=='"'){
+            localStorage.status = `"${localStorage.status}"`
+        }
+
 
         const ls = (name, data) => { 
             if(data === undefined){
