@@ -9,7 +9,7 @@ export const Assignations = () => {
     const { 
         assignationsSlice, assignationsGet, assDelete, assignationsPost, setInfoToForm,
         editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, useEffect,
-         useState, Modal, show, handleClose, handleShow, onCheckingRedirect
+        useState, Modal, show, handleClose, handleShow, onCheckingRedirect
     } = useAssignations()
    
 
