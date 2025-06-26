@@ -7,17 +7,17 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
 
 
-    const[operatorState, setOperatorState]=useState({name:'', phone:'', idOperator:'' })
+    const[operatorState, setOperatorState]=useState({name:'', phone:'', idAss:'' })
 
 
-    const { name, phone, idOperator,
+    const { name, phone, idAss,
             onInputChange: onPostInputChange, noSpace} = useForm(operatorState);
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            const { name, phone, idOperator } = editMode
-            setOperatorState({name, phone, idOperator})
+            const { name, phone, idAss } = editMode
+            setOperatorState({name, phone, idAss})
         }
     }, [editMode]) 
 
@@ -26,11 +26,11 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
         event.preventDefault();
 
         if(editMode){
-            const { name, phone, idOperator } = noSpace
-            newDataEdit(name, phone, idOperator, editMode.uid)
+            const { name, phone, idAss } = noSpace
+            newDataEdit(name, phone, idAss, editMode.uid)
         }else{
-            const { name, phone, idOperator } = noSpace
-            assignationsPost({name, phone, idOperator })
+            const { name, phone, idAss } = noSpace
+            assignationsPost({name, phone, idAss })
         }
         handleClose()
     }
@@ -69,8 +69,8 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
                         type='text'
                         className="form-control"
                         placeholder="ID"
-                        name="idOperator"
-                        value={capitalize(idOperator)}
+                        name="idAss"
+                        value={capitalize(idAss)}
                         onChange={onPostInputChange}
                     />
                 </div>
