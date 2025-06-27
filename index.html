@@ -1477,19 +1477,6 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
         }
         
 }*/
-.customAlert{
-    text-align: center!important;
-    text-transform: uppercase;
-    letter-spacing: .4px;
-}
-@media(max-width: 800px){
-    .alertContainer{
-        width: 100%!important;
-    }
-}
-.swal2-timer-progress-bar{
-    background-color: rgb(167, 219, 138);
-}
 :root{
     --slate-50:#eff1f4;
     --slate-100:#dfe3eb;
@@ -1511,7 +1498,8 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     --slate-900:#181c25;
     --slate-950:#0e1118;
 
-    --bg-color:rgba(10,50,210, .06);
+    /*--bg-color:rgba(190,80,40, .06);*/
+    --bg-color:rgba(40,80,180, .06);
     --primary-color:#014063;
 
     --jade-100:#70FCBA;
@@ -1544,107 +1532,113 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     --bs-success-bg-subtle: #d1e7dd;
     
 }
-html{
-
-
+.customAlert {
+  text-align: center !important;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
-body{
-    background-color: none;
+@media (max-width: 800px) {
+  .alertContainer {
+    width: 100% !important;
+  }
 }
-#root{
- 
+.swal2-timer-progress-bar {
+  background-color: rgb(167, 219, 138);
 }
-.appContariner{
-    min-height: 100dvh;
-    margin-top: 50px;
-    background-color:var(--bg-color)!important;
+.modalColors {
+  background-color: var(--bg-color) !important;
+  color: var(--slate-700);
 }
-input[type=text], input[type=password], input[type=email]{
-    border-radius: 0px;
+.modal-btn-x {
+  font-size: 18px;
+  margin-right: 8px;
+  cursor: pointer;
 }
-.headerColor{
-    color: var(--slate-700);
+.modal-title {
+  margin-right: auto;
+  margin-left: 8px;
 }
-.header{
-    background-color: white;
-    padding: 16px;
-    text-align: center;
-    color: var(--slate-700);
+.list {
+  display: block;
+  padding: 10px 30px 16px 20px;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: rgba(10, 110, 255, 0.07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
+  color: var(--slate-700);
 }
-.sectionControls{
-    margin: 20px 0;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
+.list > p > span {
+  font-weight: 200;
 }
-.sectionControls>button{
-        margin-right: 0!important;
+.list > h2 > span {
+  font-weight: 200;
 }
-.modal2{
-    background-color: var(--bg-color)!important;
-    color: var(--slate-700);
+.list > button {
+  margin-right: 20px !important;
 }
-.usersList{
-    display: block;
-    padding: 10px 30px 16px 20px;
-    width: 90%;
-    margin-left: 5%;
-    margin-bottom: 20px;
-    background-color: white;
-    box-shadow: rgba(10,110,255, .07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
-    color: var(--slate-700)
+.AC-logo {
+  width: 80%;
+  margin-left: 20%;
 }
-.usersList>p>span{
-    font-weight: 200;
+@media (max-width: 992px) {
+  .AC-logo {
+    margin-left: 10%;
+  }
 }
-.usersList>h2>span{
-    font-weight: 200;
+@media (min-width: 992px) {
+  .AC-logo {
+    margin-top: 9%;
+  }
 }
-.sombra{
-     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+@media (min-width: 1200px) {
+  .AC-logo {
+    margin-top: 7%;
+  }
 }
-.usersList>button{
-    margin-right: 20px!important;
+@media (min-width: 1400px) {
+  .AC-logo {
+    margin-top: 6.5%;
+  }
 }
-.btn-closeX{
-    font-size: 20px;
-    margin-right: 6px;
-    cursor:pointer;
+html {
+  background-color: var(--bg-color) !important;
 }
-.modal-title{
-     margin-right: auto;
+body {
+  background-color: none;
 }
-form>div>label{
-    color: var(--zinc-500);
+#root {
 }
-footer{
-    background-color: var(--slate-850);
-    color: var(--bs-gray-100);
-    height: 200px;
+.appContariner {
+  min-height: 100dvh;
+  margin-top: 50px;
+  background-color: var(--bg-color) !important;
 }
-.AC-logo{
-    width: 80%;
-    margin-left: 20%;
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  border-radius: 0px;
 }
-@media(max-width: 992px){
-    .AC-logo{
-        margin-left: 10%;
-    }
+form > div > label {
+  color: var(--zinc-500);
 }
-@media(min-width: 992px){
-    .AC-logo{
-        margin-top: 9%;
-    }
+.sombra {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-@media(min-width: 1200px){
-    .AC-logo{
-        margin-top: 7%;
-    }
+.header {
+  background-color: white;
+  padding: 16px;
+  text-align: center;
+  color: var(--slate-700);
 }
-@media(min-width: 1400px){
-    .AC-logo{
-        margin-top: 6.5%;
-    }
+.sectionControls {
+  margin: 20px 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.sectionControls > button {
+  margin-right: 0 !important;
 }
     
 /*# sourceMappingURL=index.html?html-proxy&inline-css&index=0.css.map */</style>
@@ -1680,8 +1674,8 @@ footer{
 
 
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-DypwErYS.js"></script>
-    <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-WwMl-hQ7.css">
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-sn-xfP1W.js"></script>
+    <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-C88xzrDI.css">
   </head>
   <body>
     <div id="root"></div>
