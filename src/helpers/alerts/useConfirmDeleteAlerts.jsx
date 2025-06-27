@@ -5,17 +5,17 @@ import Swal from 'sweetalert2';
 
 
 
-export const useConfirmDeleteAlerts = (...args) => {
+export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, unitsCreateView, assCreateView }) => {
 
 
-  let collection = args[0].collection
-  let dispatch = args[0].dispatch
-  let opCreateView = args[0].opCreateView
-  let unitsCreateView = args[0].unitsCreateView
-  let assCreateView = args[0].assCreateView
+  // let collection = args[0].collection
+  // let dispatch = args[0].dispatch
+  // let opCreateView = args[0].opCreateView
+  // let unitsCreateView = args[0].unitsCreateView
+  // let assCreateView = args[0].assCreateView
 
 
-  const confirmDeleteAlerts =(COLLECTION)=>{
+  const confirmDeleteAlerts = (COLLECTION)=>{
 
 
   	Swal.fire({
@@ -46,28 +46,33 @@ export const useConfirmDeleteAlerts = (...args) => {
     			  background:'linear-gradient(var(--slate-100), var(--slate-50),#fff,#fff,#fff,#fff,#fff,#fff,#fff,#fff, var(--slate-50), var(--slate-150)',
         	})
 
+            const collectionMap = {
+              'Operador': 'operatorsArray',
+              'Unidad': 'unitsArray',
+              'Assignation': 'assignationsArray'
+            }
 
-          if(collection==='Operador'){
-              let arr = ls('operatorsArray')
-              let del = arr.filter((el) => el.uid !== COLLECTION.uid)
-              ls('operatorsArray', del)
-              dispatch(opCreateView(ls('operatorsArray')))
-          }
+            const arrayName = collectionMap[collection]
 
+            if (arrayName) {
+              let arr = ls(arrayName)
+              let updatedArray = arr.filter((el) => el.uid !== COLLECTION.uid)
+              ls(arrayName, updatedArray)
+        
+              const dispatchMap = {
+                'Operador': opCreateView,
+                'Unidad': unitsCreateView,
+                'Assignation': assCreateView
+              }
 
-          if(collection==='Unidad'){
-              let arr = ls('unitsArray')
-              let del = arr.filter((el) => el.uid !== COLLECTION.uid)
-              ls('unitsArray', del)
-              dispatch(unitsCreateView(ls('unitsArray')))
-          }
+              dispatch(dispatchMap[collection](ls(arrayName)))
 
-          if(collection==='Assignation'){
-              let arr = ls('assignationsArray')
-              let del = arr.filter((el) => el.uid !== COLLECTION.uid)
-              ls('assignationsArray', del)
-              dispatch(assCreateView(ls('assignationsArray')))
-          }
+            }else{
+
+              alert('no hay nombre de la coleccion')
+              
+            }
+          
 
         	  
 

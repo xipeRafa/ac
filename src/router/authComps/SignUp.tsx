@@ -18,7 +18,7 @@ export const SignUp = () => {
 
     const { 
         startRegister, useEffect, Link, dispatch, messageView, useForm,
-        navigateTo,onCheckingRedirect,
+        navigateTo, onCheckingRedirect,
     } = useAuth()
 
 

@@ -26,23 +26,18 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     }, [initialForm])
 
 
-    ls('obj', formState)
-    let stateInLS = ls('obj')
+    let formStateCopy = {...formState}
 
-    const quitarEspaciosFinales=(obj)=> {
+    const noSpaceFunc=(obj)=> {
         for (const key in obj) {
             if (Object.hasOwn(obj, key) && typeof obj[key] === 'string') {
-                obj[key] = obj[key].trimEnd().toLowerCase()
+                obj[key] = obj[key].replace(/\s+/g, ' ').trimEnd().toLowerCase()
             }
         }
+        return obj
     }
 
-    quitarEspaciosFinales(stateInLS)
-
-
-    ls('noSpace', stateInLS)
-
-    let noSpace = ls('noSpace')
+    let noSpace = noSpaceFunc(formStateCopy)
 
 
     const isValidEmail = ( email: string ) => {

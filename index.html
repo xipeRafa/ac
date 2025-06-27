@@ -12,9 +12,8 @@
     <script>
 
         
-
         const c = (d, v) => {
-            if(v===undefined){
+            if(v === undefined){
                 console.log(d)
             }else{
                 console.log(d, v)
@@ -22,13 +21,12 @@
         }
 
 
-
         const capitalize = (v) => {
             return String(v).replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
 
 
-        if(localStorage.status.charAt()!=='"'){
+        if(localStorage.status.charAt()!=='"' || localStorage.status === undefined){
             localStorage.status = `"${localStorage.status}"`
         }
 
@@ -40,7 +38,6 @@
                 localStorage[name] = JSON.stringify(data) // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
             } 
         }
-
 
 
     </script>

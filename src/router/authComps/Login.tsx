@@ -32,7 +32,7 @@ export const Login = () => {
 
 
 
-    const loginSubmit = (event: any) => {
+    const loginSubmit = (event) => {
 
         event.preventDefault()
 
