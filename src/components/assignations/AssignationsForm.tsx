@@ -57,7 +57,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
                         className="form-control"
                         placeholder="Nombre"
                         name="name"
-                        value={name}
+                        value={capitalize(name)}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -70,7 +70,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
                         className="form-control"
                         placeholder="ID"
                         name="idAss"
-                        value={idAss}
+                        value={capitalize(idAss)}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -83,7 +83,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
                         className="form-control"
                         placeholder="# Telefono"
                         name="phone"
-                        value={phone}
+                        value={capitalize(phone)}
                         onChange={onPostInputChange}
                     />
                 </div>

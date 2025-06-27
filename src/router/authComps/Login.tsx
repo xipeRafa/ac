@@ -61,7 +61,7 @@ export const Login = () => {
             <div className="row">
                 <div className="col-lg-6 mb-4">
 
-                    <h3>ENTRAR</h3>
+                    <h3 className='headerColor'>ENTRAR</h3>
 
                     <form onSubmit={loginSubmit}>
                         <div className="form-group mb-3 form-floating">
@@ -87,7 +87,7 @@ export const Login = () => {
                             <label>Contraseña</label>
                         </div>
 
-                        <input type="submit" className="btn btn-dark btn-lg mb-3 w-100" value="Entrar ➪" />
+                        <input type="submit" className="btn dark btn-lg mb-3 w-100" value="Entrar ➪" />
 
                     </form>
 

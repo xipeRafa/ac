@@ -51,10 +51,10 @@ export const Assignations = () => {
             {assignationsSlice.map((el, i) => (
                 <div key={i + '!@#'} className="usersList">
 
-                    <h2>{el.name}</h2>
+                    <h2>{capitalize(el.name)}</h2>
 
-                    <p><span>ID: </span>      {el.idAss}</p>
-                    <p><span>Telefono:</span> {el.phone}</p>
+                    <p><span>ID: </span>      {capitalize(el.idAss)}</p>
+                    <p><span>Telefono:</span> {capitalize(el.phone)}</p>
 
                     {/*<img src={el.img} width='100px' />*/}
 

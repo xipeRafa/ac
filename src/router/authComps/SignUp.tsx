@@ -66,7 +66,7 @@ export const SignUp = () => {
             <div className="row">
                 <div className="col-lg-6 mb-4">
 
-                    <h3>REGISTRO</h3>
+                    <h3 className='headerColor'>REGISTRO</h3>
 
                     <form onSubmit={registerSubmit}>
                         <div className="form-group mb-3 form-floating">
@@ -121,7 +121,7 @@ export const SignUp = () => {
 
                             <input
                                 type="submit"
-                                className="btn btn-dark btn-lg mb-3 w-100"
+                                className="btn dark btn-lg mb-3 w-100"
                                 value="CREAR CUENTA" />
 
                     </form>

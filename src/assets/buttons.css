@@ -1,3 +1,4 @@
+
 .btn-w{
     padding: 6px 10px;
     border-radius: 8px;
@@ -36,6 +37,7 @@
     color: var(--primary-color);
     box-shadow: var(--primary-color) 0px 0px 0px 1.4px;
     height: 36px!important;
+
 }
 
 
@@ -59,6 +61,7 @@
     color: var(--slate-700);
     box-shadow: var(--slate-700) 0px 0px 0px 1.4px;
     height: 36px!important;
+    background-image: linear-gradient(#fff, var(--slate-250));
 }
 
 
@@ -162,13 +165,7 @@
     box-shadow: none;
 }
 
-.btn-dark{
-    background-color: var(--slate-700)!important;
-    border: none;
-}
-.btn-dark:hover{
-    background-color: var(--slate-600)!important;
-}
+
 
 
 

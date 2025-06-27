@@ -24,7 +24,7 @@
 
 
         const capitalize = (v) => {
-            return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+            return String(v).replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
 
 
