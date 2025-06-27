@@ -1346,6 +1346,7 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     color: var(--primary-color);
     box-shadow: var(--primary-color) 0px 0px 0px 1.4px;
     height: 36px!important;
+
 }
 .secondary{
     padding: 7px 10px;
@@ -1362,6 +1363,7 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     color: var(--slate-700);
     box-shadow: var(--slate-700) 0px 0px 0px 1.4px;
     height: 36px!important;
+    background-image: linear-gradient(#fff, var(--slate-250));
 }
 .success{
     padding: 7px 10px;
@@ -1421,13 +1423,6 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     background-color: var(--slate-600); 
     color: white;
     box-shadow: none;
-}
-.btn-dark{
-    background-color: var(--slate-700)!important;
-    border: none;
-}
-.btn-dark:hover{
-    background-color: var(--slate-600)!important;
 }
 .btnContainer{
     display: flex;
@@ -1516,7 +1511,7 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     --slate-900:#181c25;
     --slate-950:#0e1118;
 
-    --bg-color:rgba(10,110,255, .06);
+    --bg-color:rgba(10,50,210, .06);
     --primary-color:#014063;
 
     --jade-100:#70FCBA;
@@ -1550,20 +1545,31 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     
 }
 html{
-    background-color:var(--bg-color)!important;
+
+
 }
 body{
     background-color: none;
 }
 #root{
-    background-color:var(--bg-color)!important;
+ 
 }
 .appContariner{
     min-height: 100dvh;
     margin-top: 50px;
+    background-color:var(--bg-color)!important;
 }
 input[type=text], input[type=password], input[type=email]{
     border-radius: 0px;
+}
+.headerColor{
+    color: var(--slate-700);
+}
+.header{
+    background-color: white;
+    padding: 16px;
+    text-align: center;
+    color: var(--slate-700);
 }
 .sectionControls{
     margin: 20px 0;
@@ -1576,6 +1582,7 @@ input[type=text], input[type=password], input[type=email]{
 }
 .modal2{
     background-color: var(--bg-color)!important;
+    color: var(--slate-700);
 }
 .usersList{
     display: block;
@@ -1585,6 +1592,7 @@ input[type=text], input[type=password], input[type=email]{
     margin-bottom: 20px;
     background-color: white;
     box-shadow: rgba(10,110,255, .07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
+    color: var(--slate-700)
 }
 .usersList>p>span{
     font-weight: 200;
@@ -1613,12 +1621,6 @@ footer{
     background-color: var(--slate-850);
     color: var(--bs-gray-100);
     height: 200px;
-}
-/*container-fluid text-center bg-white p-3*/
-.header{
-    background-color: white;
-    padding: 16px;
-    text-align: center;
 }
 .AC-logo{
     width: 80%;
@@ -1661,7 +1663,7 @@ footer{
 
 
         const capitalize = (v) => {
-            return v.replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
+            return String(v).replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
 
 
@@ -1681,7 +1683,7 @@ footer{
 
 
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-CWDW3Af2.js"></script>
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-BXPlvsIT.js"></script>
     <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-WwMl-hQ7.css">
   </head>
   <body>
