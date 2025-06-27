@@ -2,7 +2,7 @@
 import './nav.css'
 import { useAuth } from '../../../hooks/useAuth';
 import colors from '../../../assets/pico.json'    
-import A from '../../../assets/a.png'
+import A from '../../../assets/imgs/a.png'
 
 
 

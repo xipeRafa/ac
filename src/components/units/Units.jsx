@@ -50,7 +50,7 @@ export const Units = () => {
 
 
             {unitsSlice.map((el, i) => (
-                <div key={i + '!@#'} className='usersList' >
+                <div key={i + '!@'} className='list' >
 
                     <h2><span>Descripción:     </span> {capitalize(el.descri)}</h2>
 
@@ -78,12 +78,12 @@ export const Units = () => {
 
             <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
-                <Modal.Header className='modal2' >
+                <Modal.Header className='modalColors' >
                         <Modal.Title>{editMode ? 'EDITAR UNIDAD' : 'NUEVA UNIDAD' }</Modal.Title> 
-                        {!editMode && <b className='btn-closeX' onClick={handleClose}>❌</b>}
+                        {!editMode && <b className='modal-btn-x' onClick={handleClose}>❌</b>}
                 </Modal.Header>
 
-                <Modal.Body className='modal2'>
+                <Modal.Body className='modalColors'>
 
                         <UnitsForm 
                             handleClose={handleClose} 
@@ -98,7 +98,7 @@ export const Units = () => {
 
                 </Modal.Body>
 
-                <Modal.Footer className='modal2'></Modal.Footer>
+                <Modal.Footer className='modalColors'></Modal.Footer>
 
             </Modal>
 

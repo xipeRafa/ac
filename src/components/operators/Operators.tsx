@@ -9,7 +9,7 @@ export const Operators = () => {
     const { 
         operatorsSlice, operatorsGet, operatorsDelete, operatorsPost, setInfoToForm,
         editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, useEffect,
-         useState, Modal, show, handleClose, handleShow, onCheckingRedirect
+        useState, Modal, show, handleClose, handleShow, onCheckingRedirect
     } = useOperators()
    
 
@@ -49,7 +49,7 @@ export const Operators = () => {
 
 
             {operatorsSlice.map((el, i) => (
-                <div key={i + '!@#'} className="usersList">
+                <div key={i + '!@#'} className="list">
 
                     <h2>{capitalize(el.name)}</h2>
 
@@ -74,12 +74,12 @@ export const Operators = () => {
 
             <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
-                <Modal.Header className='modal2' >
+                <Modal.Header className='modalColors' >
                     <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR' }</Modal.Title> 
-                    {!editMode && <b className='btn-closeX' onClick={handleClose}>❌</b> }
+                    {!editMode && <b className='modal-btn-x' onClick={handleClose}>❌</b> }
                 </Modal.Header>
 
-                <Modal.Body className='modal2'>
+                <Modal.Body className='modalColors'>
                         <OperatorsForm 
                             operatorsPost={operatorsPost} 
                             editMode={editMode} 
@@ -92,7 +92,7 @@ export const Operators = () => {
                         />
                 </Modal.Body>
 
-                <Modal.Footer className='modal2'></Modal.Footer>
+                <Modal.Footer className='modalColors'></Modal.Footer>
 
             </Modal>
 

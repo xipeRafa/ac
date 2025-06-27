@@ -1,0 +1,116 @@
+.customAlert {
+  text-align: center !important;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 800px) {
+  .alertContainer {
+    width: 100% !important;
+  }
+}
+
+.swal2-timer-progress-bar {
+  background-color: rgb(167, 219, 138);
+}
+
+
+
+
+
+
+
+
+
+
+
+.modalColors {
+  background-color: var(--bg-color) !important;
+  color: var(--slate-700);
+}
+
+.modal-btn-x {
+  font-size: 18px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.modal-title {
+  margin-right: auto;
+  margin-left: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.list {
+  display: block;
+  padding: 10px 30px 16px 20px;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: rgba(10, 110, 255, 0.07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
+  color: var(--slate-700);
+}
+
+.list > p > span {
+  font-weight: 200;
+}
+
+.list > h2 > span {
+  font-weight: 200;
+}
+
+.list > button {
+  margin-right: 20px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.AC-logo {
+  width: 80%;
+  margin-left: 20%;
+}
+
+@media (max-width: 992px) {
+  .AC-logo {
+    margin-left: 10%;
+  }
+}
+
+@media (min-width: 992px) {
+  .AC-logo {
+    margin-top: 9%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .AC-logo {
+    margin-top: 7%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .AC-logo {
+    margin-top: 6.5%;
+  }
+}

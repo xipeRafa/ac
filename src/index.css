@@ -1,226 +1,54 @@
+@import url("./assets/css/buttons.css");
+@import url("./assets/css/vars.css");
+@import url("./assets/css/styles.css");
 
 
-@import url('./assets/buttons.css');
-
-.customAlert{
-    text-align: center!important;
-    text-transform: uppercase;
-    letter-spacing: .4px;
+html {
+  background-color: var(--bg-color) !important;
 }
 
-
-
-@media(max-width: 800px){
-    .alertContainer{
-        width: 100%!important;
-    }
+body {
+  background-color: none;
 }
 
-.swal2-timer-progress-bar{
-    background-color: rgb(167, 219, 138);
+#root {
 }
 
-:root{
-    --slate-50:#eff1f4;
-    --slate-100:#dfe3eb;
-    --slate-150:#cfd5e2;
-    --slate-200:#bfc7d9;
-    --slate-250:#b0b9d0;
-    --slate-300:#a0acc7;
-    --slate-350:#909ebe;
-    --slate-400:#8191b5;
-    --slate-450:#7385a9;
-    --slate-500:#687899;
-    --slate-550:#5d6b89;
-    --slate-600:#525f7a;
-    --slate-650:#48536b;
-    --slate-700:#3d475c;
-    --slate-750:#333c4e;
-    --slate-800:#2a3140;
-    --slate-850:#202632;
-    --slate-900:#181c25;
-    --slate-950:#0e1118;
-
-    --bg-color:rgba(10,50,210, .06);
-    --primary-color:#014063;
-
-    --jade-100:#70FCBA;
-    --jade-200:#21E299;
-    --jade-300:#00C482;
-    --jade-400:#00A66E;
-    --jade-500:#00895A;
-
-    --red-600:#AF291D;
-    --red-500:#D93526;
-    --red-400:#F06048;
-    --red-300:#F38F79;
-    --red-350:#F17961;
-    --red-200:#F5B7A8;
-    --red-100:#F8DCD6;
-
-    --zinc-500:#6F7887;
-
-
-    --bs-primary-text-emphasis: #052c65;
-    --bs-secondary-text-emphasis: #2b2f32;
-    --bs-success-text-emphasis: #0a3622;
-    --bs-info-text-emphasis: #055160;
-    --bs-warning-text-emphasis: #664d03;
-    --bs-danger-text-emphasis: #58151c;
-    --bs-light-text-emphasis: #495057;
-    --bs-dark-text-emphasis: #495057;
-    --bs-primary-bg-subtle: #cfe2ff;
-    --bs-secondary-bg-subtle: #e2e3e5;
-    --bs-success-bg-subtle: #d1e7dd;
-    
+.appContariner {
+  min-height: 100dvh;
+  margin-top: 50px;
+  background-color: var(--bg-color) !important;
 }
 
-
-
-
-html{
-
-
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  border-radius: 0px;
 }
 
-body{
-    background-color: none;
+form > div > label {
+  color: var(--zinc-500);
 }
 
-
-#root{
- 
+.sombra {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-
-
-.appContariner{
-    min-height: 100dvh;
-    margin-top: 50px;
-    background-color:var(--bg-color)!important;
+.header {
+  background-color: white;
+  padding: 16px;
+  text-align: center;
+  color: var(--slate-700);
 }
 
-
-
-
-input[type=text], input[type=password], input[type=email]{
-    border-radius: 0px;
+.sectionControls {
+  margin: 20px 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.headerColor{
-    color: var(--slate-700);
+.sectionControls > button {
+  margin-right: 0 !important;
 }
-
-.header{
-    background-color: white;
-    padding: 16px;
-    text-align: center;
-    color: var(--slate-700);
-}
-
-.sectionControls{
-    margin: 20px 0;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-}
-
-
-.sectionControls>button{
-        margin-right: 0!important;
-}
-
-
-
-.modal2{
-    background-color: var(--bg-color)!important;
-    color: var(--slate-700);
-}
-
-
-
-.usersList{
-    display: block;
-    padding: 10px 30px 16px 20px;
-    width: 90%;
-    margin-left: 5%;
-    margin-bottom: 20px;
-    background-color: white;
-    box-shadow: rgba(10,110,255, .07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
-    color: var(--slate-700)
-}
-
-.usersList>p>span{
-    font-weight: 200;
-}
-
-.usersList>h2>span{
-    font-weight: 200;
-}
-
-.sombra{
-     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.usersList>button{
-    margin-right: 20px!important;
-}
-
-
-
-.btn-closeX{
-    font-size: 20px;
-    margin-right: 6px;
-    cursor:pointer;
-}
-
-
-.modal-title{
-     margin-right: auto;
-}
-
-
-form>div>label{
-    color: var(--zinc-500);
-}
-
-
-footer{
-    background-color: var(--slate-850);
-    color: var(--bs-gray-100);
-    height: 200px;
-}
-
-
-.AC-logo{
-    width: 80%;
-    margin-left: 20%;
-}
-
-@media(max-width: 992px){
-    .AC-logo{
-        margin-left: 10%;
-    }
-}
-
-@media(min-width: 992px){
-    .AC-logo{
-        margin-top: 9%;
-    }
-}
-
-@media(min-width: 1200px){
-    .AC-logo{
-        margin-top: 7%;
-    }
-}
-
-@media(min-width: 1400px){
-    .AC-logo{
-        margin-top: 6.5%;
-    }
-}
-
-
-
 

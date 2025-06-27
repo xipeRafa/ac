@@ -1,7 +1,7 @@
 
 import { useAuth } from '../../hooks/useAuth'
 
-import AC from '../../assets/AC.png'
+import AC from '../../assets/imgs/AC.png'
 
 
 const registerFormFields = {
