@@ -9,7 +9,7 @@ export const Assignations = () => {
     const { 
         assignationsSlice, assignationsGet, assDelete, assignationsPost, setInfoToForm,
         editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, useEffect,
-        useState, Modal, show, handleClose, handleShow, onCheckingRedirect
+        useState, Modal, show, handleClose, handleShow, onCheckingRedirect, Acordion
     } = useAssignations()
    
 
@@ -51,20 +51,26 @@ export const Assignations = () => {
             {assignationsSlice.map((el, i) => (
                 <div key={i + '!#'} className="list">
 
-                    <h2>{capitalize(el.name)}</h2>
+                    <p><span>Operador: </span>      {el.operator}</p>
 
-                    <p><span>ID: </span>      {capitalize(el.idAss)}</p>
-                    <p><span>Telefono:</span> {capitalize(el.phone)}</p>
+                    <p><span>Unidad: </span>      {el.unit}</p>
+                    <p><span>Ruta:</span> {el.ruta}</p>
 
-                    {/*<img src={el.img} width='100px' />*/}
 
-                    <hr />
+                     {Acordion(i, 'Mas Información de la Ruta ...', 
+                        <div key={i}>
+                            <p><span>punto de partida:</span> </p>
+                            <p><span>punto Uno:</span> </p>
+                            <p><span>punto Dos:</span> </p>
+                            <p><span>punto Tres:</span> </p>
+                            <p><span>punto final:</span> </p>
 
-                    <button className='btn-w' onClick={() => handleDelete(el)}>Eliminar</button>
-                    <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
-
-                    {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}
-                    {/*<input type="file" id="file-upload" onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}
+                            
+                            <hr />
+                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>Eliminar</button>
+                            <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
+                        </div>
+                    )}
 
                 </div>
             ))}

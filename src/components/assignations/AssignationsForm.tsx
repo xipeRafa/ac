@@ -7,17 +7,15 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
 
 
-    const[operatorState, setOperatorState]=useState({name:'', phone:'', idAss:'' })
+    const[assState, setOperatorState]=useState({operator:'', unit:'', ruta:''})
 
 
-    const { name, phone, idAss,
-            onInputChange: onPostInputChange, noSpace} = useForm(operatorState);
+    const { operator, unit, ruta, onInputChange: onPostInputChange, noSpace} = useForm(assState);
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            const { name, phone, idAss } = editMode
-            setOperatorState({name, phone, idAss})
+            setOperatorState(editMode)
         }
     }, [editMode]) 
 
@@ -26,11 +24,9 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
         event.preventDefault();
 
         if(editMode){
-            const { name, phone, idAss } = noSpace
-            newDataEdit(name, phone, idAss, editMode.uid)
+            newDataEdit(noSpace)
         }else{
-            const { name, phone, idAss } = noSpace
-            assignationsPost({name, phone, idAss })
+            assignationsPost(noSpace)
         }
         handleClose()
     }
@@ -40,6 +36,11 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
         handleClose()
     }
 
+    let oa = ls('operatorsArray')
+    let ua = ls('unitsArray')
+
+    oa.unshift({name:'Seleccione un Operador...'})
+    ua.unshift({ne:'Seleccione una Unidad...'})
 
 
   return (
@@ -49,43 +50,43 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
             <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-5'}>
 
                 <div>
-                <label>Operadores</label>
-                <select className="form-select mb-3">
-                    {ls('operatorsArray').map((opcion, i) => (
-                        <option key={i} value={opcion.name}>
-                            {opcion.name}
-                        </option>
-                    ))}
-                </select>
+                    <label>Operadores</label>
+                    <select className="form-select mb-3" value={operator} name='operator' onChange={onPostInputChange}>
+                            {oa.map((opcion, i) => (
+                                    <option key={i+'ass'} value={opcion.name} >
+                                        {opcion.name}
+                                    </option>
+                                )
+                            )}
+                    </select>    
                 </div>
 
                 <div>
-                <label>Unidades</label>
-                <select className="form-select mb-3">
-                    {ls('unitsArray').map((opcion, i) => (
-                        <option key={i} value={opcion.ne}>
-                            {opcion.ne}
-                        </option>
-                    ))}
-                </select>
+                    <label>Unidades</label>
+                    <select className="form-select mb-3" value={unit} name='unit' onChange={onPostInputChange}>
+                        {ua.map((opcion, i) => (
+                                <option key={i} value={opcion.ne}>
+                                    {opcion.ne}
+                                </option>
+                            )
+                        )}
+                    </select>
                 </div>
 
                 <div>
-                <button className="btn-w scb primary-out">    
-                        Rutas
-                </button>
+                    <label>Rutas</label>
+                    <select className="form-select mb-3" value={unit} name='ruta' onChange={onPostInputChange}>
+                        {[].map((opcion, i) => (
+                                <option key={i} value={opcion.ne}>
+                                    {opcion.ne}
+                                </option>
+                            )
+                        )}
+                    </select>
                 </div>
 
-               {/* <div>
-                <label>Rutas</label>
-                <select className="form-select mb-3">
-                    {[].map((opcion, i) => (
-                        <option key={i} value={opcion?.ne}>
-                            {opcion?.ne}
-                        </option>
-                    ))}
-                </select>
-                </div>*/}
+
+
 
 
                 <div className='btnContainer w-100'>

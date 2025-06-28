@@ -30,7 +30,6 @@
             localStorage.status = `"${localStorage.status}"`
         }
 
-
         const ls = (name, data) => { 
             if(data === undefined){
                 return localStorage[name] !== undefined ? JSON.parse(localStorage[name]) : undefined // regresando, exa: ls('status')

@@ -28,12 +28,12 @@ export function editExplorer(){
     }
 
 
-    const editedAss =({editMode, name, phone, idAss, uid})=>{
+    const editedAss =(EL)=>{
 
         let arr = ls('assignationsArray')
 
         let editedAss = arr.map((el) => 
-            (el.uid === uid ? {...editMode, name, phone, idAss } : el)
+            (el.uid === EL.uid ? EL : el)
         )
 
         return editedAss
