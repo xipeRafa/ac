@@ -3,21 +3,54 @@
 
 
 export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultModeEdith, 
-                                    handleClose, useForm, useState, useEffect }) => {
+                                    handleClose, useForm, useState, useEffect, formInputsOperators }) => {
 
 
 
-    const[operatorState, setOperatorState]=useState({name:'', phone:'', idOperator:'' })
+    const[operatorState, setOperatorState]=useState({
+            name:'', 
+            apellidoPaterno:'',
+            apellidoMaterno:'',
+            idOperator:'',
+            phone:'',
+            direccion:'',
+            edad:'',
+            licencia:'',
+            fechaVencimientoLicencia:'',
+            rfc:'',
+            curp:'',
+            fechaNacimiento:'',
+            estadoCivil:'',
+            estadoCivil:'',
+            tipoSangre:'',
+            contactoEmergencia:'',
+    })
 
 
-    const { name, phone, idOperator,
-            onInputChange: onPostInputChange, noSpace} = useForm(operatorState);
+    const { name, 
+            apellidoPaterno,
+            apellidoMaterno,
+            idOperator,
+            phone,
+            direccion,
+            edad,
+            licencia,
+            fechaVencimientoLicencia,
+            rfc,
+            curp,
+            fechaNacimiento,
+            estadoCivil,
+            tipoSangre,
+            contactoEmergencia,
+            onInputChange: onPostInputChange, 
+            noSpace,
+    } = useForm(operatorState);
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            const { name, phone, idOperator } = editMode
-            setOperatorState({name, phone, idOperator})
+            // const { name, phone, idOperator } = editMode
+            setOperatorState(editMode)
         }
     }, [editMode]) 
 
@@ -26,11 +59,11 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
         event.preventDefault();
 
         if(editMode){
-            const { name, phone, idOperator } = noSpace
-            newDataEdit(name, phone, idOperator, editMode.uid)
+            // const { name, phone, idOperator } = noSpace
+            newDataEdit({...noSpace, ...editMode.uid})
         }else{
-            const { name, phone, idOperator } = noSpace
-            operatorsPost({name, phone, idOperator })
+            // const { name, phone, idOperator } = noSpace
+            operatorsPost(noSpace)
         }
         handleClose()
     }
@@ -47,48 +80,43 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
       <div className="row">
         <div className="col-lg-8 offset-lg-2" >
 
+
             <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-4'}>
 
-                <div className="form-group mb-3 pt-3 ">
-                    {editMode && <label>Nombre</label>}
-                    <input
-                        required
-                        type='text'
-                        className="form-control"
-                        placeholder="Nombre"
-                        name="name"
-                        value={capitalize(name)}
-                        onChange={onPostInputChange}
-                    />
-                </div>
+                {[ 
+                    ['Nombre', 'name', name], 
+                    ['Apellido Paterno', 'apellidoPaterno', apellidoPaterno], 
+                    ['Apellido Materno', 'apellidoMaterno', apellidoMaterno], 
+                    ['ID Operador', 'idOperator', idOperator], 
+                    ['Telefono', 'phone', phone], 
+                    ['Direccion', 'direccion', direccion],
+                    ['Edad', 'edad', edad], 
+                    ['CURP', 'curp', curp],
+                    ['Fecha de Nacimiento', 'fechaNacimiento', fechaNacimiento],
+                    ['Estado Civil', 'estadoCivil', estadoCivil],
+                    ['Licencia', 'licencia', licencia],
+                    ['Fecha de Vencimiento Licencia', 'fechaVencimientoLicencia', fechaVencimientoLicencia],
+                    ['Tipo de Sangre', 'tipoSangre', tipoSangre],
+                    ['Contacto de Emergencia', 'contactoEmergencia', contactoEmergencia],
 
-                <div className="form-group mb-3">
-                    {editMode && <label>Identificador</label>}
-                    <input
-                        required
-                        type='text'
-                        className="form-control"
-                        placeholder="ID"
-                        name="idOperator"
-                        value={capitalize(idOperator)}
-                        onChange={onPostInputChange}
-                    />
-                </div>
+                ].map((el, i)=>{
 
-                <div className="form-group mb-3">
-                    {editMode && <label>Telefono</label>}
-                    <input
-                        required
-                        type='text'
-                        className="form-control"
-                        placeholder="# Telefono"
-                        name="phone"
-                        value={capitalize(phone)}
-                        onChange={onPostInputChange}
-                    />
-                </div>
+                        return <div key={i} className="form-group mb-3">
+                                    {editMode && <label>{capitalize(String(el[0]))}</label>}
+                                        <input
+                                            required
+                                            type='text'
+                                            className="form-control"
+                                            placeholder={el[0]}
+                                            name={el[1]}
+                                            value={capitalize(el[2])}
+                                            onChange={onPostInputChange}
+                                        />
+                                </div>
+                    })
+                }
 
-
+               
                 <div className='btnContainer'>
 
                         <input type="submit"
@@ -102,6 +130,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                         }
 
                 </div>
+
 
             </form>
 

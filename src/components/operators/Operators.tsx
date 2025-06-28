@@ -9,7 +9,7 @@ export const Operators = () => {
     const { 
         operatorsSlice, operatorsGet, operatorsDelete, operatorsPost, setInfoToForm,
         editMode, newDataEdit, defaultModeEdith, navigateTo, useForm, useEffect,
-        useState, Modal, show, handleClose, handleShow, onCheckingRedirect
+        useState, Modal, show, handleClose, handleShow, onCheckingRedirect, formInputsOperators
     } = useOperators()
    
 
@@ -51,7 +51,7 @@ export const Operators = () => {
             {operatorsSlice.map((el, i) => (
                 <div key={i + '!@#'} className="list">
 
-                    <h2>{capitalize(el.name)}</h2>
+                    <h2>{capitalize(el.name)} {capitalize(el.apellidoPaterno)} {capitalize(el.apellidoMaterno)}</h2>
 
                     <p><span>ID: </span>      {capitalize(el.idOperator)}</p>
                     <p><span>Telefono:</span> {capitalize(el.phone)}</p>
@@ -89,6 +89,7 @@ export const Operators = () => {
                             useForm={useForm}
                             useEffect={useEffect}
                             useState={useState}
+                            formInputsOperators={formInputsOperators}
                         />
                 </Modal.Body>
 

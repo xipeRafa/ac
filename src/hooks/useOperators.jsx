@@ -31,9 +31,9 @@ export const useOperators = () => {
     }
 
 
-    const operatorsPost = ({ name, phone, idOperator }) => {
+    const operatorsPost = (el) => {
         let posted = ls('operatorsArray')
-        posted.push({ name, phone, idOperator, uid:Date.now() })
+        posted.push({...el, uid:Date.now() })
         ls('operatorsArray', posted)
         dispatch(opCreateView(ls('operatorsArray')))
     }
@@ -45,9 +45,9 @@ export const useOperators = () => {
 
     
 
-    const newDataEdit = (name, phone, idOperator, uid) => { 
+    const newDataEdit = (el) => { 
         const { editedOp } = editExplorer() 
-        ls('operatorsArray', editedOp({editMode, name, phone, idOperator, uid}))
+        ls('operatorsArray', editedOp(el))
         dispatch(opCreateView(ls('operatorsArray')))
         dispatch(defaultEditMode()) 
     }
