@@ -1519,6 +1519,11 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     --zinc-500:#6F7887;
 
 
+    --azure-50:#E9F2FC;
+    --azure-100:#D1E5FB;
+
+
+
     --bs-primary-text-emphasis: #052c65;
     --bs-secondary-text-emphasis: #2b2f32;
     --bs-success-text-emphasis: #0a3622;
@@ -1530,6 +1535,14 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     --bs-primary-bg-subtle: #cfe2ff;
     --bs-secondary-bg-subtle: #e2e3e5;
     --bs-success-bg-subtle: #d1e7dd;
+
+
+    --bs-breakpoint-xs: 0;
+    --bs-breakpoint-sm: 576px;
+    --bs-breakpoint-md: 768px;
+    --bs-breakpoint-lg: 992px;
+    --bs-breakpoint-xl: 1200px;
+    --bs-breakpoint-xxl: 1400px;
     
 }
 .customAlert {
@@ -1569,7 +1582,7 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
 }
 .list {
   display: block;
-  padding: 10px 30px 16px 20px;
+  padding: 20px 24px;
   width: 90%;
   margin-left: 5%;
   margin-bottom: 20px;
@@ -1577,14 +1590,33 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
   box-shadow: rgba(10, 110, 255, 0.07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
   color: var(--slate-700);
 }
-.list > p > span {
-  font-weight: 200;
+.list > h2,
+.list > p, 
+.accordion-body > p {
+ text-transform: capitalize;
 }
-.list > h2 > span {
-  font-weight: 200;
+.accordion-body > div> p {
+  text-transform: capitalize;
 }
-.list > button {
+.list > h2 > span,
+.list > p > span,
+.accordion-body > p > span {
+  font-weight: 200;
+  text-transform: none;
+}
+.accordion-body > div > p > span {
+  font-weight: 200;
+  text-transform: none;
+}
+/*.list > button {
   margin-right: 20px !important;
+}*/
+.accordion-button{
+  background-color: var(--bg-color);
+}
+.accordion-button:focus{
+  background-color: var(--bg-color);
+  box-shadow: none;
 }
 .AC-logo {
   width: 80%;
@@ -1628,10 +1660,74 @@ input[type="text"],
 input[type="password"],
 input[type="email"] {
   border-radius: 0px;
+  text-transform: capitalize;
+}
+input[type="text"]::placeholder{
+  opacity: .7;
 }
 form > div > label {
   color: var(--zinc-500);
 }
+form{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+form>div{
+  width: 31%;
+  margin:0 1.15%;
+}
+@media(max-width: 992px){
+  form>div{
+    width: 48%;
+    margin:0 1%;
+  }
+}
+@media(max-width: 768px){
+  form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: no-wrap;
+  }
+
+  form>div{
+    width: 98%;
+    margin:0 1%;
+  }
+}
+input[type="file"]{
+    /*padding: 6px 10px; */
+    background-color: var(--slate-50);
+    /*border: 1px solid #d1d1d1;*/
+    border-radius: 8px;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #666;
+    font-weight: 300;
+    text-transform:capitalize;
+    cursor: pointer;
+  }
+@media(max-width:930px){
+      input[type="file"]{
+        margin-top:20px;
+      }
+  }
+input::file-selector-button {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border:none;
+    box-shadow: rgba(110, 110, 110, 0.06) 0px 1px 3px .6px, rgba(127, 131, 135, 0.2) 0px 0px 0px .6px;
+    background: linear-gradient(#fff, var(--slate-200));
+    color: var(--bs-gray-700);
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-right: 20px;
+    font-weight: 300;
+  }
+.fileImg {
+    padding: 1px;
+  }
 .sombra {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -1649,6 +1745,18 @@ form > div > label {
 }
 .sectionControls > button {
   margin-right: 0 !important;
+}
+.rfc{
+  text-transform: none!important;
+}
+.f{
+  float: right;
+  margin-top: -120px;
+}
+.f2{
+  float: right;
+  margin-top: -120px;
+   margin-right: 118px!important;
 }
     
 /*# sourceMappingURL=index.html?html-proxy&inline-css&index=0.css.map */</style>
@@ -1684,7 +1792,7 @@ form > div > label {
 
 
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-d0ogocai.js"></script>
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-BdlI2vT5.js"></script>
     <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-C88xzrDI.css">
   </head>
   <body>
