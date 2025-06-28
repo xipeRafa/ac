@@ -31,9 +31,9 @@ export const useAssignations = () => {
     }
 
 
-    const assignationsPost = ({ name, phone, idAss, dateStart }) => {
+    const assignationsPost = ({ name, phone, idAss }) => {
         let posted = ls('assignationsArray')
-        posted.push({ name, phone, idAss, dateStart, uid:Date.now() })
+        posted.push({ name, phone, idAss, uid:Date.now() })
         ls('assignationsArray', posted)
         dispatch(assCreateView(ls('assignationsArray')))
     }

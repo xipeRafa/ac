@@ -31,9 +31,9 @@ export const useOperators = () => {
     }
 
 
-    const operatorsPost = ({ name, phone, idOperator, dateStart }) => {
+    const operatorsPost = ({ name, phone, idOperator }) => {
         let posted = ls('operatorsArray')
-        posted.push({ name, phone, idOperator, dateStart, uid:Date.now() })
+        posted.push({ name, phone, idOperator, uid:Date.now() })
         ls('operatorsArray', posted)
         dispatch(opCreateView(ls('operatorsArray')))
     }

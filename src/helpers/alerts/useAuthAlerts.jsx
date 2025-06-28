@@ -12,10 +12,10 @@ export const useAuthAlerts = (Swal) => {
   const toastLoginAlert = () => {
     const ToastLogin = Swal.mixin({
       toast: true,
-      position: "top",
+      position: "top-end",
       showConfirmButton: false,
       //title: 'center-',
-      timer: 8000,
+      timer: 6000,
       theme: "dark",
       timerProgressBar: true,
       //background:'linear-gradient(#000,#000,#000,#000,#000,#000,#000,#fff',
@@ -29,7 +29,7 @@ export const useAuthAlerts = (Swal) => {
         container: "alertContainer",
         title: "customAlert",
       },
-      width: "60%",
+      // width: "60%",
       showCloseButton: true,
     });
 

@@ -31,7 +31,7 @@ export const useUnits = () => {
     }
 
 
-    const unitsPost = ({ descri, ne, idUnit, }) => {
+    const unitsPost = ({ descri, ne, idUnit }) => {
         let posted = ls('unitsArray')      
         posted.push({ descri, ne, idUnit, uid:Date.now() })
         ls('unitsArray', posted)

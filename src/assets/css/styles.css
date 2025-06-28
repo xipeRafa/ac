@@ -2,6 +2,11 @@
   text-align: center !important;
   text-transform: uppercase;
   letter-spacing: 0.4px;
+  margin-top: 100px;
+}
+
+.alertContainer {
+    margin-top: 50px;
 }
 
 @media (max-width: 800px) {
@@ -14,9 +19,12 @@
   background-color: rgb(167, 219, 138);
 }
 
+/*swal2-popup  swal2-icon-success */
 
-
-
+.swal2-toast{
+    outline:2px rgb(167, 219, 138) solid!important;
+    outline-offset:-1px!important;
+}
 
 
 
