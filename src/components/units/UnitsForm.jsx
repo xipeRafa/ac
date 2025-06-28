@@ -4,19 +4,40 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
 
 
     const[unitState, setUnitState]=useState({
-        descri:'', ne:'', idUnit:''
+        descri:'', 
+        ne:'', 
+        idUnit:'', 
+        placas:'', 
+        vin:'', 
+        NroSerie:'', 
+        anio:'', 
+        modelo:'', 
+        marca:'', 
+        NroPasajeros:'', 
+        aniosUso:'', 
     })
 
 
     const { 
-        descri, ne, idUnit, onInputChange: onPostInputChange, noSpace 
+        descri,
+        ne, 
+        idUnit,
+        placas, 
+        vin, 
+        NroSerie, 
+        anio, 
+        modelo, 
+        marca, 
+        NroPasajeros, 
+        aniosUso, 
+        onInputChange: onPostInputChange, 
+        noSpace 
     } = useForm(unitState)
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            const { descri, ne, idUnit } = editMode
-            setUnitState({descri, ne, idUnit})
+            setUnitState(editMode)
         }
     }, [editMode]) 
 
@@ -25,11 +46,9 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
         event.preventDefault();
 
         if(editMode){
-            const { descri, ne, idUnit } = noSpace
-            newDataEdit(descri, ne, idUnit, editMode.uid)
+            newDataEdit(noSpace)
         }else{
-            const { descri, ne, idUnit } = noSpace
-            unitsPost({descri, ne, idUnit })
+            unitsPost(noSpace)
         }
 
         handleClose()
@@ -45,53 +64,44 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
 
 
   return (
-    <div className="container sombra mt-5">
+    <div className="container sombra mt-1">
     <div className="row">
-        <div className="col-lg-8 offset-lg-2">
+        <div className="">
 
-            <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-4'}>
+            <form onSubmit={onSubmit} className={editMode ? 'mt-4': 'mt-4'}>
 
-                <div className="form-group mb-3 pt-3">
-                    {editMode && <label>Descripción</label>}
-                    <input
-                        type='text'
-                        required
-                        className="form-control"
-                        placeholder="Descripción"
-                        name="descri"
-                        value={capitalize(descri)}
-                        onChange={onPostInputChange}
-                    />
-                </div>
+                {[ 
 
-                <div className="form-group mb-3">
-                    {editMode && <label>Numero Economico</label>}
-                    <input
-                        type='text'
-                        required
-                        className="form-control"
-                        placeholder="Numero Economico"
-                        name="ne"
-                        value={capitalize(ne)}
-                        onChange={onPostInputChange}
-                    />
-                </div>
+                    [descri,'Descripción', 'descri'], 
+                    [ne, 'Numero Economico', 'ne'], 
+                    [idUnit, 'ID', 'idUnit'], 
+                    [placas, 'Placas', 'placas'],
+                    [vin, 'VIN', 'vin'],
+                    [NroSerie, 'Nro de Serie', 'NroSerie'],
+                    [anio, 'año', 'anio'],
+                    [modelo, 'Modelo', 'modelo'],
+                    [marca, 'Marca', 'marca'],
+                    [NroPasajeros, 'Nro de Pasajeros', 'NroPasajeros'],
+                    [aniosUso, 'Años de Uso', 'aniosUso'],
 
-                <div className="form-group mb-3">
-                    {editMode && <label>Identificador</label>}
-                    <input
-                        type='text'
-                        required
-                        className="form-control"
-                        placeholder="ID"
-                        name="idUnit"
-                        value={capitalize(idUnit)}
-                        onChange={onPostInputChange}
-                    />
-                </div>
+                ].map((el, i)=>(
+                        <div key={i} className="form-group mb-3">
+                                {editMode && <label>{el[1]}</label>}
+                                <input
+                                    required
+                                    type='text'
+                                    className="form-control"
+                                    placeholder={el[1]+'...'}
+                                    name={el[2]}
+                                    value={el[0]}
+                                    onChange={onPostInputChange}
+                                />
+                        </div>
+                ))}
 
 
-                <div className='btnContainer'>
+
+                <div className='btnContainer w-100'>
 
                         <input 
                             type="submit"

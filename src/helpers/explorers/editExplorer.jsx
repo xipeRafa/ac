@@ -14,14 +14,16 @@ export function editExplorer(){
     }
 
 
-    const editedUnit =({editMode, descri, ne, idUnit, uid})=>{
+    const editedUnit =(EL)=>{
+
+
 
         let arr = ls('unitsArray')
 
-        let editedUnit = arr.map((el) => 
-            (el.uid === uid ? {...editMode, descri, ne, idUnit } : el)
+        let editedUnit = arr.map(
+            (el) => (el.uid === EL.uid ? EL : el)
         )
-
+        
         return editedUnit
     }
 

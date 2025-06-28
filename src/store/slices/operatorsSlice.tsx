@@ -7,7 +7,7 @@ export const operatorsSlice = createSlice({
 
     initialState: {
         operatorsSlice: [],
-        editMode: undefined
+        editMode: undefined,
     },
 
     reducers: {

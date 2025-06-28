@@ -9,7 +9,7 @@ export const Units = () => {
     const { 
         unitsGet, unitsSlice, unitsDelete, unitsPost, setInfoToForm, editMode,
         newDataEdit, defaultModeEdith, navigateTo, useEffect, useState, Modal,
-        show, handleClose, handleShow, useForm, onCheckingRedirect 
+        show, handleClose, handleShow, useForm, onCheckingRedirect, Acordion, 
     } = useUnits()
 
 
@@ -52,21 +52,33 @@ export const Units = () => {
             {unitsSlice.map((el, i) => (
                 <div key={i + '!@'} className='list' >
 
-                    <h2><span>Descripción:     </span> {capitalize(el.descri)}</h2>
+                    <h2><span>Descripción:     </span> {el.descri}</h2>
 
-                    <p><span>Numero Economico: </span> {capitalize(el.ne)}</p>
-                    <p><span>ID:               </span> {capitalize(el.idUnit)}</p>
+                    <p><span>Numero Economico: </span> {el.ne}</p>
+                    <p><span>ID:               </span> {el.idUnit}</p>
                     
-                    <p>Historial de Trabajo: </p>
-                    <p>Status: </p>
+                    {Acordion(i, 'Mas Información ...', 
+                        <div key={i}>
+                            <p><span>Placas:   </span> {el.placas}</p>
+                            <p><span>VIN:        </span> {el.vin}</p>
+                            <p><span>Nro de Serie:        </span> {el.NroSerie}</p>
+                            <p className='rfc'>   <span>Año:</span> {el.anio}</p>
+                            <p><span>Modelo:  </span> {el.modelo}</p>
+                            <p><span>Marca:</span> {el.marca}</p>
+                            <p><span>Nro de Pasajeros:    </span> {el.NroPasajeros}</p>
+                            <p><span>Años de Uso:</span> {el.aniosUso}</p>
+
+                            <p>Historial de Trabajo:-- </p>
+                            <p>Status:-- </p>
+                            <hr />
+                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>Eliminar</button>
+                            <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
+                        </div>
+                    )}
 
 
                     {/*<img src={el.img} width='100px' />*/}
 
-                    <hr />
-
-                    <button className='btn-w' onClick={() => handleDelete(el)}>Eliminar</button>
-                    <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
 
                     {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}
                     {/*<input type="file" id="file-upload" onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}

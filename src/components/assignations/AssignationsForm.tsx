@@ -43,13 +43,13 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
 
   return (
-    <div className="container sombra mt-5 ">
+    <div className="container sombra mt-1">
       <div className="row">
-        <div className="col-lg-8 offset-lg-2" >
+        <div className="col-lg-10 offset-lg-1" >
 
-            <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-4'}>
+            <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-5'}>
 
-                <div className="form-group mb-3 pt-3 ">
+                <div className="form-group mb-3">
                     {editMode && <label>Nombre</label>}
                     <input
                         required
@@ -57,7 +57,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
                         className="form-control"
                         placeholder="Nombre"
                         name="name"
-                        value={capitalize(name)}
+                        value={name}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -70,7 +70,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
                         className="form-control"
                         placeholder="ID"
                         name="idAss"
-                        value={capitalize(idAss)}
+                        value={idAss}
                         onChange={onPostInputChange}
                     />
                 </div>
@@ -83,13 +83,13 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
                         className="form-control"
                         placeholder="# Telefono"
                         name="phone"
-                        value={capitalize(phone)}
+                        value={phone}
                         onChange={onPostInputChange}
                     />
                 </div>
 
 
-                <div className='btnContainer'>
+                <div className='btnContainer w-100'>
 
                         <input type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 

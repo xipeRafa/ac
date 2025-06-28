@@ -62,7 +62,7 @@
 
 .list {
   display: block;
-  padding: 10px 30px 16px 20px;
+  padding: 20px 24px;
   width: 90%;
   margin-left: 5%;
   margin-bottom: 20px;
@@ -71,17 +71,47 @@
   color: var(--slate-700);
 }
 
-.list > p > span {
-  font-weight: 200;
+
+
+
+
+.list > h2,
+.list > p, 
+.accordion-body > p {
+ text-transform: capitalize;
 }
 
-.list > h2 > span {
-  font-weight: 200;
+.accordion-body > div> p {
+  text-transform: capitalize;
 }
 
-.list > button {
+.list > h2 > span,
+.list > p > span,
+.accordion-body > p > span {
+  font-weight: 200;
+  text-transform: none;
+}
+
+.accordion-body > div > p > span {
+  font-weight: 200;
+  text-transform: none;
+}
+
+
+/*.list > button {
   margin-right: 20px !important;
+}*/
+
+.accordion-button{
+  background-color: var(--bg-color);
 }
+
+.accordion-button:focus{
+  background-color: var(--bg-color);
+  box-shadow: none;
+}
+
+
 
 
 

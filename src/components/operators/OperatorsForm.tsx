@@ -16,11 +16,10 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             direccion:'',
             edad:'',
             licencia:'',
-            fechaVencimientoLicencia:'',
+            vencimientoLicencia:'',
             rfc:'',
             curp:'',
             fechaNacimiento:'',
-            estadoCivil:'',
             estadoCivil:'',
             tipoSangre:'',
             contactoEmergencia:'',
@@ -35,7 +34,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             direccion,
             edad,
             licencia,
-            fechaVencimientoLicencia,
+            vencimientoLicencia,
             rfc,
             curp,
             fechaNacimiento,
@@ -44,12 +43,11 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             contactoEmergencia,
             onInputChange: onPostInputChange, 
             noSpace,
-    } = useForm(operatorState);
+    } = useForm(operatorState)
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            // const { name, phone, idOperator } = editMode
             setOperatorState(editMode)
         }
     }, [editMode]) 
@@ -59,10 +57,8 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
         event.preventDefault();
 
         if(editMode){
-            // const { name, phone, idOperator } = noSpace
-            newDataEdit({...noSpace, ...editMode.uid})
+            newDataEdit(noSpace)
         }else{
-            // const { name, phone, idOperator } = noSpace
             operatorsPost(noSpace)
         }
         handleClose()
@@ -76,48 +72,47 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
 
 
   return (
-    <div className="container sombra mt-5 ">
+    <div className="container sombra mt-1 ">
       <div className="row">
-        <div className="col-lg-8 offset-lg-2" >
+        <div className="w-100" >
 
 
-            <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-4'}>
+            <form onSubmit={onSubmit} className={editMode ? 'mt-4': 'mt-5'}>
 
                 {[ 
-                    ['Nombre', 'name', name], 
-                    ['Apellido Paterno', 'apellidoPaterno', apellidoPaterno], 
-                    ['Apellido Materno', 'apellidoMaterno', apellidoMaterno], 
-                    ['ID Operador', 'idOperator', idOperator], 
-                    ['Telefono', 'phone', phone], 
-                    ['Direccion', 'direccion', direccion],
-                    ['Edad', 'edad', edad], 
-                    ['CURP', 'curp', curp],
-                    ['Fecha de Nacimiento', 'fechaNacimiento', fechaNacimiento],
-                    ['Estado Civil', 'estadoCivil', estadoCivil],
-                    ['Licencia', 'licencia', licencia],
-                    ['Fecha de Vencimiento Licencia', 'fechaVencimientoLicencia', fechaVencimientoLicencia],
-                    ['Tipo de Sangre', 'tipoSangre', tipoSangre],
-                    ['Contacto de Emergencia', 'contactoEmergencia', contactoEmergencia],
+                    [name,'Nombre', 'name'], 
+                    [apellidoPaterno, 'Apellido Paterno', 'apellidoPaterno'], 
+                    [apellidoMaterno, 'Apellido Materno', 'apellidoMaterno'], 
+                    [idOperator, 'ID Operador', 'idOperator'], 
+                    [phone, 'Telefono', 'phone'], 
+                    [direccion, 'Direccion', 'direccion'],
+                    [edad, 'Edad', 'edad'], 
+                    [curp, 'CURP', 'curp'],
+                    [rfc, 'RFC', 'rfc'],
+                    [fechaNacimiento, 'Fecha de Nacimiento', 'fechaNacimiento'],
+                    [estadoCivil, 'Estado Civil', 'estadoCivil'],
+                    [licencia, 'Licencia', 'licencia'],
+                    [vencimientoLicencia, 'Vencimiento de Licencia', 'vencimientoLicencia'],
+                    [tipoSangre, 'Tipo de Sangre', 'tipoSangre'],
+                    [contactoEmergencia, 'Contacto de Emergencia', 'contactoEmergencia'],
 
-                ].map((el, i)=>{
-
-                        return <div key={i} className="form-group mb-3">
-                                    {editMode && <label>{capitalize(String(el[0]))}</label>}
-                                        <input
-                                            required
-                                            type='text'
-                                            className="form-control"
-                                            placeholder={el[0]}
-                                            name={el[1]}
-                                            value={capitalize(el[2])}
-                                            onChange={onPostInputChange}
-                                        />
-                                </div>
-                    })
-                }
+                ].map((el, i)=>(
+                        <div key={i} className="form-group mb-3">
+                                {editMode && <label>{el[1]}</label>}
+                                <input
+                                    required
+                                    type='text'
+                                    className="form-control"
+                                    placeholder={el[1]+'...'}
+                                    name={el[2]}
+                                    value={el[0]}
+                                    onChange={onPostInputChange}
+                                />
+                        </div>
+                ))}
 
                
-                <div className='btnContainer'>
+                <div className='btnContainer w-100'>
 
                         <input type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 

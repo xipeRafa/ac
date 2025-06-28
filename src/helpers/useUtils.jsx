@@ -1,6 +1,7 @@
 
 
 import Modal from 'react-bootstrap/Modal';
+import Accordion from 'react-bootstrap/Accordion'
 
 
 
@@ -13,14 +14,41 @@ export const useUtils = (useState) => {
 	const handleClose = () => setShow(false)
 	const handleShow = () => setShow(true)
 
+
+	const Acordion =(i, text, ...args)=>(
+
+			<Accordion defaultActiveKey="0" className='mb-1'>
+
+				<Accordion.Item eventKey={i} >
+
+                    <Accordion.Header>
+                        {text}
+                    </Accordion.Header>
+
+                    <Accordion.Body>
+                       	{args}
+                    </Accordion.Body>
+
+                </Accordion.Item>
+
+            </Accordion>
+
+    )
+
+
 	return{
 		handleClose,
 		handleShow, 
 		show, 
-		Modal
+		Modal,
+		Acordion,
 	}
 
 }
+
+
+
+
 
 
 

@@ -42,6 +42,11 @@
     --zinc-500:#6F7887;
 
 
+    --azure-50:#E9F2FC;
+    --azure-100:#D1E5FB;
+
+
+
     --bs-primary-text-emphasis: #052c65;
     --bs-secondary-text-emphasis: #2b2f32;
     --bs-success-text-emphasis: #0a3622;
@@ -53,5 +58,13 @@
     --bs-primary-bg-subtle: #cfe2ff;
     --bs-secondary-bg-subtle: #e2e3e5;
     --bs-success-bg-subtle: #d1e7dd;
+
+
+    --bs-breakpoint-xs: 0;
+    --bs-breakpoint-sm: 576px;
+    --bs-breakpoint-md: 768px;
+    --bs-breakpoint-lg: 992px;
+    --bs-breakpoint-xl: 1200px;
+    --bs-breakpoint-xxl: 1400px;
     
 }

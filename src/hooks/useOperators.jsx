@@ -19,7 +19,7 @@ export const useOperators = () => {
     const navigateTo = useNavigate()
 
     
-    const { Modal, show, handleClose, handleShow } = useUtils(useState)
+    const { Modal, show, handleClose, handleShow, Acordion } = useUtils(useState)
 
 
     const operatorsGet = () => {
@@ -33,7 +33,7 @@ export const useOperators = () => {
 
     const operatorsPost = (el) => {
         let posted = ls('operatorsArray')
-        posted.push({...el, uid:Date.now() })
+        posted.push({...el, uid:Date.now()})
         ls('operatorsArray', posted)
         dispatch(opCreateView(ls('operatorsArray')))
     }
@@ -44,7 +44,6 @@ export const useOperators = () => {
     }
 
     
-
     const newDataEdit = (el) => { 
         const { editedOp } = editExplorer() 
         ls('operatorsArray', editedOp(el))
@@ -93,6 +92,7 @@ export const useOperators = () => {
     show,
     handleClose,
     handleShow,
+    Acordion,
 
   }
 }

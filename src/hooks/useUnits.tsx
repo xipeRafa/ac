@@ -19,7 +19,7 @@ export const useUnits = () => {
     const dispatch = useDispatch()
     const navigateTo = useNavigate()
 
-    const { Modal, show, handleClose, handleShow } = useUtils(useState)
+    const { Modal, show, handleClose, handleShow, Acordion, } = useUtils(useState)
 
 
     const unitsGet = () => {
@@ -44,10 +44,12 @@ export const useUnits = () => {
     }
 
 
-    const newDataEdit = (descri, ne, idUnit, uid) => { 
+    const newDataEdit = (el) => { 
+        c(el)
         const { editedUnit } = editExplorer() 
-        ls('unitsArray', editedUnit({editMode, descri, ne, idUnit, uid}))
+        ls('unitsArray', editedUnit(el))
         dispatch(unitsCreateView(ls('unitsArray')))
+        //dispatch(unitsCreateView(editedUnit(el)))
         dispatch(defaultEditMode())   
     }
 
@@ -91,6 +93,7 @@ export const useUnits = () => {
     //helpers
     useForm,
     onCheckingRedirect,
+    Acordion,
   }
 
 }
