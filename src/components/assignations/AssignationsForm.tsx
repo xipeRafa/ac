@@ -45,48 +45,47 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
   return (
     <div className="container sombra mt-1">
       <div className="row">
-        <div className="col-lg-10 offset-lg-1" >
 
             <form onSubmit={onSubmit} className={editMode ? 'mt-3': 'mt-5'}>
 
-                <div className="form-group mb-3">
-                    {editMode && <label>Nombre</label>}
-                    <input
-                        required
-                        type='text'
-                        className="form-control"
-                        placeholder="Nombre"
-                        name="name"
-                        value={name}
-                        onChange={onPostInputChange}
-                    />
+                <div>
+                <label>Operadores</label>
+                <select className="form-select mb-3">
+                    {ls('operatorsArray').map((opcion, i) => (
+                        <option key={i} value={opcion.name}>
+                            {opcion.name}
+                        </option>
+                    ))}
+                </select>
                 </div>
 
-                <div className="form-group mb-3">
-                    {editMode && <label>Identificador</label>}
-                    <input
-                        required
-                        type='text'
-                        className="form-control"
-                        placeholder="ID"
-                        name="idAss"
-                        value={idAss}
-                        onChange={onPostInputChange}
-                    />
+                <div>
+                <label>Unidades</label>
+                <select className="form-select mb-3">
+                    {ls('unitsArray').map((opcion, i) => (
+                        <option key={i} value={opcion.ne}>
+                            {opcion.ne}
+                        </option>
+                    ))}
+                </select>
                 </div>
 
-                <div className="form-group mb-3">
-                    {editMode && <label>Telefono</label>}
-                    <input
-                        required
-                        type='text'
-                        className="form-control"
-                        placeholder="# Telefono"
-                        name="phone"
-                        value={phone}
-                        onChange={onPostInputChange}
-                    />
+                <div>
+                <button className="btn-w scb primary-out">    
+                        Rutas
+                </button>
                 </div>
+
+               {/* <div>
+                <label>Rutas</label>
+                <select className="form-select mb-3">
+                    {[].map((opcion, i) => (
+                        <option key={i} value={opcion?.ne}>
+                            {opcion?.ne}
+                        </option>
+                    ))}
+                </select>
+                </div>*/}
 
 
                 <div className='btnContainer w-100'>
@@ -106,7 +105,8 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
             </form>
 
             <br />
-        </div>
+            <br />
+
     </div>
 </div>
   )
