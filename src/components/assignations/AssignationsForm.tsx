@@ -7,7 +7,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
 
 
-    const[assState, setOperatorState]=useState({operator:'', unit:'', ruta:''})
+    const[assState, setAssState]=useState({operator:'', unit:'', ruta:''})
 
 
     const { operator, unit, ruta, onInputChange: onPostInputChange, noSpace} = useForm(assState);
@@ -15,7 +15,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            setOperatorState(editMode)
+            setAssState(editMode)
         }
     }, [editMode]) 
 
@@ -38,9 +38,11 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
     let oa = ls('operatorsArray')
     let ua = ls('unitsArray')
+    let ra = ls('rutasArray')
 
     oa.unshift({name:'Seleccione un Operador...'})
     ua.unshift({ne:'Seleccione una Unidad...'})
+    ra.unshift({nameRuta:'Seleccione una Ruta...'})
 
 
   return (
@@ -75,10 +77,10 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
                 <div>
                     <label>Rutas</label>
-                    <select className="form-select mb-3" value={unit} name='ruta' onChange={onPostInputChange}>
-                        {[].map((opcion, i) => (
-                                <option key={i} value={opcion.ne}>
-                                    {opcion.ne}
+                    <select className="form-select mb-3" value={ruta} name='ruta' onChange={onPostInputChange}>
+                        {ra.map((opcion, i) => (
+                                <option key={i} value={opcion.nameRuta}>
+                                    {opcion.nameRuta}
                                 </option>
                             )
                         )}

@@ -2,53 +2,44 @@
 
 
 
-export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultModeEdith, 
-                                    handleClose, useForm, useState, useEffect, }) => {
+export const RutasForm = ({ rutasPost, editMode, newDataEdit, defaultModeEdith, 
+                                    handleClose, useForm, useState, useEffect }) => {
 
 
 
-    const[operatorState, setOperatorState]=useState({
-            name:'', 
-            apellidoPaterno:'',
-            apellidoMaterno:'',
-            idOperator:'',
-            phone:'',
-            direccion:'',
-            edad:'',
-            licencia:'',
-            vencimientoLicencia:'',
-            rfc:'',
-            curp:'',
-            fechaNacimiento:'',
-            estadoCivil:'',
-            tipoSangre:'',
-            contactoEmergencia:'',
+    const[rutasState, setRutasState]=useState({
+            nameRuta:'', 
+            puntoPartida:'',
+            fechaPartida:'',
+            horaPartida:'',
+            puntoFinal:'',
+            fechaFinal:'',
+            horaFinal:'',
+            puntoInt1:'',
+            fechaPuntoInt1:'',
+            horaPuntoInt1:'',
     })
 
 
-    const { name, 
-            apellidoPaterno,
-            apellidoMaterno,
-            idOperator,
-            phone,
-            direccion,
-            edad,
-            licencia,
-            vencimientoLicencia,
-            rfc,
-            curp,
-            fechaNacimiento,
-            estadoCivil,
-            tipoSangre,
-            contactoEmergencia,
-            onInputChange: onPostInputChange, 
-            noSpace,
-    } = useForm(operatorState)
+    const {  
+        nameRuta, 
+        puntoPartida,
+        fechaPartida,
+        horaPartida,
+        puntoFinal,
+        fechaFinal,
+        horaFinal,
+        puntoInt1,
+        fechaPuntoInt1,
+        horaPuntoInt1,
+        onInputChange: onPostInputChange, 
+        noSpace,
+    } = useForm(rutasState)
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            setOperatorState(editMode)
+            setRutasState(editMode)
         }
     }, [editMode]) 
 
@@ -59,7 +50,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
         if(editMode){
             newDataEdit(noSpace)
         }else{
-            operatorsPost(noSpace)
+            rutasPost(noSpace)
         }
         handleClose()
     }
@@ -80,21 +71,17 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             <form onSubmit={onSubmit} className={editMode ? 'mt-4': 'mt-5'}>
 
                 {[ 
-                    [name,'Nombre', 'name'], 
-                    [apellidoPaterno, 'Apellido Paterno', 'apellidoPaterno'], 
-                    [apellidoMaterno, 'Apellido Materno', 'apellidoMaterno'], 
-                    [idOperator, 'ID Operador', 'idOperator'], 
-                    [phone, 'Telefono', 'phone'], 
-                    [direccion, 'Direccion', 'direccion'],
-                    [edad, 'Edad', 'edad'], 
-                    [curp, 'CURP', 'curp'],
-                    [rfc, 'RFC', 'rfc'],
-                    [fechaNacimiento, 'Fecha de Nacimiento', 'fechaNacimiento'],
-                    [estadoCivil, 'Estado Civil', 'estadoCivil'],
-                    [licencia, 'Licencia', 'licencia'],
-                    [vencimientoLicencia, 'Vencimiento de Licencia', 'vencimientoLicencia'],
-                    [tipoSangre, 'Tipo de Sangre', 'tipoSangre'],
-                    [contactoEmergencia, 'Contacto de Emergencia', 'contactoEmergencia'],
+
+                    [nameRuta,'Nombre de la Ruta', 'nameRuta'], 
+                    [puntoPartida, 'Punto de Partida', 'puntoPartida'], 
+                    [puntoFinal, 'Punto Final', 'puntoFinal'],
+                    [fechaPartida, 'Fecha de Partida', 'fechaPartida'], 
+                    [fechaFinal, 'Fecha Final', 'fechaFinal'],
+                    [horaPartida, 'Hora de Partida', 'horaPartida'], 
+                    [horaFinal, 'Hora Final', 'horaFinal'], 
+                    [puntoInt1, 'Punto Intermedio 1', 'puntoInt1'],
+                    [fechaPuntoInt1, 'Fecha Punto Intermedio 1', 'fechaPuntoInt1'],
+                    [horaPuntoInt1, 'Hora Punto Intermedio 1', 'horaPuntoInt1'],
 
                 ].map((el, i)=>(
                         <div key={i} className="form-group mb-3">
@@ -116,7 +103,7 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
 
                         <input type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 
-                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador"} />
+                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Ruta"} />
 
                         {editMode && 
                             <button type="reset" onClick={handleCancelEdit} className="btn-w scb primary-out">    

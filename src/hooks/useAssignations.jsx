@@ -32,10 +32,14 @@ export const useAssignations = () => {
 
 
     const assignationsPost = (el) => {
-         if(el.operator == 'seleccione un operador...' || el.unit == 'seleccione una unidad...'){
+        if(el.operator == 'seleccione un operador...' || el.unit == 'seleccione una unidad...' || el.ruta == 'Seleccione una Ruta...'){
                 dispatch(messageView(['Campo Vacío','No se Guardo','warning']))
                 return
-            }
+        }
+        if(el.operator == '' || el.unit == '' || el.ruta == ''){
+                dispatch(messageView(['Campo Vacío','No se Guardo','warning']))
+                return
+        }
         let posted = ls('assignationsArray')
         posted.push({...el, uid:Date.now() })
         ls('assignationsArray', posted)
@@ -50,7 +54,11 @@ export const useAssignations = () => {
 
     const newDataEdit = (el) => { 
         
-        if(el.operator == 'seleccione un operador...' || el.unit == 'seleccione una unidad...'){
+        if(el.operator == 'seleccione un operador...' || el.unit == 'seleccione una unidad...' || el.ruta == 'Seleccione una Ruta...'){
+                dispatch(messageView(['Campo Vacío','No se Editó','warning']))
+                return
+        }
+        if(el.operator == '' || el.unit == '' || el.ruta == ''){
                 dispatch(messageView(['Campo Vacío','No se Editó','warning']))
                 return
         }

@@ -57,6 +57,8 @@ export const Nav = () => {
 
                 <Link to="/ac/units/">Unidades    </Link>
 
+                <Link to="/ac/rutas/">Rutas</Link>
+
                 <Link to="/ac/assignations/">Assignations</Link>
                 
                 <Link  to="/ac/auth/login/" style={{textDecoration:'none'}} onClick={startLogout}>

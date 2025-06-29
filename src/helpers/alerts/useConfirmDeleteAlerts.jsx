@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 
 
-export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, unitsCreateView, assCreateView }) => {
+export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, unitsCreateView, assCreateView, rutasCreateView }) => {
 
 
   // let collection = args[0].collection
@@ -49,7 +49,8 @@ export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, uni
             const collectionMap = {
               'Operador': 'operatorsArray',
               'Unidad': 'unitsArray',
-              'Assignation': 'assignationsArray'
+              'Assignation': 'assignationsArray',
+              'Rutas': 'rutasArray'
             }
 
             const arrayName = collectionMap[collection]
@@ -62,7 +63,8 @@ export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, uni
               const dispatchMap = {
                 'Operador': opCreateView,
                 'Unidad': unitsCreateView,
-                'Assignation': assCreateView
+                'Assignation': assCreateView,
+                'Rutas': rutasCreateView
               }
 
               dispatch(dispatchMap[collection](ls(arrayName)))

@@ -39,12 +39,24 @@ export function editExplorer(){
         return editedAss
     }
 
+    const editedRutas =(EL)=>{
+
+        let arr = ls('rutasArray')
+
+        let editedRutas = arr.map((el) => 
+            (el.uid === EL.uid ? EL : el)
+        )
+
+        return editedRutas
+    }
+
 
      
     return { 
         editedOp, 
         editedUnit,
-        editedAss 
+        editedAss,
+        editedRutas 
     }   
      
  }

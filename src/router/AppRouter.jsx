@@ -1,7 +1,7 @@
 
 import { useAuth } from '../hooks/useAuth'
 import { Login, SignUp} from './authComps'
-import { Operators, Units, Assignations } from '../components'
+import { Operators, Units, Assignations, Rutas } from '../components'
 
 
 
@@ -33,7 +33,9 @@ const AppRouter = () => {
 
                 <Route path="/ac/"              element={<Operators />} />
                 <Route path="/ac/units/"        element={<Units />} />
+                <Route path="/ac/rutas/"        element={<Rutas />} />
                 <Route path="/ac/assignations/" element={<Assignations />} />
+
 
                 <Route path="/*" element={ status ? <Navigate to="/ac/auth/login/" /> : <Navigate to="/ac/" /> } /> 
             
