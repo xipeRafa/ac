@@ -14,7 +14,7 @@ export const useRutas = () => {
 
 
     const { rutasSlice, editMode } = useSelector(state => state.rutasSlice)
-c('hook', rutasSlice)
+
     const dispatch = useDispatch()
     const navigateTo = useNavigate()
 
