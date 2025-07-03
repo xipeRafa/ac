@@ -6,13 +6,12 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
     const[unitState, setUnitState]=useState({
         descri:'', 
         ne:'', 
-        idUnit:'', 
         placas:'', 
         vin:'', 
-        NroSerie:'', 
-        anio:'', 
-        modelo:'', 
         marca:'', 
+        modelo:'', 
+        anio:'', 
+        NroSerie:'', 
         NroPasajeros:'', 
         aniosUso:'', 
     })
@@ -21,13 +20,12 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
     const { 
         descri,
         ne, 
-        idUnit,
         placas, 
         vin, 
-        NroSerie, 
-        anio, 
-        modelo, 
         marca, 
+        modelo, 
+        anio, 
+        NroSerie, 
         NroPasajeros, 
         aniosUso, 
         onInputChange: onPostInputChange, 
@@ -68,19 +66,18 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
     <div className="row">
         <div className="">
 
-            <form onSubmit={onSubmit} className={editMode ? 'mt-4': 'mt-4'}>
+            <form onSubmit={onSubmit} className={editMode ? 'mt-4': 'mt-5'}>
 
                 {[ 
 
                     [descri,'Descripción', 'descri'], 
                     [ne, 'Numero Economico', 'ne'], 
-                    [idUnit, 'ID', 'idUnit'], 
                     [placas, 'Placas', 'placas'],
                     [vin, 'VIN', 'vin'],
-                    [NroSerie, 'Nro de Serie', 'NroSerie'],
-                    [anio, 'año', 'anio'],
-                    [modelo, 'Modelo', 'modelo'],
                     [marca, 'Marca', 'marca'],
+                    [modelo, 'Modelo', 'modelo'],
+                    [anio, 'año', 'anio'],
+                    [NroSerie, 'Nro de Serie', 'NroSerie'],
                     [NroPasajeros, 'Nro de Pasajeros', 'NroPasajeros'],
                     [aniosUso, 'Años de Uso', 'aniosUso'],
 

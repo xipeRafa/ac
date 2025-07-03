@@ -51,28 +51,37 @@ export const Operators = () => {
             {operatorsSlice.map((el, i) => (
                 <div key={i + '!@#'} className="list">
 
-                    <h2>{el.name} {el.apellidoPaterno} {el.apellidoMaterno}</h2>
+                    <h3>{el.name} {el.apellidoPaterno} {el.apellidoMaterno}</h3>
 
-                    <p><span>ID: </span>      {el.idOperator}</p>
-                    <p>Horario:-- </p>
-                    <p>Status:-- </p>
+                    <p><span>ID:       </span> {el.idOperator} </p>
+                    <p><span>Telefono: </span> {el.phone}      </p>
+                    <p><span>Status:-- </span>                 </p>
 
-                    {Acordion(i, 'Mas Información ...', 
+                    {Acordion(i, 'Mas Información del Operdor ...', 
                         <div key={i}>
-                            <p><span>Telefono:</span> {el.phone}</p>
-                            <p><span>Dirección:   </span> {el.direccion}</p>
-                            <p><span>Edad:        </span> {el.edad}</p>
-                            <p><span>CURP:        </span> {el.curp}</p>
-                            <p className='rfc'>   <span>RFC:</span> {el.rfc}</p>
-                            <p><span>Nacimiento:  </span> {el.fechaNacimiento}</p>
-                            <p><span>Estado Civil:</span> {el.estadoCivil}</p>
-                            <p><span>Licencia:    </span> {el.licencia}</p>
-                            <p><span>Vencimiento de Licencia:</span> {el.vencimientoLicencia}</p>
-                            <p><span>Tipo de Sangre:         </span> {el.tipoSangre}</p>
-                            <p><span>Contacto de Emergencia: </span> {el.contactoEmergencia}</p>
+
+                            <p><span>Horario:--              </span>                      </p>
+                            <p><span>Dirección:              </span> {el.direccion}       </p>
+                            <p><span>Edad:                   </span> {el.edad}            </p>
+                            <p><span>CURP:                   </span> {el.curp}            </p>
+                            <p><span>RFC:                    </span> {el.rfc}             </p>
+                            <p><span>Nacimiento:             </span> {el.fechaNacimiento} </p>
+                            <p><span>Estado Civil:           </span> {el.estadoCivil}     </p>
+                            <p><span>Licencia:               </span> {el.licencia}        </p>
+                            <p><span>Venci. de Licencia:     </span> {el.veLicencia}      </p>
+                            <p><span>Tipo de Sangre:         </span> {el.tipoSangre}      </p>
+                            <p><span>Contacto de Emergencia: </span> {el.coEmergencia}    </p>
+                            <p><span>Historial:--            </span>                      </p>
+
                             <hr />
-                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>Eliminar</button>
-                            <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
+
+                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>
+                                Eliminar
+                            </button>
+                            <button className='btn-w' onClick={() => handleEdith(el)}>
+                                Editar ✎
+                            </button>
+
                         </div>
                     )}
 

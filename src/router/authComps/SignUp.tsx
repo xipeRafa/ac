@@ -69,7 +69,7 @@ export const SignUp = () => {
                     <h3 className='headerColor'>REGISTRO</h3>
 
                     <form onSubmit={registerSubmit}>
-                        <div className="form-group mb-3 form-floating">
+                        <div className="form-group mb-3 form-floating w-100 m-0">
                             <input
                                 required
                                 type="text"
@@ -81,7 +81,7 @@ export const SignUp = () => {
                             />
                             <label>Nombre</label>
                         </div>
-                        <div className="form-group mb-3 form-floating">
+                        <div className="form-group mb-3 form-floating w-100 m-0">
                             <input
                                 required
                                 type="text"
@@ -93,7 +93,7 @@ export const SignUp = () => {
                             />
                             <label>Correo</label>
                         </div>
-                        <div className="form-group mb-3 form-floating">
+                        <div className="form-group mb-3 form-floating w-100 m-0">
                             <input
                                 required
                                 type="password"
@@ -106,7 +106,7 @@ export const SignUp = () => {
                             <label>Contraseña</label>
                         </div>
 
-                        <div className="form-group mb-4 form-floating">
+                        <div className="form-group mb-4 form-floating w-100 m-0">
                             <input
                                 required
                                 type="password"

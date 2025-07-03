@@ -9,19 +9,15 @@ import A from '../../../assets/imgs/a.png'
 
 export const Nav = () => {
 
-    const { startLogout, useState, Link, useEffect, useLocation } = useAuth()
 
 
-    const { pathname } = useLocation()
+    const { startLogout, useState, Link, useEffect, pathname } = useAuth()
   
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "auto", })
     }, [pathname])
 
-
     const [isActive, setIsActive] = useState(true)
-
-    const windowWidth = window.innerWidth
 
 
 
@@ -49,21 +45,20 @@ export const Nav = () => {
             </div>
 
 
-            <div className={isActive ? "menu" : "menu display"} onClick={()=>windowWidth < 999 && setIsActive(true)} style={{color:"white"}}>
+            <div className={isActive ? "menu" : "menu display"} 
+                 onClick={()=>window.innerWidth < 999 && setIsActive(true)} >
 
-                <span><img src={A} className='logo-A-menu'/></span>
+                    <span><img src={A} className='logo-A-menu'/></span>
 
-                <Link to="/ac/"      >Operadores  </Link>
+                    <Link to="/ac/rutas/">Rutas</Link>
 
-                <Link to="/ac/units/">Unidades    </Link>
+                    <Link to="/ac/units/">Unidades</Link>
 
-                <Link to="/ac/rutas/">Rutas</Link>
+                    <Link to="/ac/"      >Operadores</Link>
 
-                <Link to="/ac/assignations/">Assignations</Link>
+                    <Link to="/ac/assignations/">ASIGNACIONES</Link>
                 
-                <Link  to="/ac/auth/login/" style={{textDecoration:'none'}} onClick={startLogout}>
-                    salir ➪
-                </Link>
+                    <Link   to="#" onClick={startLogout}> SALIR ➪ </Link>
 
             </div>
 

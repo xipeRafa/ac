@@ -20,6 +20,7 @@ export const useAuth = () => {
 
     const navigateTo = useNavigate()
     const dispatch = useDispatch()
+    const pathname = useLocation()
 
 
     const hello = (name) => {
@@ -110,6 +111,7 @@ export const useAuth = () => {
         Routes,
         useSelector,
         useLocation,
+        pathname,
 
         //alert
         messageView,

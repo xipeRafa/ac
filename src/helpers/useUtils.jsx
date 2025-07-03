@@ -6,7 +6,7 @@ import Accordion from 'react-bootstrap/Accordion'
 
 
 
-export const useUtils = (useState) => {
+export const useUtils = (useState, dispatch, messageView) => {
 
 	Modal
 
@@ -17,7 +17,7 @@ export const useUtils = (useState) => {
 
 	const Acordion =(i, text, ...args)=>(
 
-			<Accordion defaultActiveKey="0" className='mb-1'>
+			<Accordion defaultActiveKey="0" >
 
 				<Accordion.Item eventKey={i} >
 
@@ -36,12 +36,34 @@ export const useUtils = (useState) => {
     )
 
 
+    const avoidEmpty = (v) => {
+
+    	c(v)
+
+        let a = Object.values(v).some((x) => {
+        	if(x.slice(0, 10) === 'Seleccione' || x.charAt() === ''){
+        		return true
+        	}else{
+        		return false
+        	}
+        })
+
+        if(a){
+        	dispatch(messageView(['Campo Vacio','Seleccione Todo!','warning']))
+        }
+
+        return a
+
+    }
+
+
 	return{
 		handleClose,
 		handleShow, 
 		show, 
 		Modal,
 		Acordion,
+		avoidEmpty,
 	}
 
 }

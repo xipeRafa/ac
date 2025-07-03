@@ -51,31 +51,29 @@ export const Rutas = () => {
             {rutasSlice?.map((el, i) => (
                 <div key={i + '!@#'} className="list">
 
-                    <h2>{el.nameRuta}</h2>
+                    <h3>{el.nameRuta}</h3>
 
-                    <p><span>Punto de Partida:   </span> {el.puntoPartida}</p>
-                    <p><span>Punto Final:        </span> {el.puntoFinal}</p>
+                    <p><span> Punto de Partida: </span> {el.puntoPartida} </p>
+                    <p><span> Punto Final:      </span> {el.puntoFinal}   </p>
+                    <p><span> Fecha de Partida: </span> {el.fechaPartida} </p>
+                    <p><span> Fecha Final:      </span> {el.fechaFinal}   </p>
+                    <p><span> Hora de Partida:  </span> {el.horaPartida}  </p>
+                    <p><span> Hora Final:       </span> {el.horaFinal}    </p>
 
-                    <p><span>Fecha de Partida:   </span> {el.fechaPartida}</p>
-                    <p><span>Fecha Final:         </span> {el.fechaFinal}</p>
-
-                    <p><span>Hora de Partida:    </span> {el.horaPartida}</p>
-                    <p><span>Hora Final:         </span> {el.horaFinal}</p>
-
-                    {Acordion(i, 'Mas Información ...', 
+                    {Acordion(i, 'Mas Información de la Ruta...', 
                         <div key={i}>
-                            <p><span>punto Intermedio 1: </span> {el.puntoInt1}</p>
-                            <p><span>Fecha de Punto Intermedio 1:</span> {el.fechaPuntoInt1}</p>
-                            <p><span>Hora de Punto Intermedio 1:</span> {el.horaPuntoInt1}</p>
+                            <p><span>Punto Intermedio 1:          </span> {el.puntoInt1}     </p>
+                            <p><span>Fecha de Punto Intermedio 1: </span> {el.fechaPuntoInt1}</p>
+                            <p><span>Hora de Punto Intermedio 1:  </span> {el.horaPuntoInt1} </p>
                             <hr />
-                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>Eliminar</button>
-                            <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
+                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>
+                                Eliminar
+                            </button>
+                            <button className='btn-w' onClick={() => handleEdith(el)}> 
+                                Editar ✎
+                            </button>
                         </div>
                     )}
-
-                    {/*<img src={el.img} width='100px' />*/}
-
-                    {/*<input type="file" id="file-upload" className='fileImg' onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}
 
                 </div>
             ))}
@@ -86,7 +84,7 @@ export const Rutas = () => {
             <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
                 <Modal.Header className='modalColors' >
-                    <Modal.Title>{editMode ? 'EDITAR OPERADOR' : 'NUEVO OPERADOR' }</Modal.Title> 
+                    <Modal.Title>{editMode ? 'EDITAR RUTA' : 'NUEVA RUTA' }</Modal.Title> 
                     {!editMode && <b className='modal-btn-x' onClick={handleClose}>❌</b> }
                 </Modal.Header>
 

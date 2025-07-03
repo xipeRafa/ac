@@ -16,13 +16,13 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             direccion:'',
             edad:'',
             licencia:'',
-            vencimientoLicencia:'',
+            veLicencia:'',
             rfc:'',
             curp:'',
             fechaNacimiento:'',
             estadoCivil:'',
             tipoSangre:'',
-            contactoEmergencia:'',
+            coEmergencia:'',
     })
 
 
@@ -34,13 +34,13 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             direccion,
             edad,
             licencia,
-            vencimientoLicencia,
+            veLicencia,
             rfc,
             curp,
             fechaNacimiento,
             estadoCivil,
             tipoSangre,
-            contactoEmergencia,
+            coEmergencia,
             onInputChange: onPostInputChange, 
             noSpace,
     } = useForm(operatorState)
@@ -88,13 +88,13 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                     [direccion, 'Direccion', 'direccion'],
                     [edad, 'Edad', 'edad'], 
                     [curp, 'CURP', 'curp'],
-                    [rfc, 'RFC', 'rfc'],
+                    [rfc,             'RFC', 'rfc'],
                     [fechaNacimiento, 'Fecha de Nacimiento', 'fechaNacimiento'],
                     [estadoCivil, 'Estado Civil', 'estadoCivil'],
                     [licencia, 'Licencia', 'licencia'],
-                    [vencimientoLicencia, 'Vencimiento de Licencia', 'vencimientoLicencia'],
+                    [veLicencia, 'Vencimiento de Licencia', 'veLicencia'],
                     [tipoSangre, 'Tipo de Sangre', 'tipoSangre'],
-                    [contactoEmergencia, 'Contacto de Emergencia', 'contactoEmergencia'],
+                    [coEmergencia, 'Contacto de Emergencia', 'coEmergencia'],
 
                 ].map((el, i)=>(
                         <div key={i} className="form-group mb-3">

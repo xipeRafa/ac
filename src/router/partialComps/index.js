@@ -1,2 +1,4 @@
-export * from './nav/Nav';
+
+export * from './nav/Nav'
+
 export * from './footer/Footer'

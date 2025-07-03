@@ -52,36 +52,33 @@ export const Units = () => {
             {unitsSlice.map((el, i) => (
                 <div key={i + '!@'} className='list' >
 
-                    <h2><span>Descripción:     </span> {el.descri}</h2>
+                    <h3><span>Descripción:     </span> {el.descri}</h3>
 
                     <p><span>Numero Economico: </span> {el.ne}</p>
                     <p><span>ID:               </span> {el.idUnit}</p>
+                    <p>Status:-- </p>
                     
-                    {Acordion(i, 'Mas Información ...', 
+                    {Acordion(i, 'Mas Información de la Unidad ...', 
                         <div key={i}>
-                            <p><span>Placas:   </span> {el.placas}</p>
-                            <p><span>VIN:        </span> {el.vin}</p>
-                            <p><span>Nro de Serie:        </span> {el.NroSerie}</p>
-                            <p className='rfc'>   <span>Año:</span> {el.anio}</p>
-                            <p><span>Modelo:  </span> {el.modelo}</p>
-                            <p><span>Marca:</span> {el.marca}</p>
-                            <p><span>Nro de Pasajeros:    </span> {el.NroPasajeros}</p>
-                            <p><span>Años de Uso:</span> {el.aniosUso}</p>
+                            <p><span>Placas:          </span> {el.placas}      </p>
+                            <p><span>VIN:             </span> {el.vin}         </p>
+                            <p><span>Nro de Serie:    </span> {el.NroSerie}    </p>
+                            <p><span>Año:             </span> {el.anio}        </p>
+                            <p><span>Modelo:          </span> {el.modelo}      </p>
+                            <p><span>Marca:           </span> {el.marca}       </p>
+                            <p><span>Nro de Pasajeros:</span> {el.NroPasajeros}</p>
+                            <p><span>Años de Uso:     </span> {el.aniosUso}    </p>
 
                             <p>Historial de Trabajo:-- </p>
-                            <p>Status:-- </p>
                             <hr />
-                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>Eliminar</button>
-                            <button className='btn-w' onClick={() => handleEdith(el)}>Editar ✎</button>
+                            <button className='btn-w me-4' onClick={() => handleDelete(el)}>
+                                Eliminar
+                            </button>
+                            <button className='btn-w' onClick={() => handleEdith(el)}>
+                                Editar ✎
+                            </button>
                         </div>
                     )}
-
-
-                    {/*<img src={el.img} width='100px' />*/}
-
-
-                    {/*<button onClick={() => handleSwitch(el)}>Toggle</button>*/}
-                    {/*<input type="file" id="file-upload" onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}
 
                 </div>
             ))}

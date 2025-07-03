@@ -19,7 +19,14 @@ export const useAssignations = () => {
     const navigateTo = useNavigate()
 
     
-    const { Modal, show, handleClose, handleShow, Acordion } = useUtils(useState)
+    const { 
+        Modal,
+        show, 
+        handleClose, 
+        handleShow, 
+        Acordion, 
+        avoidEmpty 
+    } = useUtils(useState, dispatch, messageView)
 
 
     const assignationsGet = () => {
@@ -32,14 +39,7 @@ export const useAssignations = () => {
 
 
     const assignationsPost = (el) => {
-        if(el.operator == 'seleccione un operador...' || el.unit == 'seleccione una unidad...' || el.ruta == 'Seleccione una Ruta...'){
-                dispatch(messageView(['Campo Vacío','No se Guardo','warning']))
-                return
-        }
-        if(el.operator == '' || el.unit == '' || el.ruta == ''){
-                dispatch(messageView(['Campo Vacío','No se Guardo','warning']))
-                return
-        }
+        c(el)
         let posted = ls('assignationsArray')
         posted.push({...el, uid:Date.now() })
         ls('assignationsArray', posted)
@@ -53,15 +53,6 @@ export const useAssignations = () => {
 
 
     const newDataEdit = (el) => { 
-        
-        if(el.operator == 'seleccione un operador...' || el.unit == 'seleccione una unidad...' || el.ruta == 'Seleccione una Ruta...'){
-                dispatch(messageView(['Campo Vacío','No se Editó','warning']))
-                return
-        }
-        if(el.operator == '' || el.unit == '' || el.ruta == ''){
-                dispatch(messageView(['Campo Vacío','No se Editó','warning']))
-                return
-        }
         const { editedAss } = editExplorer() 
         ls('assignationsArray', editedAss(el))
         dispatch(assCreateView(ls('assignationsArray')))
@@ -110,6 +101,7 @@ export const useAssignations = () => {
     handleClose,
     handleShow,
     Acordion,
+    avoidEmpty,
 
   }
 }

@@ -64,7 +64,7 @@ export const Login = () => {
                     <h3 className='headerColor'>ENTRAR</h3>
 
                     <form onSubmit={loginSubmit}>
-                        <div className="form-group mb-3 form-floating">
+                        <div className="form-group mb-3 form-floating w-100 m-0">
                             <input
                                 type="text"
                                 className="form-control"
@@ -75,7 +75,7 @@ export const Login = () => {
                             />
                             <label>Correo</label>
                         </div>
-                        <div className="form-group mb-4 form-floating">
+                        <div className="form-group mb-4 form-floating w-100 m-0">
                             <input
                                 type="password"
                                 className="form-control"

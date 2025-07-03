@@ -21,6 +21,13 @@ body {
   background-color: var(--bg-color) !important;
 }
 
+a{
+  letter-spacing: .4px;
+}
+
+p{
+  margin-bottom: 6px;
+}
 
 input[type="text"],
 input[type="password"],
@@ -35,6 +42,7 @@ input[type="text"]::placeholder{
 
 form > div > label {
   color: var(--zinc-500);
+  padding-left: 2px;
 }
 
 form{
@@ -68,10 +76,10 @@ form>div{
 }
 
 
- input[type="file"]{
-    /*padding: 6px 10px; */
+/* input[type="file"]{
+    padding: 6px 10px; 
     background-color: var(--slate-50);
-    /*border: 1px solid #d1d1d1;*/
+    border: 1px solid #d1d1d1;
     border-radius: 8px;
     border: none;
     box-shadow: none;
@@ -104,7 +112,7 @@ form>div{
 
  .fileImg {
     padding: 1px;
-  }
+  }*/
 
 
 
@@ -134,14 +142,7 @@ form>div{
   text-transform: none!important;
 }
 
-.f{
-  float: right;
-  margin-top: -120px;
-}
 
-.f2{
-  float: right;
-  margin-top: -120px;
-   margin-right: 118px!important;
-}
+
+
 

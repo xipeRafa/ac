@@ -72,16 +72,16 @@ export const RutasForm = ({ rutasPost, editMode, newDataEdit, defaultModeEdith,
 
                 {[ 
 
-                    [nameRuta,'Nombre de la Ruta', 'nameRuta'], 
-                    [puntoPartida, 'Punto de Partida', 'puntoPartida'], 
-                    [puntoFinal, 'Punto Final', 'puntoFinal'],
-                    [fechaPartida, 'Fecha de Partida', 'fechaPartida'], 
-                    [fechaFinal, 'Fecha Final', 'fechaFinal'],
-                    [horaPartida, 'Hora de Partida', 'horaPartida'], 
-                    [horaFinal, 'Hora Final', 'horaFinal'], 
-                    [puntoInt1, 'Punto Intermedio 1', 'puntoInt1'],
-                    [fechaPuntoInt1, 'Fecha Punto Intermedio 1', 'fechaPuntoInt1'],
-                    [horaPuntoInt1, 'Hora Punto Intermedio 1', 'horaPuntoInt1'],
+                    [ nameRuta,       'Nombre de la Ruta',        'nameRuta'      ], 
+                    [ puntoPartida,   'Punto de Partida',         'puntoPartida'  ], 
+                    [ puntoFinal,     'Punto Final',              'puntoFinal'    ],
+                    [ fechaPartida,   'Fecha de Partida',         'fechaPartida'  ], 
+                    [ fechaFinal,     'Fecha Final',              'fechaFinal'    ],
+                    [ horaPartida,    'Hora de Partida',          'horaPartida'   ], 
+                    [ horaFinal,      'Hora Final',               'horaFinal'     ], 
+                    [ puntoInt1,      'Punto Intermedio 1',       'puntoInt1'     ],
+                    [ fechaPuntoInt1, 'Fecha Punto Intermedio 1', 'fechaPuntoInt1'],
+                    [ horaPuntoInt1,  'Hora Punto Intermedio 1',  'horaPuntoInt1' ],
 
                 ].map((el, i)=>(
                         <div key={i} className="form-group mb-3">

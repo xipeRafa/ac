@@ -27,6 +27,8 @@
 
 
 
+
+
 .hamburger {
     height: 50px;
     padding:  4.2px;
@@ -150,4 +152,8 @@
 .menu>a:hover   {
     background-color: rgba(0, 0, 0, .2);
     color: white;
+}
+
+.menu>a:last-of-type{
+    text-decoration: none;
 }
