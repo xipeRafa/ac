@@ -1327,6 +1327,7 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     text-transform: uppercase;
     /*font-weight: bold;*/
     /*margin-right: 20px;*/
+    letter-spacing: .4px;
 }
 .btn-w:hover{
     color: var(--bs-gray-800);
@@ -1499,7 +1500,7 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
     --slate-950:#0e1118;
 
     /*--bg-color:rgba(190,80,40, .06);*/
-    --bg-color:rgba(40,80,180, .06);
+    --bg-color:rgba(40,120,160, .06);
     --primary-color:#014063;
 
     --jade-100:#70FCBA;
@@ -1588,35 +1589,120 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
   margin-bottom: 20px;
   background-color: white;
   box-shadow: rgba(10, 110, 255, 0.07) 0px 30px 60px -12px, rgba(0, 0, 0, 0.2) 0px 18px 36px -18px;
-  color: var(--slate-700);
 }
-.list > h2,
-.list > p, 
-.accordion-body > p {
- text-transform: capitalize;
-}
+/* assignations h5 de arriba */
+.list > h5,
+/* h3 de arriba */
+.list > h3,
+.list > p,
+/* p de adentro  */
 .accordion-body > div> p {
   text-transform: capitalize;
+  color: var(--slate-700);
 }
-.list > h2 > span,
+/* assignations b de arriba  */
+.list > h5 > b,
+/* span de arriba  */
+.list > h3 > span,
 .list > p > span,
-.accordion-body > p > span {
-  font-weight: 200;
-  text-transform: none;
-}
+/* span de adentro */
 .accordion-body > div > p > span {
   font-weight: 200;
   text-transform: none;
+  color: var(--slate-600);
 }
-/*.list > button {
-  margin-right: 20px !important;
-}*/
+.accordion{
+  margin-bottom: 7px!important;
+  margin-top: 18px;
+}
 .accordion-button{
-  background-color: var(--bg-color);
+  background-color: var(--azure-50);
+
 }
 .accordion-button:focus{
-  background-color: var(--bg-color);
+  background-color: var(--azure-50);
   box-shadow: none;
+}
+/* AssignationsForm */
+.assignationsSelect>div{
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 6px;
+    text-transform: capitalize;
+    padding-top: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--slate-100);
+}
+.assignationsSelect>div > p > {
+  text-transform: none;
+  color: var(--slate-700);
+}
+.assignationsSelect>div > p > b {
+  font-weight: 200;
+  text-transform: none;
+  color: var(--slate-600);
+}
+/*  Assignations.tsx  */
+.assignationsContent{
+    display: flex;
+    flex-direction: column;
+}
+.assignationsContent>div{
+    display: flex;
+    justify-content: space-between;
+}
+.assignationsContent>div>div{
+    width:32.25% ;
+    padding-left: 8px;
+    margin: 4px 0;
+    border-right:1px solid var(--slate-150);
+    text-transform: capitalize;
+}
+.assignationsContent>div>div:last-of-type{
+    border-right: none;
+}
+/* titulo de acordion */
+.assignationsContent > div >div > h3 {
+  font-weight: 400;
+  text-transform: none;
+  color: var(--slate-650);
+}
+.assignationsContent > div > div > p{
+  color: var(--slate-700);
+}
+.assignationsContent > div >div > p > b {
+  font-weight: 200;
+  text-transform: none;
+  color: var(--slate-600);
+}
+.btns-Assignations{
+  justify-content: start!important;
+  margin: 12px 0 4px 0;
+  border-top: 1px solid var(--slate-150);
+  padding-top: 20px;
+}
+@media(max-width: 999px){
+    .assignationsContent>div{
+      flex-direction: column;
+    }
+    .assignationsContent>div > div{
+      width: 100%;
+      border-right: none;
+      border-bottom:1px solid var(--slate-150);
+      padding-top: 8px;
+      padding-bottom: 9px;
+    }
+     .assignationsContent>div > div:last-of-type{
+      padding-bottom: 0;
+        border-bottom: none;
+     }
+    .assignationsContent>div>div:first-child{
+      padding-top: 0;
+    }
+
+    .btns-Assignations{
+      flex-direction: row!important;
+    }
 }
 .AC-logo {
   width: 80%;
@@ -1656,6 +1742,12 @@ body {
   margin-top: 50px;
   background-color: var(--bg-color) !important;
 }
+a{
+  letter-spacing: .4px;
+}
+p{
+  margin-bottom: 6px;
+}
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -1667,6 +1759,7 @@ input[type="text"]::placeholder{
 }
 form > div > label {
   color: var(--zinc-500);
+  padding-left: 2px;
 }
 form{
   display: flex;
@@ -1695,10 +1788,10 @@ form>div{
     margin:0 1%;
   }
 }
-input[type="file"]{
-    /*padding: 6px 10px; */
+/* input[type="file"]{
+    padding: 6px 10px; 
     background-color: var(--slate-50);
-    /*border: 1px solid #d1d1d1;*/
+    border: 1px solid #d1d1d1;
     border-radius: 8px;
     border: none;
     box-shadow: none;
@@ -1708,12 +1801,15 @@ input[type="file"]{
     text-transform:capitalize;
     cursor: pointer;
   }
-@media(max-width:930px){
+
+   @media(max-width:930px){
       input[type="file"]{
         margin-top:20px;
       }
   }
-input::file-selector-button {
+
+
+  input::file-selector-button {
     padding: 6px 10px;
     border-radius: 8px;
     border:none;
@@ -1725,9 +1821,10 @@ input::file-selector-button {
     margin-right: 20px;
     font-weight: 300;
   }
-.fileImg {
+
+ .fileImg {
     padding: 1px;
-  }
+  }*/
 .sombra {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -1748,15 +1845,6 @@ input::file-selector-button {
 }
 .rfc{
   text-transform: none!important;
-}
-.f{
-  float: right;
-  margin-top: -120px;
-}
-.f2{
-  float: right;
-  margin-top: -120px;
-   margin-right: 118px!important;
 }
     
 /*# sourceMappingURL=index.html?html-proxy&inline-css&index=0.css.map */</style>
@@ -1791,8 +1879,8 @@ input::file-selector-button {
 
 
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-D6cxykIm.js"></script>
-    <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-C88xzrDI.css">
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-Ce50rp8A.js"></script>
+    <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-6EQzcuG3.css">
   </head>
   <body>
     <div id="root"></div>
