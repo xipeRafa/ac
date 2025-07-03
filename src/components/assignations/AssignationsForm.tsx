@@ -202,7 +202,7 @@ export const AssignationsForm = ({ assignationsPost, editMode, newDataEdit, defa
 
                         <input type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 
-                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Assignación"} />
+                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Assignación ↑"} />
 
                         {editMode && 
                             <button type="reset" onClick={handleCancelEdit} className="btn-w scb primary-out">    

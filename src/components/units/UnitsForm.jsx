@@ -103,7 +103,7 @@ export const UnitsForm = ({ unitsPost, editMode, newDataEdit, defaultModeEdith,
                         <input 
                             type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 
-                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Unidad"} />
+                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Unidad ↑"} />
 
                         {editMode && 
                             <button type="reset" onClick={handleCancelEdit} className="btn-w scb primary-out">    
