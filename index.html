@@ -1571,6 +1571,7 @@ textarea.form-control-lg{min-height:calc(1.5em + 1rem + calc(var(--bs-border-wid
 .modalColors {
   background-color: var(--bg-color) !important;
   color: var(--slate-700);
+  text-transform: uppercase;
 }
 .modal-btn-x {
   font-size: 18px;
@@ -1833,6 +1834,7 @@ form>div{
   padding: 16px;
   text-align: center;
   color: var(--slate-700);
+  text-transform: uppercase;
 }
 .sectionControls {
   margin: 20px 0;
@@ -1864,10 +1866,15 @@ form>div{
             return String(v).replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
 
-
-        if(localStorage.status.charAt()!=='"' || localStorage.status === undefined){
-            localStorage.status = `"${localStorage.status}"`
+        if(localStorage.status === undefined){
+            localStorage.status = `"not-authenticated"`
         }
+
+        if(localStorage.status.charAt()!=='"'){
+              localStorage.status = `"${localStorage.status}"`
+        }
+
+
 
         const ls = (name, data) => { 
             if(data === undefined){
@@ -1879,7 +1886,7 @@ form>div{
 
 
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-jwv7Chgv.js"></script>
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-BeCThuq7.js"></script>
     <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-6EQzcuG3.css">
   </head>
   <body>
