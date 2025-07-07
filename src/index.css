@@ -125,6 +125,7 @@ form>div{
   padding: 16px;
   text-align: center;
   color: var(--slate-700);
+  text-transform: uppercase;
 }
 
 .sectionControls {

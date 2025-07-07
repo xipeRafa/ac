@@ -1,65 +1,20 @@
 
-export function editExplorer(){
 
 
-    const editedOp =(EL)=>{
+export function editExplorer() {
 
-        let arr = ls('operatorsArray')
-
-        let editedOp = arr.map(
-            (el) => (el.uid === EL.uid ? EL : el)
-        )
-
-        return editedOp
+    const editEntity = (entityArrayName) => (EL) => {
+        let arr = ls(entityArrayName)
+        return arr.map((el) => (el.uid === EL.uid ? EL : el))
     }
 
-
-    const editedUnit =(EL)=>{
-
-
-
-        let arr = ls('unitsArray')
-
-        let editedUnit = arr.map(
-            (el) => (el.uid === EL.uid ? EL : el)
-        )
-        
-        return editedUnit
+    return {
+        editedOp: editEntity('operatorsArray'),
+        editedUnit: editEntity('unitsArray'),
+        editedAss: editEntity('assignationsArray'),
+        editedRutas: editEntity('rutasArray'),
     }
-
-
-    const editedAss =(EL)=>{
-
-        let arr = ls('assignationsArray')
-
-        let editedAss = arr.map((el) => 
-            (el.uid === EL.uid ? EL : el)
-        )
-
-        return editedAss
-    }
-
-    const editedRutas =(EL)=>{
-
-        let arr = ls('rutasArray')
-
-        let editedRutas = arr.map((el) => 
-            (el.uid === EL.uid ? EL : el)
-        )
-
-        return editedRutas
-    }
-
-
-     
-    return { 
-        editedOp, 
-        editedUnit,
-        editedAss,
-        editedRutas 
-    }   
-     
- }
+}
 
 
 
@@ -68,3 +23,5 @@ export function editExplorer(){
 
 
 
+
+                

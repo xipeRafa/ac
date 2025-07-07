@@ -31,9 +31,9 @@ export const useUnits = () => {
     }
 
 
-    const unitsPost = ({ descri, ne, idUnit }) => {
+    const unitsPost = (el) => {
         let posted = ls('unitsArray')      
-        posted.push({ descri, ne, idUnit, uid:Date.now() })
+        posted.push({ ...el, uid:Date.now() })
         ls('unitsArray', posted)
         dispatch(unitsCreateView(ls('unitsArray')))
     }

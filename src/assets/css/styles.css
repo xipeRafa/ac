@@ -41,6 +41,7 @@
 .modalColors {
   background-color: var(--bg-color) !important;
   color: var(--slate-700);
+  text-transform: uppercase;
 }
 
 .modal-btn-x {

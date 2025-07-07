@@ -10,6 +10,7 @@ export const useAuthAlerts = (Swal) => {
 
 
   const toastLoginAlert = () => {
+    
     const ToastLogin = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -144,4 +145,7 @@ export const useAuthAlerts = (Swal) => {
     toastRegisterAlert,
     alertLogout,
   }
+
+
+
 }

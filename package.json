@@ -10,7 +10,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate": "node ./util/create-component"
+    "generate": "node ./util/create-collection"
   },
   "dependencies": {
     "@million/lint": "^1.0.14",

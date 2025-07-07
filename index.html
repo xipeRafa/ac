@@ -25,10 +25,15 @@
             return String(v).replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase())
         }
 
-
-        if(localStorage.status.charAt()!=='"' || localStorage.status === undefined){
-            localStorage.status = `"${localStorage.status}"`
+        if(localStorage.status === undefined){
+            localStorage.status = `"not-authenticated"`
         }
+
+        if(localStorage.status.charAt()!=='"'){
+              localStorage.status = `"${localStorage.status}"`
+        }
+
+
 
         const ls = (name, data) => { 
             if(data === undefined){

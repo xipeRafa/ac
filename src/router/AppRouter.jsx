@@ -37,6 +37,7 @@ const AppRouter = () => {
                 <Route path="/ac/assignations/" element={<Assignations />} />
 
 
+
                 <Route path="/*" element={ status ? <Navigate to="/ac/auth/login/" /> : <Navigate to="/ac/" /> } /> 
             
             </Routes>

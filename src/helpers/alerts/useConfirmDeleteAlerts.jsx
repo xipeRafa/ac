@@ -5,7 +5,8 @@ import Swal from 'sweetalert2';
 
 
 
-export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, unitsCreateView, assCreateView, rutasCreateView }) => {
+export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, 
+  unitsCreateView, assCreateView, rutasCreateView, }) => {
 
 
   // let collection = args[0].collection
@@ -20,7 +21,7 @@ export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, uni
 
   	Swal.fire({
     	title: "Quieres Borrar?",
-    	text: "Una Vez Borrado NO Podras Recuperarlo!",
+    	text: "UNA VEZ BORRADO NO PODRAS RECUPERARLO!",
     	icon: "question",
       //showCloseButton: true,
     	// buttons: true,
@@ -47,10 +48,10 @@ export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, uni
         	})
 
             const collectionMap = {
-              'Operador': 'operatorsArray',
-              'Unidad': 'unitsArray',
+              'Operador':    'operatorsArray',
+              'Unidad':      'unitsArray',
               'Assignation': 'assignationsArray',
-              'Rutas': 'rutasArray'
+              'Rutas':       'rutasArray',
             }
 
             const arrayName = collectionMap[collection]
@@ -61,11 +62,12 @@ export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, uni
               ls(arrayName, updatedArray)
         
               const dispatchMap = {
-                'Operador': opCreateView,
-                'Unidad': unitsCreateView,
+                'Operador':    opCreateView,
+                'Unidad':      unitsCreateView,
                 'Assignation': assCreateView,
-                'Rutas': rutasCreateView
+                'Rutas':       rutasCreateView,
               }
+
 
               dispatch(dispatchMap[collection](ls(arrayName)))
 
@@ -74,9 +76,8 @@ export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, uni
               alert('no hay nombre de la coleccion')
               
             }
-          
+       
 
-        	  
 
     	} else {	
 
@@ -110,32 +111,4 @@ export const useConfirmDeleteAlerts = ({ collection, dispatch, opCreateView, uni
 
 
 
-
-
-
-//   if (confirm("Are you sure you want to delete this item?")) {}
-
-  //let userConfirmed = confirm("Do you want to save your changes?");
-    // if (userConfirmed) {
-    //   // Code to save changes
-    // } else {
-    //   // Code to handle cancellation
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
