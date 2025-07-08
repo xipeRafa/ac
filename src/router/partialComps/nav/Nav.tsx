@@ -56,9 +56,8 @@ export const Nav = () => {
 
                     <Link to="/ac/"      >Operadores</Link>
 
-                    <Link to="/ac/assignations/">ASIGNACIONES</Link>
+                    <Link to="/ac/assignations/">Asignaciones</Link>
 
-                
                     <Link   to="#" onClick={startLogout}> SALIR ➪ </Link>
 
             </div>
@@ -70,3 +69,7 @@ export const Nav = () => {
     )
 
 }
+
+                  
+
+             

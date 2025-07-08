@@ -1,18 +1,16 @@
 require("colors");
 const fs = require("fs");
-// const templates = require("./templates");
+
 const componentName = process.argv[2];
 
+const templates = {
+  component: require("./templates/component/component"),
+  componentForm: require("./templates/component/componentForm"),
+  useComponent: require("./templates/hooks/useComponent"),
+  slice: require("./templates/slice/slice"),
+};
 
-
-const component =     require("./templates/component/component");
-const componentForm = require("./templates/component/componentForm");
-const useComponent =  require("./templates/hooks/useComponent");
-const slice =         require("./templates/slice/slice");
-
-
-
-console.log(process.argv)
+console.log(process.argv);
 
 if (!componentName) {
   console.error("Please supply a valid component name".red);
@@ -23,157 +21,87 @@ console.log("Creating Component Templates with name:".random + componentName.red
 
 
 
+const createFolder = (path) => {
+  if (fs.existsSync(path)) {
+    console.error(`Component ${componentName} already exists.`.blue.bold);
+    process.exit(2);
+  }
+  fs.mkdirSync(path);
+};
+
+const writeTemplates = (directory, templateArray) => {
+  templateArray.forEach((template) => {
+    fs.writeFileSync(`${directory}/${template.extension}`, template.content);
+  });
+};
 
 const componentDirectory = `./src/components/${componentName}/`;
+createFolder(componentDirectory);
+writeTemplates(componentDirectory, [templates.component].map((template) => template(componentName)))
+writeTemplates(componentDirectory, [templates.componentForm].map((template) => template(componentName)))
+console.log("Successfully created component under: ".cyan.italic + componentDirectory.yellow.italic.bold)
 
-if (fs.existsSync(componentDirectory)) {
-  console.error(`Component ${componentName} already exists.`.blue.bold);
-  process.exit(2);
+const hooksDirectory = `./src/hooks/`;
+writeTemplates(hooksDirectory, [templates.useComponent].map((template) => template(componentName)))
+console.log("Successfully created file under: ".cyan.italic + hooksDirectory.yellow.italic.bold)
+
+const sliceDirectory = `./src/store/slices/`;
+writeTemplates(sliceDirectory, [templates.slice].map((template) => template(componentName)))
+console.log("Successfully created file under: ".cyan.italic + sliceDirectory.yellow.italic.bold)
+
+
+
+
+
+
+
+
+const appendToFile = (filePath, content, pending) => {
+  fs.appendFile(filePath, content, (err) => {
+    if (err) {
+      console.error('Error adding to file:', err.green);
+      return;
+    }
+    if(pending=='true'){
+      console.log(` Pending Accommodation in ${filePath}`.red);
+    }else{
+      console.log(`Line Successfully added to ${filePath}`);
+    }
+  })
 }
 
-fs.mkdirSync(componentDirectory)
+appendToFile(`./src/components/index.js`, `export * from './${componentName.toLowerCase()}/${componentName}'`, `false`)
+appendToFile(`./src/hooks/index.js`, `export * from './use${componentName}'`, `false`);
 
+appendToFile(`./src/store/store.tsx`, `
+  import { ${componentName.toLowerCase()}Slice } from './slices/${componentName.toLowerCase()}Slice' 
+  ${componentName.toLowerCase()}Slice: ${componentName.toLowerCase()}Slice.reducer`, `true`
+)
 
-const generatedTemplates = [component].map((template) => template(componentName))
+appendToFile(`./src/helpers/explorers/editExplorer.jsx`, ` 
+  // inside the return at the end
+  edited${componentName}: editEntity('${componentName.toLowerCase()}Array'),`, `true`
+)
 
-generatedTemplates.forEach((template) => {
+appendToFile(`./src/helpers/alerts/useConfirmDeleteAlerts.jsx`, 
+  ` // import as props
+  ${componentName.toLowerCase()}CreateView
 
-  fs.writeFileSync(
-    `${componentDirectory}/${componentName}${template.extension}`, template.content
-  )
+  // in collectionMap
+  '${componentName}': '${componentName.toLowerCase()}Array'
 
-})
+  // in dispatchMap
+  '${componentName}': ${componentName.toLowerCase()}CreateView,`, `true`
+)
 
+appendToFile(`./src/router/partialComps/nav/Nav.tsx`, ` // add to the menu
+  <Link to="/ac/${componentName.toLowerCase()}/">${componentName}</Link>`, `true`
+)
 
-const generatedTemplatesForm = [componentForm].map((template) => template(componentName))
+appendToFile(`./src/router/AppRouter.jsx`, ` 
+  // add to the imported components menu
+  <Route path="/ac/${componentName.toLowerCase()}/" element={<${componentName} />} />
 
-generatedTemplatesForm.forEach((template) => {
-
-  fs.writeFileSync(
-    `${componentDirectory}/${template.extension}`, template.content
-  )
-
-})
-
-// ///////////////////////////////////////////////////////////////////////////////////////
-
-
-const hooksDirectory = `./src/hooks/`
-
-const generatedTemplatesHook = [useComponent].map((template) => template(componentName))
-
-generatedTemplatesHook.forEach((template) => {
-
-  fs.writeFileSync(
-    `${hooksDirectory}/${template.extension}`, template.content
-  )
-
-})
-
-
-
-const sliceDirectory = `./src/store/slices/`
-
-const generatedTemplatesSlice = [slice].map((template) => template(componentName))
-
-generatedTemplatesSlice.forEach((template) => {
-
-  fs.writeFileSync(
-    `${sliceDirectory}/${template.extension}`, template.content
-  )
-
-})
-
-
-
-
-
-
-//////////////============================================= linea al final bien 
-
-fs.appendFile(`./src/components/index.js`, 
-                `export * from './${componentName.toLowerCase()}/${componentName}'`, (err) => {
-    if (err) {
-      console.error('Error al añadir al archivo:', err);
-      return;
-    }
-    console.log('Contenido añadido correctamente en ./src/components/index.js');
-})
-
-fs.appendFile(`./src/hooks/index.js`, 
-                `export * from './use${componentName}'`, (err) => {
-    if (err) {
-      console.error('Error al añadir al archivo:', err);
-      return;
-    }
-    console.log('Contenido añadido correctamente en ./src/hooks/index.js');
-})
-
-
-
-
-
-
-
-
-
-
-
-//////////////================================ linea al final Pendiente de Acomodar
-
-fs.appendFile(`./src/store/store.tsx`, 
-                `import { ${componentName.toLowerCase()}Slice } from './slices/${componentName.toLowerCase()}Slice' 
-                ${componentName.toLowerCase()}Slice: ${componentName.toLowerCase()}Slice.reducer`, 
-              (err) => {
-    if (err) {
-      console.error('Error al añadir al archivo:', err);
-      return;
-    }
-    console.log('Pendiente de Acomodar en ./src/store/store.tsx'.red);
-})
-
-
-fs.appendFile(`./src/helpers/explorers/editExplorer.jsx`, 
-                ` // dentro del return al final
-                  edited${componentName}: editEntity('${componentName.toLowerCase()}Array'),
-                `, (err) => {
-    if (err) {
-      console.error('Error al añadir al archivo:', err);
-      return;
-    }
-    console.log('Pendiente de Acomodar en ./src/helpers/explorers/editExplorer.jsx'.red);
-})
-
-
-fs.appendFile(`./src/helpers/alerts/useConfirmDeleteAlerts.jsx`, 
-                ` //importacion como props
-                  ${componentName.toLowerCase()}CreateView
-
-                  //en collectionMap
-                '${componentName} : ${componentName.toLowerCase()}Array'
-
-                  //en dispatchMap
-                '${componentName}': ${componentName.toLowerCase()}CreateView
-
-                `, (err) => {
-    if (err) {
-      console.error('Error al añadir al archivo:', err);
-      return;
-    }
-    console.log(' Pendiente de Acomodar en ./src/helpers/alerts/useConfirmDeleteAlerts.jsx'.red);
-})
-
-
-
-
-
-
-
-console.log(
-  "Successfully created component under: ".cyan.italic + componentDirectory.yellow.italic.bold
-);
-
-
-
-
-
+  // add to the list of imported components
+  ${componentName}`, `true`
+)

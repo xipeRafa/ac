@@ -126,5 +126,5 @@ export const ${componentName} = () => {
 
 
 `,
-  extension: `.jsx`
+  extension: `${componentName}.jsx`
 });

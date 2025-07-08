@@ -1,7 +1,7 @@
 
 import { useAuth } from '../hooks/useAuth'
 import { Login, SignUp} from './authComps'
-import { Operators, Units, Assignations, Rutas } from '../components'
+import { Operators, Units, Assignations, Rutas, } from '../components'
 
 
 
@@ -37,7 +37,6 @@ const AppRouter = () => {
                 <Route path="/ac/assignations/" element={<Assignations />} />
 
 
-
                 <Route path="/*" element={ status ? <Navigate to="/ac/auth/login/" /> : <Navigate to="/ac/" /> } /> 
             
             </Routes>
@@ -49,3 +48,10 @@ const AppRouter = () => {
 export default AppRouter
 
 
+
+                
+
+
+
+
+                 
