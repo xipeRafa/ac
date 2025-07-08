@@ -35,7 +35,7 @@ const writeTemplates = (directory, templateArray) => {
   });
 };
 
-const componentDirectory = `./src/components/${componentName}/`;
+const componentDirectory = `./src/components/${componentName.toLowerCase()}/`;
 createFolder(componentDirectory);
 writeTemplates(componentDirectory, [templates.component].map((template) => template(componentName)))
 writeTemplates(componentDirectory, [templates.componentForm].map((template) => template(componentName)))
@@ -105,3 +105,9 @@ appendToFile(`./src/router/AppRouter.jsx`, `
   // add to the list of imported components
   ${componentName}`, `true`
 )
+
+
+
+
+
+
