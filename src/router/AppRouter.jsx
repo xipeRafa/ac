@@ -1,6 +1,9 @@
 
+
+import Login from './authComps/Login'
+import SignUp from './authComps/SignUp'
+
 import { useAuth } from '../hooks/useAuth'
-import { Login, SignUp} from './authComps'
 import { Operators, Units, Assignations, Rutas, } from '../components'
 
 
@@ -54,6 +57,4 @@ export default AppRouter
 
 
 
-                 
- 
- 
+                

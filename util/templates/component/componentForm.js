@@ -112,9 +112,11 @@ export const ${componentName}Form = ({ ${componentName.toLowerCase()}Post, editM
                
                 <div className='btnContainer w-100'>
 
-                        <input type="submit"
+                        <input 
+                            type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 
-                            value={ editMode ? 'Guardar Cambios ↑': "Guardar ${componentName} ↑"} />
+                            value={ editMode ? 'Guardar Cambios ↑': "Guardar ${componentName} ↑"} 
+                        />
 
                         {editMode && 
                             <button type="reset" onClick={handleCancelEdit} className="btn-w scb primary-out">    

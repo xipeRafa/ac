@@ -1,13 +1,10 @@
 
-
-
-
 export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultModeEdith, 
                                     handleClose, useForm, useState, useEffect, }) => {
 
 
 
-    const[operatorState, setOperatorState]=useState({
+    const[operatorsState, setOperatorsState]=useState({
             name:'', 
             apellidoPaterno:'',
             apellidoMaterno:'',
@@ -43,17 +40,17 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
             coEmergencia,
             onInputChange: onPostInputChange, 
             noSpace,
-    } = useForm(operatorState)
+    } = useForm(operatorsState)
 
 
     useEffect(() => { 
         if(editMode !== undefined) {
-            setOperatorState(editMode)
+            setOperatorsState(editMode)
         }
     }, [editMode]) 
 
 
-    const onSubmit = (event: any) => {
+    const onSubmit = () => {
         event.preventDefault();
 
         if(editMode){
@@ -114,9 +111,11 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
                
                 <div className='btnContainer w-100'>
 
-                        <input type="submit"
+                        <input 
+                            type="submit"
                             className={editMode ? "btn-w seb primary" : "btn-w sb primary" } 
-                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador ↑"} />
+                            value={ editMode ? 'Guardar Cambios ↑': "Guardar Operador ↑"} 
+                        />
 
                         {editMode && 
                             <button type="reset" onClick={handleCancelEdit} className="btn-w scb primary-out">    
@@ -144,31 +143,6 @@ export const OperatorsForm = ({ operatorsPost, editMode, newDataEdit, defaultMod
 
 
 
-
- {/*   {!editMode &&     
-                <div className="form-group mb-2">
-                    <label>Fecha de Inicio</label>
-                    <input
-                        type='date'
-                        className="form-control"
-                        placeholder="Fecha de Inicio"
-                        name="date"
-                        onChange={onPostInputChange}
-                    />
-                </div>}*/}
-               
-
-               {/*<div className="form-group mb-2">
-                    <select 
-                        className="form-control"  
-                        name="para"
-                        onChange={onPostInputChange}>
-                        <option>Para:</option>
-                        <option value="Adultos">Adultos</option>
-                        <option value="Matrimonios">Matrimonios</option>
-                        <option value="Jovenes">Jovenes</option>
-                    </select>
-                </div> */}
 
 
 

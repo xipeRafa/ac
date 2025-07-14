@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { messageView, clearAlertView } from  '../store/slices/alertSlice'
 import { unitsCreateView, unitsEditView, defaultEditMode, unitsDeleteView, switchUnitsView } from  '../store/slices/unitsSlice'
 
-import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils, editExplorer } from '../helpers'
+import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils, editExplorer} from 'helperssssss'
 
 
 
@@ -45,11 +45,9 @@ export const useUnits = () => {
 
 
     const newDataEdit = (el) => { 
-        c(el)
         const { editedUnit } = editExplorer() 
         ls('unitsArray', editedUnit(el))
         dispatch(unitsCreateView(ls('unitsArray')))
-        //dispatch(unitsCreateView(editedUnit(el)))
         dispatch(defaultEditMode())   
     }
 

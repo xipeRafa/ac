@@ -1,15 +1,18 @@
 
+
+import { createRoot } from 'react-dom/client'
+
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Nav } from './router/partialComps';
+import Nav from './router/staticComps/nav/Nav';
 import AppRouter from './router/AppRouter';
-import { Footer } from './router/partialComps';
+import Footer from './router/staticComps/footer/Footer';
 
 
-export const App = () => {
-    return (
+createRoot(document.getElementById('root'))
+    .render(
         <Provider store={store}>
 
             <BrowserRouter>
@@ -24,7 +27,6 @@ export const App = () => {
 
         </Provider>
     )
-}
+    
 
 
-export default App

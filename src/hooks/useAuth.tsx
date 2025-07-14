@@ -5,8 +5,8 @@ import { useNavigate, Link, Navigate, Route, Routes, useLocation } from 'react-r
 
 import { onLoginView, onLogoutView } from '../store/slices/authSlice'
 import { clearAlertView, messageView } from  '../store/slices/alertSlice'
-import { useForm, onCheckingRedirect, useAuthAlerts } from '../helpers'
 
+import { useForm, onCheckingRedirect, useAuthAlerts } from 'helperssssss'
 import Swal from 'sweetalert2'; 
 
 
@@ -16,7 +16,7 @@ export const useAuth = () => {
 
 
     const { statusSlice, userSlice } = useSelector(state => state.authSlice)
-    const { toastLoginAlert, toastRegisterAlert, alertLogout }= useAuthAlerts(Swal)
+    const { toastLoginAlert, toastRegisterAlert, alertLogout } = useAuthAlerts(Swal)
 
     const navigateTo = useNavigate()
     const dispatch = useDispatch()

@@ -2,7 +2,7 @@
 import './nav.css'
 import { useAuth } from '../../../hooks/useAuth';
 import colors from '../../../assets/pico.json'    
-import A from '../../../assets/imgs/a.png'
+import A from 'helperssssss/assets/imgs/a.png'
 
 
 
@@ -70,7 +70,7 @@ export const Nav = () => {
 
 }
 
-                  
+export default Nav               
 
 
 

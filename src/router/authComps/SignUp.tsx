@@ -1,7 +1,7 @@
 
 import { useAuth } from '../../hooks/useAuth'
 
-import AC from '../../assets/imgs/AC.png'
+import AC from 'helperssssss/assets/imgs/AC.png'
 
 
 const registerFormFields = {
@@ -137,3 +137,9 @@ export const SignUp = () => {
         </div>
     )
 }
+
+
+export default SignUp
+
+
+

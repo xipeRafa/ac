@@ -36,12 +36,12 @@ export const ${componentName} = () => {
         <div className='mt-4'>
 
             <h2 className="header">
-                ${componentName.toLowerCase()}
+                ${componentName}
             </h2>
 
             <section className='sectionControls'>
                     <button className='btn-w secondary' onClick={()=>handleShow()}>
-                        NUEVO ${componentName.toLowerCase()}
+                        NUEVO ${componentName.toUpperCase()}
                     </button>
                     <button className='btn-w secondary-out'>
                         Buscar 🔍︎
@@ -58,7 +58,7 @@ export const ${componentName} = () => {
                     <p><span>Telefono: </span> {el.phone}      </p>
                     <p><span>Status:-- </span>                 </p>
 
-                    {Acordion(i, 'Mas Información de ${componentName.toLowerCase()} ...', 
+                    {Acordion(i, 'Mas Información de ${componentName} ...', 
                         <div key={i}>
 
                             <p><span>Horario:--              </span>                      </p>
@@ -95,7 +95,7 @@ export const ${componentName} = () => {
             <Modal show={show} onHide={handleClose} fullscreen={true} animation={false}>
 
                 <Modal.Header className='modalColors' >
-                    <Modal.Title>{editMode ? 'EDITAR ${componentName.toLowerCase()}' : 'NUEVO ${componentName.toLowerCase()}' }</Modal.Title> 
+                    <Modal.Title>{editMode ? 'EDITAR ${componentName.toUpperCase()}' : 'NUEVO ${componentName.toUpperCase()}' }</Modal.Title> 
                     {!editMode && <b className='modal-btn-x' onClick={handleClose}>❌</b> }
                 </Modal.Header>
 

@@ -1,6 +1,6 @@
 
 import { useAuth } from '../../hooks/useAuth';
-import AC from '../../assets/imgs/AC.png'
+import AC from 'helperssssss/assets/imgs/AC.png'
 
 
 const loginFormFields = {
@@ -59,6 +59,7 @@ export const Login = () => {
         <div className="container p-4" style={{border:'2px solid white'}}>
 
             <div className="row">
+
                 <div className="col-lg-6 mb-4">
 
                     <h3 className='headerColor'>ENTRAR</h3>
@@ -95,17 +96,20 @@ export const Login = () => {
 
                 </div>
 
-
                 <div className="col-lg-6">
-                           <img src={AC} className='AC-logo'/>
+                    <img src={AC} className='AC-logo'/>
                 </div>
+
             </div>
-
-
-
-              
-
 
         </div>
     )
 }
+
+
+
+export default Login 
+
+
+
+

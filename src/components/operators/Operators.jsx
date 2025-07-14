@@ -35,12 +35,12 @@ export const Operators = () => {
         <div className='mt-4'>
 
             <h2 className="header">
-                    OPERADORES
+                Operadores
             </h2>
 
             <section className='sectionControls'>
                     <button className='btn-w secondary' onClick={()=>handleShow()}>
-                        NUEVO OPERADOR
+                        NUEVO OPERADor
                     </button>
                     <button className='btn-w secondary-out'>
                         Buscar 🔍︎
@@ -57,7 +57,7 @@ export const Operators = () => {
                     <p><span>Telefono: </span> {el.phone}      </p>
                     <p><span>Status:-- </span>                 </p>
 
-                    {Acordion(i, 'Mas Información del Operdor ...', 
+                    {Acordion(i, 'Mas Información del Operador ...', 
                         <div key={i}>
 
                             <p><span>Horario:--              </span>                      </p>
@@ -84,10 +84,6 @@ export const Operators = () => {
 
                         </div>
                     )}
-
-                    {/*<img src={el.img} width='100px' />*/}
-
-                    {/*<input type="file" id="file-upload" className='fileImg' onChange={(e) => uploadUserImg(el.uid, e.target.files[0])} />*/}
 
                 </div>
             ))}
@@ -122,3 +118,9 @@ export const Operators = () => {
         </div>
     )
 }
+
+
+
+
+
+

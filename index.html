@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/assets/imgs/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="helperssssss/assets/imgs/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignations Control</title>
     <style>
           @import 'bootstrap/dist/css/bootstrap.min.css';
-          @import 'src/index.css'
+          @import 'helperssssss/assets/css/index.css'
     </style>
     <script>
 
@@ -36,20 +36,28 @@
 
 
         const ls = (name, data) => { 
+
             if(data === undefined){
-                return localStorage[name] !== undefined ? JSON.parse(localStorage[name]) : undefined // regresando, exa: ls('status')
+                return localStorage[name] !== undefined 
+                    ? JSON.parse(localStorage[name]) 
+                    : undefined 
+                    // regresando, exa: ls('status')
             }else{
-                localStorage[name] = JSON.stringify(data) // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
+                localStorage[name] = JSON.stringify(data) 
+                // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
             } 
+            
         }
 
 
     </script>
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/App.jsx"></script>
   </body>
+
 </html>
 
 

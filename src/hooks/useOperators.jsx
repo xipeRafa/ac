@@ -4,16 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 
 import { clearAlertView, messageView } from  '../store/slices/alertSlice'
-import { opCreateView, opEditView, defaultEditMode, opDeleteView, opSwitchView } from  '../store/slices/operatorsSlice'
-import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils, editExplorer } from '../helpers'
+import { operatorsCreateView,  operatorsEditView, defaultEditMode,  operatorsDeleteView,  operatorsSwitchView } from  '../store/slices/operatorsSlice'
 
+import { useForm, useConfirmDeleteAlerts, onCheckingRedirect, useUtils, editExplorer} from 'helperssssss'
 
 
 
 export const useOperators = () => {
 
 
-    const { operatorsSlice, editMode } = useSelector(state => state.operatorsSlice)
+    const {operatorsSlice, editMode } = useSelector(state => state. operatorsSlice)
 
     const dispatch = useDispatch()
     const navigateTo = useNavigate()
@@ -27,7 +27,7 @@ export const useOperators = () => {
             return
         }
         ls('operatorsArray') === undefined && ls('operatorsArray', []) 
-        dispatch(opCreateView(ls('operatorsArray')))
+        dispatch(operatorsCreateView(ls('operatorsArray')))
     }
 
 
@@ -35,19 +35,19 @@ export const useOperators = () => {
         let posted = ls('operatorsArray')
         posted.push({...el, uid:Date.now()})
         ls('operatorsArray', posted)
-        dispatch(opCreateView(ls('operatorsArray')))
+        dispatch(operatorsCreateView(ls('operatorsArray')))
     }
 
 
     const setInfoToForm = (el) => {
-        dispatch(opEditView(el))
+        dispatch(operatorsEditView(el))
     }
 
     
     const newDataEdit = (el) => { 
-        const { editedOp } = editExplorer() 
-        ls('operatorsArray', editedOp(el))
-        dispatch(opCreateView(ls('operatorsArray')))
+        const { editedOperators } = editExplorer() 
+        ls('operatorsArray', editedOperators(el))
+        dispatch(operatorsCreateView(ls('operatorsArray')))
         dispatch(defaultEditMode()) 
     }
 
@@ -57,9 +57,9 @@ export const useOperators = () => {
     }
 
 
-    const operatorsDelete = (operator) => {
-        const { confirmDeleteAlerts } = useConfirmDeleteAlerts({ collection:'Operador', dispatch, opCreateView })
-        confirmDeleteAlerts(operator)
+    const operatorsDelete = (operators) => {
+        const { confirmDeleteAlerts } = useConfirmDeleteAlerts({ collection:'Operador', dispatch, operatorsCreateView })
+        confirmDeleteAlerts(operators)
     }
 
 
@@ -96,3 +96,12 @@ export const useOperators = () => {
 
   }
 }
+
+
+
+
+
+
+
+
+

@@ -11,19 +11,19 @@ export const operatorsSlice = createSlice({
     },
 
     reducers: {
-        opCreateView: (state, { payload }) => {
+        operatorsCreateView: (state, { payload }) => {
             state.operatorsSlice = payload
         },
-        opEditView:(state, {payload})=>{
+        operatorsEditView:(state, {payload})=>{
             state.editMode = payload
         },
         defaultEditMode:(state)=>{
             state.editMode = undefined
         },
-        opDeleteView: (state, { payload }) => {
+        operatorsDeleteView: (state, { payload }) => {
             state.operatorsSlice = payload
         },
-        opSwitchView:(state, {payload})=>{
+        operatorsSwitchView:(state, {payload})=>{
             state.operatorsSlice = payload
         }
     }
@@ -31,4 +31,5 @@ export const operatorsSlice = createSlice({
 })
 
 
-export const { opCreateView, opEditView, defaultEditMode, opDeleteView, opSwitchView } = operatorsSlice.actions;
+export const { operatorsCreateView, operatorsEditView, defaultEditMode, operatorsDeleteView, operatorsSwitchView } = operatorsSlice.actions;
+

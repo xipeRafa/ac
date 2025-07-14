@@ -14,16 +14,16 @@ export const rutasSlice = createSlice({
         rutasCreateView: (state, { payload }) => {
             state.rutasSlice = payload
         },
-        rutasEditView:(state, {payload})=>{
+        rutasEditView: (state, {payload}) => {
             state.editMode = payload
         },
-        defaultEditMode:(state)=>{
+        defaultEditMode: (state) => {
             state.editMode = undefined
         },
         rutasDeleteView: (state, { payload }) => {
             state.rutasSlice = payload
         },
-        rutasSwitchView:(state, {payload})=>{
+        rutasSwitchView: (state, {payload}) => {
             state.rutasSlice = payload
         }
     }
