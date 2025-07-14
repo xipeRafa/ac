@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://xipeRafa.github.io/ac/assets/favicon-CN_BPqfj.svg" />
+    <link rel="icon" type="image/svg+xml" href="helperssssss/assets/imgs/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignations Control</title>
     <style>@charset "UTF-8";
@@ -1877,21 +1877,29 @@ form>div{
 
 
         const ls = (name, data) => { 
+
             if(data === undefined){
-                return localStorage[name] !== undefined ? JSON.parse(localStorage[name]) : undefined // regresando, exa: ls('status')
+                return localStorage[name] !== undefined 
+                    ? JSON.parse(localStorage[name]) 
+                    : undefined 
+                    // regresando, exa: ls('status')
             }else{
-                localStorage[name] = JSON.stringify(data) // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
+                localStorage[name] = JSON.stringify(data) 
+                // asignando data en LS exa: ls('coco', 'koko') exa: ls('coco', [{}])
             } 
+            
         }
 
 
     </script>
-    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-DlD_D32Z.js"></script>
+    <script type="module" crossorigin src="https://xipeRafa.github.io/ac/assets/index-DC9-43Jw.js"></script>
     <link rel="stylesheet" crossorigin href="https://xipeRafa.github.io/ac/assets/index-6EQzcuG3.css">
   </head>
+
   <body>
     <div id="root"></div>
   </body>
+
 </html>
 
 
